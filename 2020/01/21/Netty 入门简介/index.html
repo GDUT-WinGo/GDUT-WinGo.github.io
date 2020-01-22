@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/UseSelectorNIO.PNG">
 <meta property="og:image" content="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelHandlerLink.PNG">
 <meta property="article:published_time" content="2020-01-21T01:37:11.000Z">
-<meta property="article:modified_time" content="2020-01-21T15:03:18.886Z">
+<meta property="article:modified_time" content="2020-01-22T08:22:33.151Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Netty">
 <meta name="twitter:card" content="summary">
@@ -141,7 +141,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java-IO"><span class="post-toc-text">Java IO</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java-NIO"><span class="post-toc-text">Java NIO</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Netty-简介"><span class="post-toc-text">Netty 简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Netty-的核心组件"><span class="post-toc-text">Netty 的核心组件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Channel"><span class="post-toc-text">Channel</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#回调"><span class="post-toc-text">回调</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Future"><span class="post-toc-text">Future</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#事件和-ChannelHandler"><span class="post-toc-text">事件和 ChannelHandler</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#各组件的整合"><span class="post-toc-text">各组件的整合</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java-IO"><span class="post-toc-text">Java IO</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java-NIO"><span class="post-toc-text">Java NIO</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Netty-简介"><span class="post-toc-text">Netty 简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Netty-的核心组件"><span class="post-toc-text">Netty 的核心组件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Channel"><span class="post-toc-text">Channel</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#回调"><span class="post-toc-text">回调</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Future"><span class="post-toc-text">Future</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#事件和-ChannelHandler"><span class="post-toc-text">事件和 ChannelHandler</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#各组件的整合"><span class="post-toc-text">各组件的整合</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -184,15 +184,15 @@
 <p>一个既是异步的又是事件驱动的系统会表现出一种特殊的、对我们来说极具价值的行为：它可以以任意的顺序响应在任意的时间点产生的事件。</p>
 <p>完全异步的 I/O：非阻塞网络调用使得我们可以不必等待一个操作的完成。异步方法会立即返回，并且在它完成时，会直接或者在稍后的某个时间点通知用户。</p>
 <p>选择器使得我们能够通过较少的线程便可监视许多连接上的事件。</p>
-<h3 id="Netty-的核心组件"><a href="#Netty-的核心组件" class="headerlink" title="Netty 的核心组件"></a>Netty 的核心组件</h3><h5 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h5><p>Channel 时 Java NIO 的一个基本构造。</p>
+<h3 id="Netty-的核心组件"><a href="#Netty-的核心组件" class="headerlink" title="Netty 的核心组件"></a>Netty 的核心组件</h3><h4 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h4><p>Channel 时 Java NIO 的一个基本构造。</p>
 <blockquote>
 <p>它代表一个到实体（如一个硬件设备、一个文件、一个网络套接字或者一个能够执 行一个或者多个不同的I/O操作的程序组件）的开放连接，如读操作和写操作。</p>
 </blockquote>
 <p>在一定程度上可以把 Channel 看作是传入（入站）或者传出（出站）数据的载体。因此，它可以被打开或者被关闭，连接或者断开连接。</p>
-<h5 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h5><p>Netty 在内部使用了回调来处理事件；当一个回调被触发时，相关的事件可以被一个 interfaceChannelHandler 的实现处理</p>
+<h4 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h4><p>Netty 在内部使用了回调来处理事件；当一个回调被触发时，相关的事件可以被一个 interfaceChannelHandler 的实现处理</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 被回调触发的 ChannelHandler</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectHandler</span> <span class="keyword">extends</span> <span class="title">ChannelInboundHandlerAdapter</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">    <span class="comment">// 当一个新的连接被建立完成时，此方法将会被调用</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">channelActive</span><span class="params">(ChannelHandlerContext ctx)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		System.out.println(</span><br><span class="line">            <span class="string">"Client "</span> + ctx.channel().remoteAddress() + <span class="string">" connected"</span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h5><p>Future 提供了另一种在操作完成时通知应用程序的方式。这个对象可以看作是一个异步操作的结果的占位符；它将在未来的某个时刻完成，并提供对其结果的访问。</p>
+<h4 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h4><p>Future 提供了另一种在操作完成时通知应用程序的方式。这个对象可以看作是一个异步操作的结果的占位符；它将在未来的某个时刻完成，并提供对其结果的访问。</p>
 <p>JDK 预置了 interface java.util.concurrent.Future，但是其所提供的实现，只允许手动检查对应的操作是否已经完成，或者一直阻塞直到它完成。这是非常繁琐的，所以 Netty 提供了它自己的实现：ChannelFuture，用于在执行异步操作的时候使用。</p>
 <p>ChannelFuture提供了几种额外的方法，这些方法使得我们能够注册一个或者多个   ChannelFutureListener 实例。由 ChannelFutureListener 提供的通知机制消除了手动检查对应的操作是否完成的必要。</p>
 <ul>
@@ -205,7 +205,7 @@
 <blockquote>
 <p>回调和 Future 是相互补充的机制；它们相互结合，构成了 Netty 本身的关键构件块之一。</p>
 </blockquote>
-<h5 id="事件和-ChannelHandler"><a href="#事件和-ChannelHandler" class="headerlink" title="事件和 ChannelHandler"></a>事件和 ChannelHandler</h5><p>Netty 是一个网络编程框架，所以事件是按照它们与入站或出站数据流的相关性进行分类的。</p>
+<h4 id="事件和-ChannelHandler"><a href="#事件和-ChannelHandler" class="headerlink" title="事件和 ChannelHandler"></a>事件和 ChannelHandler</h4><p>Netty 是一个网络编程框架，所以事件是按照它们与入站或出站数据流的相关性进行分类的。</p>
 <ul>
 <li>可能由入站数据或者相关的状态更改而触发的事件：<ul>
 <li>连接已被激活或者连接失活；</li>
@@ -226,7 +226,7 @@
 <p><img src="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelHandlerLink.PNG" alt=""></p>
 </li>
 </ul>
-<h5 id="各组件的整合"><a href="#各组件的整合" class="headerlink" title="各组件的整合"></a>各组件的整合</h5><ul>
+<h4 id="各组件的整合"><a href="#各组件的整合" class="headerlink" title="各组件的整合"></a>各组件的整合</h4><ul>
 <li><p>Future、回调和 ChannelHandler</p>
 <ul>
 <li><p>Netty 的异步编程模型是建立在 Future 和回调的概念之上的，而将事件派发到 ChannelHandler </p>
@@ -257,7 +257,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-01-21T15:03:18.886Z" itemprop="dateUpdated">2020-01-21 23:03:18</time>
+    最后更新时间：<time datetime="2020-01-22T08:22:33.151Z" itemprop="dateUpdated">2020-01-22 16:22:33</time>
 </span><br>
 
 
