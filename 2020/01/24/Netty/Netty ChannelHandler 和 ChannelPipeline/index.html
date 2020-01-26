@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Netty ChannelHandler 和 ChannelPipeline | Wingo&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Netty">
+    <meta name="description" content="ChannelPipeline 中将 ChannelHandler 链接在一起以组织处理逻辑，还有一个重要的关系 ChannelHandlerContext。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Netty ChannelHandler 和 ChannelPipeline">
+<meta property="og:url" content="http://yoursite.com/2020/01/24/Netty/Netty%20ChannelHandler%20%E5%92%8C%20ChannelPipeline/index.html">
+<meta property="og:site_name" content="Wingo&#39;s Blog">
+<meta property="og:description" content="ChannelPipeline 中将 ChannelHandler 链接在一起以组织处理逻辑，还有一个重要的关系 ChannelHandlerContext。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelLife.PNG">
+<meta property="og:image" content="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelHandlerAdapter.PNG">
+<meta property="og:image" content="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelRelation.PNG">
+<meta property="og:image" content="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/Channel%28Pipeline%29Spread.PNG">
+<meta property="og:image" content="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelHandlerContextSpread.PNG">
+<meta property="article:published_time" content="2020-01-24T14:09:35.000Z">
+<meta property="article:modified_time" content="2020-01-25T16:27:27.704Z">
+<meta property="article:author" content="Wingo">
+<meta property="article:tag" content="Netty">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelLife.PNG">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wingo</h5>
+          <a href="mailto:1318263468@qq.com" title="1318263468@qq.com" class="mail">1318263468@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Netty ChannelHandler 和 ChannelPipeline</div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Netty ChannelHandler 和 ChannelPipeline</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-01-24T14:09:35.000Z" itemprop="datePublished" class="page-time">
+  2020-01-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ChannelHandler-家族"><span class="post-toc-number">1.</span> <span class="post-toc-text">ChannelHandler 家族</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Channel-的生命周期"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Channel 的生命周期</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ChannelHandler-的生命周期"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">ChannelHandler 的生命周期</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ChannelInboundHandler-接口"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">ChannelInboundHandler 接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ChannelOutboundHandler-接口"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">ChannelOutboundHandler 接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ChannelHandler-适配器"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">ChannelHandler 适配器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#资源管理"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">资源管理</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ChannelPipeline-接口"><span class="post-toc-number">2.</span> <span class="post-toc-text">ChannelPipeline 接口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改-ChannelPipeline"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">修改 ChannelPipeline</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#触发事件"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">触发事件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#小结"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ChannelHandlerContext-接口"><span class="post-toc-number">3.</span> <span class="post-toc-text">ChannelHandlerContext 接口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用-ChannelHandlerContext"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">使用 ChannelHandlerContext</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#高级用法"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">高级用法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#异常处理"><span class="post-toc-number">4.</span> <span class="post-toc-text">异常处理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#处理入站异常"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">处理入站异常</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#处理出站异常"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">处理出站异常</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Netty/Netty ChannelHandler 和 ChannelPipeline"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Netty ChannelHandler 和 ChannelPipeline</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-01-24 22:09:35" datetime="2020-01-24T14:09:35.000Z"  itemprop="datePublished">2020-01-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>ChannelPipeline 中将 ChannelHandler 链接在一起以组织处理逻辑，还有一个重要的关系 ChannelHandlerContext。</p>
+<a id="more"></a>
+
+<h3 id="ChannelHandler-家族"><a href="#ChannelHandler-家族" class="headerlink" title="ChannelHandler 家族"></a>ChannelHandler 家族</h3><h4 id="Channel-的生命周期"><a href="#Channel-的生命周期" class="headerlink" title="Channel 的生命周期"></a>Channel 的生命周期</h4><p>当 Channel 的状态发生改变时，将会生成对应的事件。这些事件将会被转发给 ChannelPipeline 中的 ChannelHandler，其可以随后对它们做出响应。</p>
+<p><img src="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelLife.PNG" alt=""></p>
+<h4 id="ChannelHandler-的生命周期"><a href="#ChannelHandler-的生命周期" class="headerlink" title="ChannelHandler 的生命周期"></a>ChannelHandler 的生命周期</h4><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">handlerAdded</td>
+<td align="center">当把 ChannelHandler 添加到 ChannelPipeline 中时被调用</td>
+</tr>
+<tr>
+<td align="center">handlerRemoved</td>
+<td align="center">当从 ChannelPipeline 中移除 ChannelHandler 时被调用</td>
+</tr>
+<tr>
+<td align="center">exceptionCaught</td>
+<td align="center">当处理过程中在 ChannelPipeline 中有错误产生时被调用</td>
+</tr>
+</tbody></table>
+<p>Netty 定义了两个重要的 Channelhandler 子接口：</p>
+<ul>
+<li>ChannelInboundHandler——处理入站数据以及各种状态变化；</li>
+<li>ChannelOutboundHandler——处理出站数据并且允许拦截所有的操作。</li>
+</ul>
+<h4 id="ChannelInboundHandler-接口"><a href="#ChannelInboundHandler-接口" class="headerlink" title="ChannelInboundHandler 接口"></a>ChannelInboundHandler 接口</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 释放消息资源</span></span><br><span class="line"><span class="meta">@Sharable</span></span><br><span class="line"><span class="comment">// 扩展了 ChannelInboundHandlerAdapter</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiscardHandler</span> <span class="keyword">extends</span> <span class="title">ChannelInboundHandlerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">channelRead</span><span class="params">(ChannelHandlerContext ctx, Object msg)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 丢弃已接收的消息</span></span><br><span class="line">        ReferenceCountUtil.release(msg);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 SimpleChannelInboundHandler 会自动释放资源</span></span><br><span class="line"><span class="meta">@Sharable</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleDiscardHandler</span> <span class="keyword">extends</span> <span class="title">SimpleChannelInboundHandler</span>&lt;<span class="title">Object</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">channelRead0</span><span class="params">(ChannelHandlerContext ctx, Object msg)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 不需要任何显式的资源释放</span></span><br><span class="line">        <span class="comment">// No need to do anything special</span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="ChannelOutboundHandler-接口"><a href="#ChannelOutboundHandler-接口" class="headerlink" title="ChannelOutboundHandler 接口"></a>ChannelOutboundHandler 接口</h4><p>ChannelOutboundHandler 的一个强大的功能是可以按需推迟操作或者事件，这使得可 以通过一些复杂的方法来处理请求。</p>
+<blockquote>
+<p>ChannelPromise 与  ChannelFuture：ChannelOutboundHandler 中的大部分方法都需要一个 ChannelPromise 参数，以便在操作完成时得到通知。ChannelPromise 是 ChannelFuture 的一个子类，其定义了一些可写的方法，如 setSuccess() 和 setFailure()，从而使 ChannelFuture 不可变。</p>
+</blockquote>
+<h4 id="ChannelHandler-适配器"><a href="#ChannelHandler-适配器" class="headerlink" title="ChannelHandler 适配器"></a>ChannelHandler 适配器</h4><p>适配器对 ChannelHandler 进行了简单的实现，只需要简单地扩展它们，并且重写那些你想要自定义的方法。</p>
+<p><img src="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelHandlerAdapter.PNG" alt=""></p>
+<p>ChannelInboundHandlerAdapter 和 ChannelOutboundHandlerAdapter 中所提供的方法体调用了其相关联的 ChannelHandlerContext 上的等效方法，从而将事件转发到了 ChannelPipeline 中的下一个 ChannelHandler 中。</p>
+<h4 id="资源管理"><a href="#资源管理" class="headerlink" title="资源管理"></a>资源管理</h4><p>每当通过调用 ChannelInboundHandler.channelRead() 或者 ChannelOutboundHandler.write() 方法来处理数据时，你都需要确保没有任何的资源泄漏。</p>
+<p>Netty 使用引用计数来处理池化的 ByteBuf。所以在完全使用完某个 ByteBuf 后，调整其引用计数是很重要的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 丢弃并释放出战消息</span></span><br><span class="line"><span class="meta">@Sharable</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiscardOutboundHandler</span></span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">ChannelOutboundHandlerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(ChannelHandlerContext ctx, Object msg, ChannelPromise promise)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 释放资源</span></span><br><span class="line">        ReferenceCountUtil.release(msg);</span><br><span class="line">        <span class="comment">// 通知 ChannelPromise 数据已经被处理了</span></span><br><span class="line">        promise.setSuccess();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>重要的是，不仅要释放资源，还要通知 ChannelPromise。否则可能会出现 ChannelFutureListener 收不到某个消息已经被处理了的通知的情况。</p>
+<p>如果一个消息被消费或者丢弃了，并且没有传递给 ChannelPipeline 中的下一个 ChannelOutboundHandler，那么用户就有责任调用 ReferenceCountUtil.release()。</p>
+<h3 id="ChannelPipeline-接口"><a href="#ChannelPipeline-接口" class="headerlink" title="ChannelPipeline 接口"></a>ChannelPipeline 接口</h3><p>每一个新创建的 Channel 都将会被分配一个新的 ChannelPipeline。这项关联是永久性的；Channel 既不能附加另外一个 ChannelPipeline，也不能分离其当前的。</p>
+<p>根据事件的起源，事件将会被 ChannelInboundHandler 或者 ChannelOutboundHandler 处理。随后，通过调用 ChannelHandlerContext 实现，它将被转发给同一超类型的下一个 ChannelHandler。</p>
+<h4 id="修改-ChannelPipeline"><a href="#修改-ChannelPipeline" class="headerlink" title="修改 ChannelPipeline"></a>修改 ChannelPipeline</h4><p>ChannelHandler 可以通过添加 addXxx()、删除 remove() 或者替换 replace()  其他的 ChannelHandler 来实时地修改 ChannelPipeline 的布局。</p>
+<blockquote>
+<p>ChannelHandler 的执行和阻塞</p>
+<p>通常 ChannelPipeline 中的每一个 ChannelHandler 都是通过它的 EventLoop（I/O 线程）来处理传递给它的事件的。所以至关重要的是不要阻塞这个线程，因为这会对整体的 I/O 处理产生负面的影响。 </p>
+<p>但有时可能需要与那些使用阻塞 API 的遗留代码进行交互。对于这种情况，ChannelPipeline 有一些接受一个 EventExecutorGroup 的 add()方法。如果一个事件被传递给一个自定义的 EventExecutorGroup，它将被包含在这个 EventExecutorGroup 中的某个 EventExecutor 所处理，从而被从该 Channel 本身的 EventLoop 中移除。对于这种用例，Netty 提供了一个叫  DefaultEventExecutorGroup 的默认实现。</p>
+</blockquote>
+<p>getXxx()：通过类型或者名称来访问 ChannelHandler 的方法。</p>
+<p>context()：返回和 ChannelHandler 绑定的 ChannelHandlerContext。</p>
+<p>names()：返回 ChannelPipeline 中所有 ChannelHandler 的名称。</p>
+<h4 id="触发事件"><a href="#触发事件" class="headerlink" title="触发事件"></a>触发事件</h4><p>ChannelPipeline 的 API 公开了用于调用入站和出站操作的附加方法。</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ul>
+<li>ChannelPipeline 保存了与 Channel 相关联的 ChannelHandler；</li>
+<li>ChannelPipeline 可以根据需要，通过添加或者删除 ChannelHandler 来动态地修改；</li>
+<li>ChannelPipeline 有着丰富的 API 用以被调用，以响应入站和出站事件。</li>
+</ul>
+<h3 id="ChannelHandlerContext-接口"><a href="#ChannelHandlerContext-接口" class="headerlink" title="ChannelHandlerContext 接口"></a>ChannelHandlerContext 接口</h3><p>ChannelHandlerContext 代表了 ChannelHandler 和 ChannelPipeline 之间的关联，每当有 ChannelHandler 添加到 ChannelPipeline 中时，都会创建 ChannelHandlerContext。 ChannelHandlerContext 的主要功能是管理它所关联的 ChannelHandler 和在同一个 ChannelPipeline 中的其他 ChannelHandler 之间的交互。</p>
+<ul>
+<li>ChannelHandlerContext 和 ChannelHandler 之间的关联（绑定）是永远不会改变的，所以缓存对它的引用是安全的；</li>
+</ul>
+<h4 id="使用-ChannelHandlerContext"><a href="#使用-ChannelHandlerContext" class="headerlink" title="使用 ChannelHandlerContext"></a>使用 ChannelHandlerContext</h4><p>Channel、ChannelPipeline、ChannelHandler 以及 ChannelHandlerContext 之间的关系</p>
+<p><img src="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelRelation.PNG" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从 ChannelHandlerContext 访问 Channel</span></span><br><span class="line">ChannelHandlerContext ctx = ..;</span><br><span class="line">Channel channel = ctx.channel();</span><br><span class="line">channel.write(Unpooled.copiedBuffer(<span class="string">"Netty in Action"</span>, CharsetUtil.UTF_8));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过 ChannelHandlerContext 访问 ChannelPipeline</span></span><br><span class="line">ChannelHandlerContext ctx = ..;</span><br><span class="line">ChannelPipeline pipeline = ctx.pipeline();</span><br><span class="line">pipeline.write(Unpooled.copiedBuffer(<span class="string">"Netty in Action"</span>, CharsetUtil.UTF_8));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/Channel%28Pipeline%29Spread.PNG" alt=""></p>
+<p>重要的是要注意到，虽然被调用的 Channel 或 ChannelPipeline 上的 write()方法将一直传播事件通 过整个 ChannelPipeline，但是在 ChannelHandler 的级别上，事件从一个  ChannelHandler 到下一个 ChannelHandler 的移动是由 ChannelHandlerContext 上的调用完成的.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 调用 ChannelHandlerContext 的 write()方法</span></span><br><span class="line">ChannelHandlerContext ctx = ..;</span><br><span class="line"><span class="comment">// write()方法将把缓冲区数据发送到下一个 ChannelHandler</span></span><br><span class="line">ctx.write(Unpooled.copiedBuffer(<span class="string">"Netty in Action"</span>, CharsetUtil.UTF_8));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelHandlerContextSpread.PNG" alt=""></p>
+<h4 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h4><p>缓存 ChannelHandlerContext 的引用以供稍后使用，这可能会发生在任何的 ChannelHandler 方法之外，甚至来自于不同的线程。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 缓存到 ChannelHandlerContext 的引用</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WriteHandler</span> <span class="keyword">extends</span> <span class="title">ChannelHandlerAdapter</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> ChannelHandlerContext ctx;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handlerAdded</span><span class="params">(ChannelHandlerContext ctx)</span> </span>&#123; </span><br><span class="line">        <span class="comment">//存储到 ChannelHandlerContext 的引用以供稍后使用</span></span><br><span class="line">        <span class="keyword">this</span>.ctx = ctx; </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">send</span><span class="params">(String msg)</span> </span>&#123; </span><br><span class="line">        <span class="comment">// 使用之前存储的到 ChannelHandlerContext 的引用来发送消息</span></span><br><span class="line">        ctx.writeAndFlush(msg);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为一个 ChannelHandler 可以从属于多个 ChannelPipeline，所以它也可以绑定到多个 ChannelHandlerContext 实例。对于这种用法指在多个 ChannelPipeline 中共享同一 个 ChannelHandler，对应的 ChannelHandler 必须要使用 @Sharable 注解标注；否则， 试图将它添加到多个 ChannelPipeline 时将会触发异常。显而易见，为了安全地被用于多个 并发的 Channel（即连接），这样的 ChannelHandler 必须是线程安全的。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可共享的 ChannelHandler</span></span><br><span class="line"><span class="meta">@Sharable</span> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SharableHandler</span> <span class="keyword">extends</span> <span class="title">ChannelInboundHandlerAdapter</span> </span>&#123; </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">channelRead</span><span class="params">(ChannelHandlerContext ctx, Object msg)</span> </span>&#123; </span><br><span class="line">        System.out.println(<span class="string">"Channel read message: "</span> + msg);</span><br><span class="line">        ctx.fireChannelRead(msg); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><p>Netty 提供了几种方式用于处理入站或者出站处理过程中所抛出的异常。</p>
+<h4 id="处理入站异常"><a href="#处理入站异常" class="headerlink" title="处理入站异常"></a>处理入站异常</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基本的入站异常处理</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InboundExceptionHandler</span> <span class="keyword">extends</span> <span class="title">ChannelInboundHandlerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exceptionCaught</span><span class="params">(ChannelHandlerContext ctx, Throwable cause)</span> </span>&#123;</span><br><span class="line">        cause.printStackTrace();</span><br><span class="line">        ctx.close();</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="处理出站异常"><a href="#处理出站异常" class="headerlink" title="处理出站异常"></a>处理出站异常</h4><p>出站的异常处理基于一下通知机制：</p>
+<ul>
+<li>每个出站操作都将返回一个 ChannelFuture。注册到 ChannelFuture 的 ChannelFutureListener 将在操作完成时被通知该操作是成功了还是出错了。</li>
+<li>几乎所有的 ChannelOutboundHandler 上的方法都会传入一个 ChannelPromise 的实例。作为 ChannelFuture 的子类，ChannelPromise 也可以被分配用于异步通知的监听器。但是，ChannelPromise 还具有提供立即通知的可写方法。</li>
+</ul>
+<blockquote>
+<p>ChannelPromise 的可写方法 </p>
+<p>通过调用 ChannelPromise 上的 setSuccess() 和 setFailure() 方法，可以使一个操作的状态在 ChannelHandler 的方法返回给其调用者时便即刻被感知到。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加 ChannelFutureListener 到 ChannelFuture</span></span><br><span class="line">ChannelFuture future = channel.write(someMessage);</span><br><span class="line">future.addListener(<span class="keyword">new</span> ChannelFutureListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operationComplete</span><span class="params">(ChannelFuture f)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!f.isSuccess()) &#123;</span><br><span class="line">            f.cause().printStackTrace();</span><br><span class="line">            f.channel().close();</span><br><span class="line">        &#125; &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加 ChannelFutureListener 到 ChannelPromise</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OutboundExceptionHandler</span> <span class="keyword">extends</span> <span class="title">ChannelOutboundHandlerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(ChannelHandlerContext ctx, Object msg,</span></span></span><br><span class="line"><span class="function"><span class="params">                      ChannelPromise promise)</span> </span>&#123;</span><br><span class="line">        promise.addListener(<span class="keyword">new</span> ChannelFutureListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operationComplete</span><span class="params">(ChannelFuture f)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (!f.isSuccess()) &#123;</span><br><span class="line">                    f.cause().printStackTrace();</span><br><span class="line">                    f.channel().close();</span><br><span class="line">                &#125; &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-01-25T16:27:27.704Z" itemprop="dateUpdated">2020-01-26 00:27:27</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Wingo">
+            Wingo
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Netty/" rel="tag">Netty</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/01/25/Netty/Netty%20EventLoop%20%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Netty EventLoop 和线程模型</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/01/24/Netty/Netty%20ByteBuf/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Netty ByteBuf</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+            <span>得失从缘，心无增减</span>
+        </p>
+    </div> 
+    <div class="bottom">
+        <p><span>Wingo &copy; 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

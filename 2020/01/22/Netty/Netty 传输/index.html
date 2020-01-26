@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Netty 传输 | Wingo&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Netty">
+    <meta name="description" content="流经网络的数据总是具有相同的类型：字节。这些字节是如何流动的主要取决于我们所说的网络传输（一个帮助我们抽象底层数据传输机制的概念）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Netty 传输">
+<meta property="og:url" content="http://yoursite.com/2020/01/22/Netty/Netty%20%E4%BC%A0%E8%BE%93/index.html">
+<meta property="og:site_name" content="Wingo&#39;s Blog">
+<meta property="og:description" content="流经网络的数据总是具有相同的类型：字节。这些字节是如何流动的主要取决于我们所说的网络传输（一个帮助我们抽象底层数据传输机制的概念）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelInterface.PNG">
+<meta property="og:image" content="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelMethod.PNG">
+<meta property="og:image" content="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelSelectionKey.PNG">
+<meta property="og:image" content="d:%5COneDrive%5CTypora%5C%E5%9B%BE%E7%89%87%5C1579834708283.png">
+<meta property="article:published_time" content="2020-01-22T11:03:21.000Z">
+<meta property="article:modified_time" content="2020-01-25T16:27:06.865Z">
+<meta property="article:author" content="Wingo">
+<meta property="article:tag" content="Netty">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelInterface.PNG">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wingo</h5>
+          <a href="mailto:1318263468@qq.com" title="1318263468@qq.com" class="mail">1318263468@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Netty 传输</div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Netty 传输</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-01-22T11:03:21.000Z" itemprop="datePublished" class="page-time">
+  2020-01-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#案例研究：JDK-VS-Netty"><span class="post-toc-number">1.</span> <span class="post-toc-text">案例研究：JDK VS. Netty</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原生-JDK"><span class="post-toc-number">2.</span> <span class="post-toc-text">原生 JDK</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Netty-框架"><span class="post-toc-number">3.</span> <span class="post-toc-text">Netty 框架</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#传输-API"><span class="post-toc-number">4.</span> <span class="post-toc-text">传输 API</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内置的传输"><span class="post-toc-number">5.</span> <span class="post-toc-text">内置的传输</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#NIO"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">NIO</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Epoll"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">Epoll</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#OIO"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">OIO</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Local-传输"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">Local 传输</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Embedded-传输"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">Embedded 传输</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Netty/Netty 传输"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Netty 传输</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-01-22 19:03:21" datetime="2020-01-22T11:03:21.000Z"  itemprop="datePublished">2020-01-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>流经网络的数据总是具有相同的类型：字节。这些字节是如何流动的主要取决于我们所说的网络传输（一个帮助我们抽象底层数据传输机制的概念）</p>
+<a id="more"></a>
+
+<h3 id="案例研究：JDK-VS-Netty"><a href="#案例研究：JDK-VS-Netty" class="headerlink" title="案例研究：JDK VS. Netty"></a>案例研究：JDK VS. Netty</h3><h3 id="原生-JDK"><a href="#原生-JDK" class="headerlink" title="原生 JDK"></a>原生 JDK</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JDK 的阻塞网络编程</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PlainOioServer</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">serve</span><span class="params">(<span class="keyword">int</span> port)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		<span class="keyword">final</span> ServerSocket socket = <span class="keyword">new</span> ServerSocket(port);</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="keyword">for</span> (;;) &#123;</span><br><span class="line">					<span class="keyword">final</span> Socket clientSocket = socket.accept();</span><br><span class="line">					System.out.println(<span class="string">"Accepted connection from "</span> + clientSocket);</span><br><span class="line">					<span class="keyword">new</span> Thread(	<span class="comment">//	创建一个新的线程来处理该连接</span></span><br><span class="line">						<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">							<span class="meta">@Override</span></span><br><span class="line">							<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">								OutputStream out;</span><br><span class="line">								<span class="keyword">try</span> &#123;</span><br><span class="line">                                        out = clientSocket.getOutputStream();</span><br><span class="line">                                    	<span class="comment">// 将消息写给已连接的客户端</span></span><br><span class="line">                                        out.write(<span class="string">"Hi!\r\n"</span>.getBytes(Charset.forName(<span class="string">"UTF-8"</span>)));</span><br><span class="line">                                        out.flush();</span><br><span class="line">                                        clientSocket.close();</span><br><span class="line">                                    &#125;<span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                                        e.printStackTrace();</span><br><span class="line">                                    &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">                                        <span class="keyword">try</span> &#123;</span><br><span class="line">                                            clientSocket.close();</span><br><span class="line">                                        &#125;<span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">                                            <span class="comment">// ignore on close</span></span><br><span class="line">                                        &#125; </span><br><span class="line">							&#125; </span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;).start();	<span class="comment">// 启动线程</span></span><br><span class="line">                &#125; </span><br><span class="line">            &#125;<span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            	e.printStackTrace();</span><br><span class="line">            &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>随着应用程序的用户越来越多，阻塞 I/O 并不能很好地伸缩到支撑成千上万地并发连入连接。此时异步 I/O 可以解决这个问题，但异步 I/O 的 API 是完全不同的，因此不得不重写此应用程序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JDK 非阻塞网络处理</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PlainNioServer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">serve</span><span class="params">(<span class="keyword">int</span> port)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        ServerSocketChannel serverChannel = ServerSocketChannel.open();</span><br><span class="line">        serverChannel.configureBlocking(<span class="keyword">false</span>);</span><br><span class="line">        ServerSocket ssocket = serverChannel.socket();</span><br><span class="line">        InetSocketAddress address = <span class="keyword">new</span> InetSocketAddress(port);</span><br><span class="line">        ssocket.bind(address);</span><br><span class="line">        <span class="comment">// 打开 Selector 来处理 Channel</span></span><br><span class="line">        Selector selector = Selector.open();</span><br><span class="line">        <span class="comment">// 将 ServerChannel 注册到 Selector 以便接受连接（报个名）</span></span><br><span class="line">        serverChannel.register(selector, SelectionKey.OP_ACCEPT);</span><br><span class="line">        <span class="keyword">final</span> ByteBuffer msg = ByteBuffer.wrap(<span class="string">"Hi!\r\n"</span>.getBytes());</span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 等待 select() 需要处理的新事件，阻塞将一直持续到下一个传入事件</span></span><br><span class="line">                selector.select();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">                ex.printStackTrace();</span><br><span class="line">                <span class="comment">// handle exception</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 获取所有接收事件的标识 SelectionKey()</span></span><br><span class="line">            Set&lt;SelectionKey&gt; readyKeys = selector.selectedKeys();</span><br><span class="line">            Iterator&lt;SelectionKey&gt; iterator = readyKeys.iterator();</span><br><span class="line">            <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">                <span class="comment">// 取出标识，以便标识所对应的事件进行业务操作</span></span><br><span class="line">                SelectionKey key = iterator.next();</span><br><span class="line">                <span class="comment">// 此事件已经取出处理，将其标识符移除</span></span><br><span class="line">                iterator.remove();</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="comment">// 检查事件类型</span></span><br><span class="line">                    <span class="keyword">if</span> (key.isAcceptable()) &#123;</span><br><span class="line">                        ServerSocketChannel server = (ServerSocketChannel)key.channel();</span><br><span class="line">                        <span class="comment">// 接受客户端</span></span><br><span class="line">                        SocketChannel client = server.accept();</span><br><span class="line">                        client.configureBlocking(<span class="keyword">false</span>);</span><br><span class="line">                        <span class="comment">// 将客户端注册到选择器</span></span><br><span class="line">                        client.register(selector, SelectionKey.OP_WRITE | SelectionKey.OP_READ, msg.duplicate());</span><br><span class="line">                        System.out.println(<span class="string">"Accepted connection from "</span> + client);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">// 检查事件类型</span></span><br><span class="line">                    <span class="keyword">if</span> (key.isWritable()) &#123;</span><br><span class="line">                        SocketChannel client = (SocketChannel)key.channel();</span><br><span class="line">                        ByteBuffer buffer =(ByteBuffer)key.attachment();</span><br><span class="line">                        <span class="keyword">while</span> (buffer.hasRemaining()) &#123;</span><br><span class="line">                            <span class="comment">// 将数据写到已连接的客户端</span></span><br><span class="line">                            <span class="keyword">if</span> (client.write(buffer) == <span class="number">0</span>) &#123;</span><br><span class="line">                                <span class="keyword">break</span>;</span><br><span class="line">                            &#125; </span><br><span class="line">                        &#125;</span><br><span class="line">                        client.close();</span><br><span class="line">                    &#125; </span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">                    key.cancel();</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        key.channel().close();</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (IOException cex) &#123;</span><br><span class="line">                        <span class="comment">// ignore on close</span></span><br><span class="line">                    &#125; </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;	<span class="comment">// while</span></span><br><span class="line">        &#125;	<span class="comment">// for</span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Netty-框架"><a href="#Netty-框架" class="headerlink" title="Netty 框架"></a>Netty 框架</h3><p>因为 Netty 为每种传输的实现都暴露了相同的 API，阻塞与非阻塞网络传输的实现都依赖于 interface Channel、 ChannelPipeline 和 ChannelHandler。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 Netty 的网络处理</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NettyOioServer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">server</span><span class="params">(<span class="keyword">int</span> port)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> ByteBuf buf = Unpooled.unreleasableBuffer(</span><br><span class="line">            Unpooled.copiedBuffer(<span class="string">"Hi!\r\n"</span>, Charset.forName(<span class="string">"UTF-8"</span>))</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">// 阻塞模式</span></span><br><span class="line">        EventLoopGroup group = <span class="keyword">new</span> OioEventLoopGroup();</span><br><span class="line">        <span class="comment">// 非阻塞模式</span></span><br><span class="line">        <span class="comment">// EventLoopGroup group = new OioEventLoopGroup();</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ServerBootstrap b = <span class="keyword">new</span> ServerBootstrap();</span><br><span class="line">            b.group(group)</span><br><span class="line">                <span class="comment">//	非阻塞模式</span></span><br><span class="line">                <span class="comment">//	.channel(NioServerSocketChannel.class)</span></span><br><span class="line">                .channel(OioServerSocketChannel<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">                .<span class="title">localAddress</span>(<span class="title">new</span> <span class="title">InetSocketAddress</span>(<span class="title">port</span>))</span></span><br><span class="line"><span class="class">                // 每个连接的通道都需要调用此初始化方法</span></span><br><span class="line"><span class="class">                .<span class="title">childHandler</span>(</span></span><br><span class="line"><span class="class">                    <span class="title">new</span> <span class="title">ChannelInitializer</span>&lt;<span class="title">SocketChannel</span>&gt;() </span>&#123;</span><br><span class="line">                        <span class="meta">@Override</span></span><br><span class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initChannel</span><span class="params">(SocketChannel ch)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                            ch.pipeline().addLast(</span><br><span class="line">                                <span class="comment">// 拦截和处理事件</span></span><br><span class="line">                                <span class="keyword">new</span> ChannelInboundHandlerAdapter() &#123;</span><br><span class="line">                                    <span class="meta">@Override</span></span><br><span class="line">                                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">channelActive</span><span class="params">(ChannelHandlerContext ctx)</span><span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                                        ctx.writeAndFlush(buf.duplicate())</span><br><span class="line">                                            <span class="comment">// 监听，以便在消息写完后关闭连接</span></span><br><span class="line">                                            .addListener(ChannelFutureListener.CLOSE);</span><br><span class="line">                                    &#125; </span><br><span class="line">                                &#125;</span><br><span class="line">                            );</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">            );</span><br><span class="line">            ChannelFuture f = b.bind().sync();</span><br><span class="line">            f.channel().closeFuture().sync();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            group.shutdownGracefully().sync();</span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="传输-API"><a href="#传输-API" class="headerlink" title="传输 API"></a>传输 API</h3><p>传输 API 的核心是 interface Channel，它被用于所有的 I/O 操作</p>
+<p><img src="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelInterface.PNG" alt=""></p>
+<p>每个 Channel 都将会被分配一个 ChannelPipeline 和 ChannelConfig。ChannelConfig 包含了该 Channel 的所有配置设置，并且支持热更新。</p>
+<p>由于 Channel 是独一无二的，为了保证顺序将 Channel 声明为 java.lang. Comparable 的一个子接口。</p>
+<p>ChannelPipeline 持有所有将应用于入站和出站数据以及事件的 ChannelHandler 实例，这些 ChannelHandler 实现了应用程序用于处理状态变化以及数据处理的逻辑。你也可以根据需要通过添加或者移除ChannelHandler实例来修改 ChannelPipeline。通过利用Netty的这项能力可以构建出高度灵活的应用程序。</p>
+<p><img src="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelMethod.PNG" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 写出到 Channel</span></span><br><span class="line">Channel channel = ...;</span><br><span class="line"><span class="comment">// 创建持有要写数据的 ByteBuf</span></span><br><span class="line">ByteBuf buf = Unpooled.copiedBuffer(<span class="string">"your data"</span>, CharsetUtil.UTF_8);</span><br><span class="line"><span class="comment">// 写数据并且冲刷它</span></span><br><span class="line">ChannelFuture cf = channel.writeAndFlush(buf);</span><br><span class="line"><span class="comment">// 添加监听器以便在操作完成后接收到通知</span></span><br><span class="line">cf.addListener(</span><br><span class="line">    <span class="keyword">new</span> ChannelFutureListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operationComplete</span><span class="params">(ChannelFuture future)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 操作完成并且没有发生错误</span></span><br><span class="line">            <span class="keyword">if</span> (future.isSuccess()) &#123;</span><br><span class="line">                System.out.println(<span class="string">"Write successful"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.err.println(<span class="string">"Write error"</span>);</span><br><span class="line">                future.cause().printStackTrace();</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>Netty 的 Channel 实现是线程安全的，因此你可以存储一个到 Channel 的引用，并且每当你需要向远程节点写数据时，都可以使用它，即使当时许多线程都在使用它。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从多个线程使用同一个 Channel</span></span><br><span class="line"><span class="keyword">final</span> Channel channel = ...;</span><br><span class="line"><span class="keyword">final</span> ByteBuf buf = Unpooled.copiedBuffer(<span class="string">"your data"</span>,CharsetUtil.UTF_8).retain();</span><br><span class="line"><span class="comment">// 创建将数据写到 Channel 的 Runnable</span></span><br><span class="line">Runnable writer = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        channel.writeAndFlush(buf.duplicate());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 获取到线程池 Executor 的引用</span></span><br><span class="line">Executor executor = Executors.newCachedThreadPool();</span><br><span class="line"><span class="comment">// write in one thread</span></span><br><span class="line">executor.execute(writer);</span><br><span class="line"><span class="comment">// write in another thread</span></span><br><span class="line">executor.execute(writer);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="内置的传输"><a href="#内置的传输" class="headerlink" title="内置的传输"></a>内置的传输</h3><p>Netty 内置了一些可开箱即用的传输。因为并不是它们所有的传输都支持每一种协议，所以你必须选择一个和你的应用程序所使用的协议相容的传输。</p>
+<h4 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h4><p>NIO 提供了一个所有 I/O 操作的全异步的实现，利用了 JDK1.4 时便可用的基于选择器的 API。 <u>选择器背后的基本概念是充当一个注册表</u>，在那里你将可以请求在 Channel 的状态发生变化时得到通知。</p>
+<p>class java.nio.channels.SelectionKey 定义了一组应用程序正在请求通知的状态变化集。</p>
+<p><img src="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Netty/ChannelSelectionKey.PNG" alt=""></p>
+<p>选择器选择并处理状态的变化</p>
+<p><img src="D:%5COneDrive%5CTypora%5C%E5%9B%BE%E7%89%87%5C1579834708283.png" alt=""></p>
+<blockquote>
+<p>零拷贝（zero-copy）：它使你可以快速高效地将数据从文件系统移动到网络接口，而不需要将其从内核空间复制到用户空间，其在像 FTP 或者 HTTP 这样的协议中可以显著地提升性能。</p>
+</blockquote>
+<h4 id="Epoll"><a href="#Epoll" class="headerlink" title="Epoll"></a>Epoll</h4><p>用于 Linux 的本地非阻塞传输，Linux JDK NIO API 使用了这些 epoll 调用。</p>
+<h4 id="OIO"><a href="#OIO" class="headerlink" title="OIO"></a>OIO</h4><p>Netty 的 OIO 传输实现代表了一种折中：它可以通过常规的传输 API 使用，但是由于它是建立在 java.net 包的阻塞实现之上的，所以它不是异步的。但是，它仍然非常适合于某些用途。</p>
+<h4 id="Local-传输"><a href="#Local-传输" class="headerlink" title="Local 传输"></a>Local 传输</h4><p>用于在同一个 JVM 中运行的客户端和服务器程序之间的异步通信。</p>
+<h4 id="Embedded-传输"><a href="#Embedded-传输" class="headerlink" title="Embedded 传输"></a>Embedded 传输</h4><p>Netty 提供了一种额外的传输，使得你可以将一组 ChannelHandler 作为帮助器类嵌入到其他的 ChannelHandler 内部。通过这种方式，你将可以扩展一个 ChannelHandler 的功能，而又不需要修改其内部代码。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-01-25T16:27:06.865Z" itemprop="dateUpdated">2020-01-26 00:27:06</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Wingo">
+            Wingo
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Netty/" rel="tag">Netty</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/01/24/Netty/Netty%20ByteBuf/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Netty ByteBuf</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/01/22/Netty/Netty%20%E7%BB%84%E4%BB%B6%E5%92%8C%E8%AE%BE%E8%AE%A1/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Netty 组件和设计</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+            <span>得失从缘，心无增减</span>
+        </p>
+    </div> 
+    <div class="bottom">
+        <p><span>Wingo &copy; 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
