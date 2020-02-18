@@ -24,12 +24,12 @@
     <meta name="description" content="应用程序 EchoEcho 客户端和服务器之间的交互是非常简单的；在客户端建立一个连接之后，它会向服务器发送一个或多个消息，反过来，服务器又会将每个消息回送给客户端。这一简单的功能充分体现了客户端&#x2F;服务器系统中典型的请求-响应交互模式。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一个简单的 Netty 应用程序">
-<meta property="og:url" content="http://yoursite.com/2020/01/21/Netty/Netty%20%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/01/21/Netty/Netty%20%E5%85%A5%E9%97%A8/Netty%20%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Wingo&#39;s Blog">
 <meta property="og:description" content="应用程序 EchoEcho 客户端和服务器之间的交互是非常简单的；在客户端建立一个连接之后，它会向服务器发送一个或多个消息，反过来，服务器又会将每个消息回送给客户端。这一简单的功能充分体现了客户端&#x2F;服务器系统中典型的请求-响应交互模式。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-01-21T14:46:53.000Z">
-<meta property="article:modified_time" content="2020-01-22T08:21:06.240Z">
+<meta property="article:modified_time" content="2020-02-17T10:51:25.668Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Netty">
 <meta name="twitter:card" content="summary">
@@ -142,7 +142,7 @@
     </aside>
 
 
-<article id="post-Netty/Netty 简单应用程序"
+<article id="post-Netty/Netty 入门/Netty 简单应用程序"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -168,7 +168,7 @@
 <li>引导：这是配置服务器的启动代码。至少，它会将服务器绑定到它要监听连接请求的端口上。</li>
 </ul>
 <h4 id="ChannelHandler-和业务逻辑"><a href="#ChannelHandler-和业务逻辑" class="headerlink" title="ChannelHandler 和业务逻辑"></a>ChannelHandler 和业务逻辑</h4><p>因为你的 Echo 服务器会响应传入的消息，所以它需要实现 ChannelInboundHandler 接口，用来定义响应入站事件的方法。这个简单的应用程序只需要用到少量的这些方法，所以继承 ChannelInboundHandlerAdapter 类也就足够了，它提供了 ChannelInboundHandler 的默认实现。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// EchoServerHandler 类</span></span><br><span class="line"><span class="meta">@Sharable</span>	<span class="comment">// 标示一个 ChannelHandler 可以被多个 Channel 安全地共享</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EchoServerHandler</span> <span class="keyword">extends</span> <span class="title">ChannelInboundHandlerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 对于每个传入的消息都要调用</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">channelRead</span><span class="params">(ChannelHandlerContext ctx, Object msg)</span> </span>&#123;</span><br><span class="line">        ByteBuf in = (ByteBuf) msg;</span><br><span class="line">        System.out.println(</span><br><span class="line">            <span class="string">"Server received: "</span> + in.toString(CharsetUtil.UTF_8)</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">// 将接收到的数据写给发送者</span></span><br><span class="line">        ctx.write(in);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 通知 ChannelInboundHandler 最后一次对 channelRead() 的调用是当前批量读取中的最后一条消息</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">channelReadComplete</span><span class="params">(ChannelHandlerContext ctx)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 将消息冲刷到远程节点并且关闭该 Channel</span></span><br><span class="line">        ctx.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 在读取操作期间，有异常抛出时会调用</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exceptionCaught</span><span class="params">(ChannelHandlerContext ctx,Throwable cause)</span> </span>&#123;</span><br><span class="line">    	cause.printStackTrace();</span><br><span class="line">    	ctx.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// EchoServerHandler 类</span></span><br><span class="line"><span class="meta">@Sharable</span>	<span class="comment">// 标示一个 ChannelHandler 可以被多个 Channel 安全地共享</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EchoServerHandler</span> <span class="keyword">extends</span> <span class="title">ChannelInboundHandlerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 对于每个传入的消息都要调用</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">channelRead</span><span class="params">(ChannelHandlerContext ctx, Object msg)</span> </span>&#123;</span><br><span class="line">        ByteBuf in = (ByteBuf) msg;</span><br><span class="line">        System.out.println(<span class="string">"Server received: "</span> + in.toString(CharsetUtil.UTF_8));</span><br><span class="line">        <span class="comment">// 将接收到的数据写给发送者</span></span><br><span class="line">        ctx.write(in);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 通知 ChannelInboundHandler 最后一次对 channelRead() 的调用是当前批量读取中的最后一条消息</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">channelReadComplete</span><span class="params">(ChannelHandlerContext ctx)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 将消息冲刷到远程节点并且关闭该 Channel</span></span><br><span class="line">        ctx.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 在读取操作期间，有异常抛出时会调用</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exceptionCaught</span><span class="params">(ChannelHandlerContext ctx,Throwable cause)</span> </span>&#123;</span><br><span class="line">    	cause.printStackTrace();</span><br><span class="line">    	ctx.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>ChannelHandler 的一些关键点：<ul>
@@ -212,7 +212,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-01-22T08:21:06.240Z" itemprop="dateUpdated">2020-01-22 16:21:06</time>
+    最后更新时间：<time datetime="2020-02-17T10:51:25.668Z" itemprop="dateUpdated">2020-02-17 18:51:25</time>
 </span><br>
 
 
@@ -245,7 +245,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2020/01/22/Netty/Netty%20%E7%BB%84%E4%BB%B6%E5%92%8C%E8%AE%BE%E8%AE%A1/" id="post-prev" class="post-nav-link">
+      <a href="/2020/01/22/Netty/Netty%20%E5%85%A5%E9%97%A8/Netty%20%E7%BB%84%E4%BB%B6%E5%92%8C%E8%AE%BE%E8%AE%A1/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">Netty 组件和设计</h4>
       </a>
