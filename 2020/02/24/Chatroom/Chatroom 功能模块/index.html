@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Chatroom 各功能模块的实现 | Wingo&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Chatroom">
+    <meta name="description" content="Chatroom 各功能模块的分析与实现。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chatroom 各功能模块的实现">
+<meta property="og:url" content="http://yoursite.com/2020/02/24/Chatroom/Chatroom%20%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:site_name" content="Wingo&#39;s Blog">
+<meta property="og:description" content="Chatroom 各功能模块的分析与实现。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://gudtwingo.gitee.io/Image/2020/02/ChatRoom/Database.PNG">
+<meta property="og:image" content="http://gudtwingo.gitee.io/Image/2020/02/ChatRoom/LoginFlow.PNG">
+<meta property="og:image" content="http://gudtwingo.gitee.io/Image/2020/02/ChatRoom/ChatroomFlow.PNG">
+<meta property="og:image" content="http://gudtwingo.gitee.io/Image/2020/02/ChatRoom/POVO.PNG">
+<meta property="article:published_time" content="2020-02-24T02:20:02.000Z">
+<meta property="article:modified_time" content="2020-03-02T06:51:15.745Z">
+<meta property="article:author" content="Wingo">
+<meta property="article:tag" content="Chatroom">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://gudtwingo.gitee.io/Image/2020/02/ChatRoom/Database.PNG">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wingo</h5>
+          <a href="mailto:1318263468@qq.com" title="1318263468@qq.com" class="mail">1318263468@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Chatroom 各功能模块的实现</div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Chatroom 各功能模块的实现</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-02-24T02:20:02.000Z" itemprop="datePublished" class="page-time">
+  2020-02-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Projrct/">Projrct</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用户登录"><span class="post-toc-number">1.</span> <span class="post-toc-text">用户登录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始化用户信息"><span class="post-toc-number">2.</span> <span class="post-toc-text">初始化用户信息</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#用户拦截认证"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">用户拦截认证</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#PO-amp-VO"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">PO &amp; VO</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用户单聊"><span class="post-toc-number">3.</span> <span class="post-toc-text">用户单聊</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Chatroom/Chatroom 功能模块"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Chatroom 各功能模块的实现</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-02-24 10:20:02" datetime="2020-02-24T02:20:02.000Z"  itemprop="datePublished">2020-02-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Projrct/">Projrct</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Chatroom 各功能模块的分析与实现。</p>
+<a id="more"></a>
+
+<p>数据库结构</p>
+<p><img src="http://gudtwingo.gitee.io/Image/2020/02/ChatRoom/Database.PNG" alt=""></p>
+<p><strong>基于 Spring 注解式开发</strong></p>
+<p>前后端分离，返回 Json 的视图对象类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResponseJson</span> <span class="keyword">extends</span> <span class="title">HashMap</span>&lt;<span class="title">String</span>, <span class="title">Object</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Integer SUCCESS_STATUS = <span class="number">200</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Integer ERROR_STATUS = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SUCCESS_MSG = <span class="string">"一切正常"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ResponseJson</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ResponseJson</span><span class="params">(<span class="keyword">int</span> code)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        setStatus(code);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ResponseJson</span><span class="params">(HttpStatus status)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        setStatus(status.value());</span><br><span class="line">        setMsg(status.getReasonPhrase());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResponseJson <span class="title">success</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        put(<span class="string">"msg"</span>, SUCCESS_MSG);</span><br><span class="line">        put(<span class="string">"status"</span>, SUCCESS_STATUS);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResponseJson <span class="title">success</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">        put(<span class="string">"msg"</span>, msg);</span><br><span class="line">        put(<span class="string">"status"</span>, SUCCESS_STATUS);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResponseJson <span class="title">error</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">        put(<span class="string">"msg"</span>, msg);</span><br><span class="line">        put(<span class="string">"status"</span>, ERROR_STATUS);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResponseJson <span class="title">setData</span><span class="params">(String key, Object obj)</span> </span>&#123;</span><br><span class="line">        <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">        HashMap&lt;String, Object&gt; data = (HashMap&lt;String, Object&gt;) get(<span class="string">"data"</span>);</span><br><span class="line">        <span class="keyword">if</span> (data == <span class="keyword">null</span>) &#123;</span><br><span class="line">            data = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">            put(<span class="string">"data"</span>, data);</span><br><span class="line">        &#125;</span><br><span class="line">        data.put(key, obj);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResponseJson <span class="title">setStatus</span><span class="params">(<span class="keyword">int</span> status)</span> </span>&#123;</span><br><span class="line">        put(<span class="string">"status"</span>, status);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResponseJson <span class="title">setMsg</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">        put(<span class="string">"msg"</span>, msg);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResponseJson <span class="title">setValue</span><span class="params">(String key, Object val)</span> </span>&#123;</span><br><span class="line">        put(key, val);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 返回JSON字符串</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> JSONObject.toJSONString(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用来存放 Netty WebSocket 连接信息的常量类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Constant</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 一个 userId 对应一个 Session</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String USER_TOKEN = <span class="string">"userId"</span>;</span><br><span class="line">	<span class="comment">// 用于保存 Http 升级 WebSocket 后的握手实例</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, WebSocketServerHandshaker&gt; webSocketHandshakerMap =</span><br><span class="line">        <span class="keyword">new</span> ConcurrentHashMap&lt;String, WebSocketServerHandshaker&gt;();</span><br><span class="line">	<span class="comment">// 用于保存已登录的用户的通道信息</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, ChannelHandlerContext&gt; onlineUserMap = </span><br><span class="line">        <span class="keyword">new</span> ConcurrentHashMap&lt;String, ChannelHandlerContext&gt;();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="用户登录"><a href="#用户登录" class="headerlink" title="用户登录"></a>用户登录</h3><p><img src="http://gudtwingo.gitee.io/Image/2020/02/ChatRoom/LoginFlow.PNG" alt=""></p>
+<p>User 👉 实体类，与数据库表 user 向对应</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Long userId;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> String avatarUrl;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 省略了 Getter Setter toString 方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>UserDao、UserMapper👉 通过用户输入的用户名到数据库中找到此用户的用户信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">User <span class="title">getByUsername</span><span class="params">(String username)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"getByUsername"</span> <span class="attr">resultType</span>=<span class="string">"com.wingo.model.po.User"</span> &gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 具体的sql --&gt;</span></span><br><span class="line">    SELECT</span><br><span class="line">    	user_id, username, password</span><br><span class="line">    FROM</span><br><span class="line">    	user</span><br><span class="line">    WHERE</span><br><span class="line">    	username = #&#123;username&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>SecurityService、SecurityServiceImpl 👉 实现登录的业务逻辑</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ResponseJson <span class="title">login</span><span class="params">(String username, String password, HttpSession session)</span> </span>&#123;</span><br><span class="line">    User user = userDao.getByUsername(username);</span><br><span class="line">    <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResponseJson().error(<span class="string">"不存在该用户名"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!user.getPassword().equals(password)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResponseJson().error(<span class="string">"密码不正确"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 将已登录的用户的 userId 保存在 Session 中</span></span><br><span class="line">    session.setAttribute(Constant.USER_TOKEN, user.getUserId());</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ResponseJson().success();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>SecurityController 👉 URL映射以及前后端数据交互</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"login"</span>, method = RequestMethod.POST)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ResponseJson <span class="title">login</span><span class="params">(HttpSession session, @RequestParam String username, @RequestParam String password)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> securityService.login(username, password, session);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用户点击登录按钮后，发送 Ajax 请求进行用户验证，验证通过后跳转到 chatroom 页面。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        type : <span class="string">'POST'</span>,</span><br><span class="line">        url : <span class="string">'login'</span>,</span><br><span class="line">        dataType: <span class="string">'json'</span>,</span><br><span class="line">        data : &#123;</span><br><span class="line">            username: $(<span class="string">"#username"</span>).val(),</span><br><span class="line">            password: $(<span class="string">"#password"</span>).val()</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="keyword">async</span> : <span class="literal">false</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (data.status == <span class="number">200</span>) &#123;</span><br><span class="line">                <span class="built_in">window</span>.location.href=<span class="string">"chatroom"</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                alert(data.msg);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="初始化用户信息"><a href="#初始化用户信息" class="headerlink" title="初始化用户信息"></a>初始化用户信息</h3><p><img src="http://gudtwingo.gitee.io/Image/2020/02/ChatRoom/ChatroomFlow.PNG" alt=""></p>
+<h4 id="用户拦截认证"><a href="#用户拦截认证" class="headerlink" title="用户拦截认证"></a>用户拦截认证</h4><p>UserAuthInteceptor 👉 检测用户是否登录并设置资源访问权限</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserAuthInteceptor</span> <span class="keyword">implements</span> <span class="title">HandlerInterceptor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        HttpSession session = request.getSession();</span><br><span class="line">        Object userToken = session.getAttribute(Constant.USER_TOKEN);</span><br><span class="line">        <span class="keyword">if</span> (userToken == <span class="keyword">null</span>) &#123;</span><br><span class="line">            response.sendRedirect(<span class="string">"login"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler,</span></span></span><br><span class="line"><span class="function"><span class="params">                           ModelAndView modelAndView)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// 允许所有资源都可以访问资源</span></span><br><span class="line">        response.setHeader(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>);</span><br><span class="line">        <span class="comment">// 表示是否可以将对请求的响应暴露给页面</span></span><br><span class="line">        response.setHeader(<span class="string">"Access-Control-Allow-Credentials"</span>,<span class="string">"true"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterCompletion</span><span class="params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置 Spring MVC 对 chatoom 页面的访问请求进行拦截认证</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 用户认证拦截器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:mapping</span> <span class="attr">path</span>=<span class="string">"/chatroom/**"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"com.wingo.web.interceptor.UserAuthInteceptor"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="PO-amp-VO"><a href="#PO-amp-VO" class="headerlink" title="PO &amp; VO"></a>PO &amp; VO</h4><p>在返回给用户的信息中，除了用户的个人信息，还需要用户的好友列表信息以及群聊列表信息。创建一个 VO 类用于保存前端所需要的所有信息。</p>
+<p><img src="http://gudtwingo.gitee.io/Image/2020/02/ChatRoom/POVO.PNG" alt=""></p>
+<p>UserInfo 类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserInfo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Long userId;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> String avatarUrl;</span><br><span class="line">    <span class="keyword">private</span> List&lt;User&gt; friendList; <span class="comment">// 好友列表信息</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;Chatgroup&gt; groupList; <span class="comment">// 群聊信息</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 构造器方法便于实例化</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Chatgroup 类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// group 为 MySQL 的关键字，不可使用</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Chatgroup</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Long groupId;</span><br><span class="line">    <span class="keyword">private</span> String groupName;</span><br><span class="line">    <span class="keyword">private</span> String groupAvatarUrl;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>GroupInfo 类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GroupInfo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Long groupId;</span><br><span class="line">    <span class="keyword">private</span> String groupName;</span><br><span class="line">    <span class="keyword">private</span> String groupAvatarUrl;</span><br><span class="line">    <span class="keyword">private</span> List&lt;User&gt; members;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 构造器方法便于实例化</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ChatroomController 👉 通过 userId 获取用户的信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/get_userinfo"</span>, method = RequestMethod.POST) </span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ResponseJson <span class="title">getUserInfo</span><span class="params">(HttpSession session)</span> </span>&#123;</span><br><span class="line">    Object userId = session.getAttribute(Constant.USER_TOKEN);</span><br><span class="line">    System.out.println(<span class="string">"Session 中的 userId = "</span> + userId);</span><br><span class="line">    <span class="keyword">return</span> userService.getByUserId(String.valueOf(userId));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>UserServiceImpl</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserDao userDao;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserChatRelationDao userChatRelationDao;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> GroupDao groupDao;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResponseJson <span class="title">getByUserId</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line">        User user = userDao.getByUserId(userId);</span><br><span class="line">        UserInfo userInfo = <span class="keyword">new</span> UserInfo(</span><br><span class="line">            user.getUserId(),</span><br><span class="line">            user.getUsername(),</span><br><span class="line">            user.getPassword(),</span><br><span class="line">            user.getAvatarUrl()</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">// friendList 构造</span></span><br><span class="line">        List&lt;String&gt; friendsId = userChatRelationDao.getUserFriendsIdByUserId(userId);</span><br><span class="line">        List&lt;User&gt; friends = <span class="keyword">new</span> ArrayList&lt;User&gt;();</span><br><span class="line">        <span class="keyword">for</span>(String friendId : friendsId)&#123;</span><br><span class="line">            User friend = userDao.getByUserId(friendId);</span><br><span class="line">            friends.add(friend);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// groupList 构造</span></span><br><span class="line">        List&lt;String&gt; groupsId = userChatRelationDao.getGroupsIdByUserId(userId);</span><br><span class="line">        List&lt;Chatgroup&gt; groups = <span class="keyword">new</span> ArrayList&lt;Chatgroup&gt;();</span><br><span class="line">        <span class="keyword">for</span>(String groupId : groupsId)&#123;</span><br><span class="line">            Chatgroup group = groupDao.getByGroupId(groupId);</span><br><span class="line">            groups.add(group);</span><br><span class="line">        &#125;</span><br><span class="line">        userInfo.setGroupList(groups);</span><br><span class="line">        userInfo.setFriendList(friends);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResponseJson().success()</span><br><span class="line">            .setData(<span class="string">"userInfo"</span>, userInfo);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过 Swagger 模拟请求取得返回的 Json 数据。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"msg"</span>: <span class="string">"一切正常"</span>,</span><br><span class="line">    <span class="attr">"data"</span>: &#123;</span><br><span class="line">        <span class="attr">"userInfo"</span>: &#123;</span><br><span class="line">            <span class="attr">"userId"</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">"username"</span>: <span class="string">"test1"</span>,</span><br><span class="line">            <span class="attr">"password"</span>: <span class="literal">null</span>,</span><br><span class="line">            <span class="attr">"avatarUrl"</span>: <span class="string">"static/img/avatar/Member001.jpg"</span>,</span><br><span class="line">            <span class="attr">"friendList"</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"userId"</span>: <span class="number">2</span>,</span><br><span class="line">                    <span class="attr">"username"</span>: <span class="string">"test2"</span>,</span><br><span class="line">                    <span class="attr">"password"</span>: <span class="literal">null</span>,</span><br><span class="line">                    <span class="attr">"avatarUrl"</span>: <span class="string">"static/img/avatar/Member001.jpg"</span></span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"userId"</span>: <span class="number">4</span>,</span><br><span class="line">                    <span class="attr">"username"</span>: <span class="string">"test3"</span>,</span><br><span class="line">                    <span class="attr">"password"</span>: <span class="literal">null</span>,</span><br><span class="line">                    <span class="attr">"avatarUrl"</span>: <span class="string">"static/img/avatar/Member001.jpg"</span></span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"userId"</span>: <span class="number">5</span>,</span><br><span class="line">                    <span class="attr">"username"</span>: <span class="string">"test4"</span>,</span><br><span class="line">                    <span class="attr">"password"</span>: <span class="literal">null</span>,</span><br><span class="line">                    <span class="attr">"avatarUrl"</span>: <span class="string">"static/img/avatar/Member001.jpg"</span></span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"groupList"</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"groupId"</span>: <span class="number">1000</span>,</span><br><span class="line">                    <span class="attr">"groupName"</span>: <span class="string">"Group1"</span>,</span><br><span class="line">                    <span class="attr">"groupAvatarUrl"</span>: <span class="string">"static/img/avatar/Group01.jpg"</span></span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"status"</span>: <span class="number">200</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用户信息初始化完成。</p>
+<h3 id="用户单聊"><a href="#用户单聊" class="headerlink" title="用户单聊"></a>用户单聊</h3>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-03-02T06:51:15.745Z" itemprop="dateUpdated">2020-03-02 14:51:15</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Wingo">
+            Wingo
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Chatroom/" rel="tag">Chatroom</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/02/25/English/CET6%20%E7%9C%9F%E9%A2%98/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">CET6真题</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/02/22/Chatroom/Chatroom%20Mybatis/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Chatroom Mybatis</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+            <span>得失从缘，心无增减</span>
+        </p>
+    </div> 
+    <div class="bottom">
+        <p><span>Wingo &copy; 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

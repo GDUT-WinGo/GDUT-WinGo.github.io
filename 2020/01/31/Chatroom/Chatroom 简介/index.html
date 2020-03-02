@@ -28,13 +28,13 @@
 <meta property="og:site_name" content="Wingo&#39;s Blog">
 <meta property="og:description" content="一个网页版的线上聊天室">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Chatroom/ServerModel.PNG">
+<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/01/Chatroom/ServerModel.PNG">
 <meta property="article:published_time" content="2020-01-31T04:16:27.000Z">
-<meta property="article:modified_time" content="2020-01-31T07:23:04.000Z">
+<meta property="article:modified_time" content="2020-02-20T13:43:37.226Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Chatroom">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Chatroom/ServerModel.PNG">
+<meta name="twitter:image" content="http://gudtwingo.gitee.io/image/2020/01/Chatroom/ServerModel.PNG">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -166,7 +166,7 @@
 
 <h3 id="项目基本思路"><a href="#项目基本思路" class="headerlink" title="项目基本思路"></a>项目基本思路</h3><p>此项目以 Tomcat 作为核心服务器用于处理客户登录、个人信息管理等 HTTP 类型的请求，端口号：8080。</p>
 <p>在 Tomcat 服务器中另开一个线程启动 Netty WebSocket 服务器用于处理用户消息通信的 WebSocket 类型的请求，端口号：3333。</p>
-<p><img src="https://images-1252832186.cos.ap-guangzhou.myqcloud.com/2020/01/Chatroom/ServerModel.PNG" alt=""></p>
+<p><img src="http://gudtwingo.gitee.io/image/2020/01/Chatroom/ServerModel.PNG" alt=""></p>
 <p>用户登录后：</p>
 <ul>
 <li>Tomcat 服务器会返回用户的个人信息，同时更新记录在线用户，<strong>根据用户 id 建立一条 WebSocket 连接并保存在后端以便进行实时通信</strong>。</li>
@@ -191,7 +191,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-01-31T07:23:04.000Z" itemprop="dateUpdated">2020-01-31 15:23:04</time>
+    最后更新时间：<time datetime="2020-02-20T13:43:37.226Z" itemprop="dateUpdated">2020-02-20 21:43:37</time>
 </span><br>
 
 
