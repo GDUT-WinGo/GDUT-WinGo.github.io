@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/02/Netty/WebSocketResult01.PNG">
 <meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/02/Netty/WebSocketResult02.PNG">
 <meta property="article:published_time" content="2020-02-17T04:12:30.000Z">
-<meta property="article:modified_time" content="2020-02-18T06:57:54.348Z">
+<meta property="article:modified_time" content="2020-03-18T11:52:11.278Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="WebSocket">
 <meta property="article:tag" content="Netty">
@@ -176,7 +176,7 @@
 </blockquote>
 <p>问题：<strong>由于 HTTP 协议的开销，导致它们不适用于低延迟应用。</strong></p>
 <p>WebSocket：将网络套接字引入到了客户端和服务端来解决这一问题，浏览器和服务器之间可以通过套接字建立持久的连接，双方随时都可以互发数据给对方，而不是之前由客户端控制的一请求一应答模式。</p>
-<h3 id="WebSocket-入门"><a href="#WebSocket-入门" class="headerlink" title="WebSocket 入门"></a>WebSocket 入门</h3><p>在WebSocketAPI中，浏览器和服务器只需要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道，两者就可以直接互相传送数据了。WebSocket基于TCP双向全双工进行消息传递，在同一时刻，既可以发送消息，也可以接收消息，相比于HTTP的半双工协议，性能得到很大提升。</p>
+<h3 id="WebSocket-入门"><a href="#WebSocket-入门" class="headerlink" title="WebSocket 入门"></a>WebSocket 入门</h3><p>在 WebSocket API 中，浏览器和服务器只需要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道，两者就可以直接互相传送数据了。WebSocket 基于 TCP 双向全双工进行消息传递，在同一时刻，既可以发送消息，也可以接收消息，相比于 HTTP 的半双工协议，性能得到很大提升。</p>
 <h4 id="WebSocket-连接"><a href="#WebSocket-连接" class="headerlink" title="WebSocket 连接"></a>WebSocket 连接</h4><p>建立 WebSocket 连接时，需要通过客户端或者浏览器发出握手请求。</p>
 <p>握手请求消息如下：</p>
 <p><img src="http://gudtwingo.gitee.io/image/2020/02/Netty/WebSocketRequest.PNG" alt=""></p>
@@ -213,7 +213,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-02-18T06:57:54.348Z" itemprop="dateUpdated">2020-02-18 14:57:54</time>
+    最后更新时间：<time datetime="2020-03-18T11:52:11.278Z" itemprop="dateUpdated">2020-03-18 19:52:11</time>
 </span><br>
 
 
