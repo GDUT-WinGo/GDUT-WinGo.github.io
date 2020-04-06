@@ -101,6 +101,16 @@
         </a>
         <div class="flex-col header-title ellipsis">Categories: Python</div>
         
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
         
     </div>
 </header>
@@ -120,31 +130,31 @@
             ">全部</a>
         
 
-            <a href="/categories/Tool/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">Tool</a>
+            <a href="/categories/Tool/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">Tool</a>
 
         
 
-            <a href="/categories/Software/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">Software</a>
+            <a href="/categories/Software/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">Software</a>
 
         
 
-            <a href="/categories/Project/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">Project</a>
+            <a href="/categories/Project/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">Project</a>
 
         
 
-            <a href="/categories/Java/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">Java</a>
+            <a href="/categories/Java/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">Java</a>
 
         
 
-            <a href="/categories/Life/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">Life</a>
+            <a href="/categories/Life/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">Life</a>
 
         
 
-            <a href="/categories/Welab/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">Welab</a>
+            <a href="/categories/Welab/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">Welab</a>
 
         
 
-            <a href="/categories/English/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">English</a>
+            <a href="/categories/English/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">English</a>
 
         
 
@@ -153,6 +163,10 @@
         
 
             <a href="/categories/Python/" style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">Python</a>
+
+        
+
+            <a href="/categories/FrontEnd/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">FrontEnd</a>
 
         
     </nav>
@@ -276,6 +290,26 @@ var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
 </script>
 
 <script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 

@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://gudtwingo.gitee.io/Image/2020/03/SpringBoot/SpringBootAutoConfiguration.PNG">
 <meta property="og:image" content="http://gudtwingo.gitee.io/Image/2020/03/SpringBoot/SpringBootIDEAVMOption.PNG">
 <meta property="article:published_time" content="2020-02-29T02:48:07.000Z">
-<meta property="article:modified_time" content="2020-03-02T06:54:47.513Z">
+<meta property="article:modified_time" content="2020-04-05T11:28:07.381Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Spring Boot">
 <meta name="twitter:card" content="summary">
@@ -116,6 +116,16 @@
         </a>
         <div class="flex-col header-title ellipsis">Spring Boot 入门配置</div>
         
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
         
     </div>
 </header>
@@ -147,7 +157,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-Boot-简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">Spring Boot 简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-Boot-HelloWorld"><span class="post-toc-number">2.</span> <span class="post-toc-text">Spring Boot HelloWorld</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#项目生成"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">项目生成</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码编写"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">代码编写</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#运行测试"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">运行测试</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简化部署"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">简化部署</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Hello-World-探究"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">Hello World 探究</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#项目依赖"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">项目依赖</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#主程序类（入口类）"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">主程序类（入口类）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-Boot-配置文件"><span class="post-toc-number">3.</span> <span class="post-toc-text">Spring Boot 配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#YAML"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">YAML</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件值的注入"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">配置文件值的注入</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件的加载"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">配置文件的加载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件占位符"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">配置文件占位符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Profile"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">Profile</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件加载位置"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">配置文件加载位置</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-Boot-简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">Spring Boot 简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-Boot-HelloWorld"><span class="post-toc-number">2.</span> <span class="post-toc-text">Spring Boot HelloWorld</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#项目生成"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">项目生成</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码编写"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">代码编写</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#运行测试"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">运行测试</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简化部署"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">简化部署</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Hello-World-探究"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">Hello World 探究</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#项目依赖"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">项目依赖</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#主程序类（入口类）"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">主程序类（入口类）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-Boot-配置文件"><span class="post-toc-number">3.</span> <span class="post-toc-text">Spring Boot 配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#YAML"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">YAML</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件值的注入"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">配置文件值的注入</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件的加载"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">配置文件的加载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件占位符"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">配置文件占位符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Profile"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">Profile</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件加载位置"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">配置文件加载位置</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动原理解析"><span class="post-toc-number">4.</span> <span class="post-toc-text">启动原理解析</span></a></li></ol>
         </nav>
     </aside>
 
@@ -367,7 +377,7 @@
 <p><code>java -jar [项目 JAR 包] --server.port=8087  --server.context-path=/abc</code></p>
 </blockquote>
 <p>优先级：外部 &gt; 内部、带 profile &gt; 不带 profile</p>
-
+<h3 id="启动原理解析"><a href="#启动原理解析" class="headerlink" title="启动原理解析"></a>启动原理解析</h3>
         </div>
 
         <blockquote class="post-copyright">
@@ -375,7 +385,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-03-02T06:54:47.513Z" itemprop="dateUpdated">2020-03-02 14:54:47</time>
+    最后更新时间：<time datetime="2020-04-05T11:28:07.381Z" itemprop="dateUpdated">2020-04-05 19:28:07</time>
 </span><br>
 
 
@@ -486,6 +496,26 @@ var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
 </script>
 
 <script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 

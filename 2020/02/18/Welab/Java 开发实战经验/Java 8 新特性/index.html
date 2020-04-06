@@ -20,7 +20,7 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="Usage">
+    <meta name="keywords" content="Base">
     <meta name="description" content="LambdJava SE 8 的一个大亮点是引入了 Lambda 表达式，使用它设计的代码会更加简洁。 当开发者在编写 Lambda 表达式时，也会随之被编译成一个函数式接口，Lambda 允许把函数作为一个方法的参数传递进方法中。Lambda 表达式本质是匿名函数（或者叫匿名方法），也可称之为闭包，像方法一样， Lambda 表达式具有带类型的参数、主体和返回类型。可使用 Lambda 语法来代">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 8 新特性">
@@ -29,9 +29,9 @@
 <meta property="og:description" content="LambdJava SE 8 的一个大亮点是引入了 Lambda 表达式，使用它设计的代码会更加简洁。 当开发者在编写 Lambda 表达式时，也会随之被编译成一个函数式接口，Lambda 允许把函数作为一个方法的参数传递进方法中。Lambda 表达式本质是匿名函数（或者叫匿名方法），也可称之为闭包，像方法一样， Lambda 表达式具有带类型的参数、主体和返回类型。可使用 Lambda 语法来代">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-02-18T07:14:54.000Z">
-<meta property="article:modified_time" content="2020-03-02T06:55:31.180Z">
+<meta property="article:modified_time" content="2020-03-31T06:57:49.634Z">
 <meta property="article:author" content="Wingo">
-<meta property="article:tag" content="Usage">
+<meta property="article:tag" content="Base">
 <meta name="twitter:card" content="summary">
     
     <link rel="shortcut icon" href="/favicon.ico">
@@ -105,6 +105,16 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">Java 8 新特性</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
         
         
     </div>
@@ -196,7 +206,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-03-02T06:55:31.180Z" itemprop="dateUpdated">2020-03-02 14:55:31</time>
+    最后更新时间：<time datetime="2020-03-31T06:57:49.634Z" itemprop="dateUpdated">2020-03-31 14:57:49</time>
 </span><br>
 
 
@@ -216,7 +226,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Usage/" rel="tag">Usage</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Base/" rel="tag">Base</a></li></ul>
 
 
             
@@ -307,6 +317,26 @@ var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
 </script>
 
 <script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 
