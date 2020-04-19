@@ -20,7 +20,7 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="Springboot,MQ">
+    <meta name="keywords" content="MQ,Springboot">
     <meta name="description" content="MQ 基本介绍以及与 Spring Boot 的整合使用。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Boot 消息中间件">
@@ -28,16 +28,16 @@
 <meta property="og:site_name" content="Wingo&#39;s Blog">
 <meta property="og:description" content="MQ 基本介绍以及与 Spring Boot 的整合使用。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/03/SpringBoot/JMS_AMQP.png">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/03/SpringBoot/JMS.png">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/03/SpringBoot/RabbitMQModel.png">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/03/SpringBoot/JMS_AMQP.png">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/03/SpringBoot/JMS.png">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/03/SpringBoot/RabbitMQModel.png">
 <meta property="article:published_time" content="2020-03-31T03:50:45.000Z">
-<meta property="article:modified_time" content="2020-04-06T03:16:27.055Z">
+<meta property="article:modified_time" content="2020-04-19T06:44:07.737Z">
 <meta property="article:author" content="Wingo">
-<meta property="article:tag" content="Springboot">
 <meta property="article:tag" content="MQ">
+<meta property="article:tag" content="Springboot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://gudtwingo.gitee.io/image/2020/03/SpringBoot/JMS_AMQP.png">
+<meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/03/SpringBoot/JMS_AMQP.png">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -188,7 +188,7 @@
 <p>应用场景：异步处理（邮件）、应用解耦、流量削峰（秒杀）。</p>
 <p>JMS：Java 消息服务（Java Message Service）应用程序接口是一个 Java 平台中关于面向消息中间件（MOM）的 API，用于在两个应用程序之间，或分布式系统中发送消息，进行异步通信。Java 消息服务是一个与具体平台无关的API，绝大多数 MOM 提供商都对 JMS 提供支持。</p>
 <p>AMQP：高级消息队列协议（Advanced Message Queuing Protocol）, 对于面向消息中间件的应用层协议。</p>
-<p><img src="http://gudtwingo.gitee.io/image/2020/03/SpringBoot/JMS_AMQP.png" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/03/SpringBoot/JMS_AMQP.png" alt=""></p>
 <h4 id="常见消息中间件"><a href="#常见消息中间件" class="headerlink" title="常见消息中间件"></a>常见消息中间件</h4><p><strong>ActiveMQ</strong></p>
 <p>Apache ActiveMQ 是 Apache 软件基金会所研发的开放源代码消息中间件。</p>
 <p><strong>RabbitMQ</strong></p>
@@ -208,7 +208,7 @@
 <blockquote>
 <p>一个 Connection 可以创建多个会话，即一个连接可以供多个线程使用。</p>
 </blockquote>
-<p><img src="http://gudtwingo.gitee.io/image/2020/03/SpringBoot/JMS.png" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/03/SpringBoot/JMS.png" alt=""></p>
 <h4 id="Spring-支持"><a href="#Spring-支持" class="headerlink" title="Spring  支持"></a>Spring  支持</h4><blockquote>
 <p>spring-jms 提供了对 JMS 的支持；spring-rabbit 提供了对 AMQP 的支持。</p>
 </blockquote>
@@ -247,7 +247,7 @@
 <p>虚拟主机，表示一批交换器、消息队列和相关对象。虚拟主机是共享相同的身份认证和加密环境的独立服务器域。每个 vhost 本质上就是一个 mini 版的 RabbitMQ 服务器，拥有自己的队列、交换器、绑定和权限机制。vhost 是 AMQP 概念的基础，必须在连接时指定，RabbitMQ 默认的 vhost 是 / 。</p>
 <p><strong>Broker</strong></p>
 <p>表示消息队列服务器实体。</p>
-<p><img src="http://gudtwingo.gitee.io/image/2020/03/SpringBoot/RabbitMQModel.png" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/03/SpringBoot/RabbitMQModel.png" alt=""></p>
 <h4 id="RabbitMQ-整合"><a href="#RabbitMQ-整合" class="headerlink" title="RabbitMQ 整合"></a>RabbitMQ 整合</h4><p>导入模块依赖的 starter：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-amqp<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -275,7 +275,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-06T03:16:27.055Z" itemprop="dateUpdated">2020-04-06 11:16:27</time>
+    最后更新时间：<time datetime="2020-04-19T06:44:07.737Z" itemprop="dateUpdated">2020-04-19 14:44:07</time>
 </span><br>
 
 

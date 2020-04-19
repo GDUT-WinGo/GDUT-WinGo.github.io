@@ -28,16 +28,16 @@
 <meta property="og:site_name" content="Wingo&#39;s Blog">
 <meta property="og:description" content="Docker 是一个开源的应用容器引擎，是一个轻量级容器技术。Docker 支持将软件编译成一个镜像，然后在镜像中各种软件做好配置，将镜像发布出去，其他使用者可以直接使用这个镜像，运行中的这个镜像称为容器，容器启动是非常快速的。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/04/SysDefaultGateway.png">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/04/CentOS01.png">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/03/DockerCore.png">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/04/SysDefaultGateway.png">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/04/CentOS01.png">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/03/DockerCore.png">
 <meta property="article:published_time" content="2020-03-04T09:40:46.000Z">
-<meta property="article:modified_time" content="2020-04-13T05:41:45.029Z">
+<meta property="article:modified_time" content="2020-04-19T06:34:56.379Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Docker">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://gudtwingo.gitee.io/image/2020/04/SysDefaultGateway.png">
+<meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/04/SysDefaultGateway.png">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -188,12 +188,15 @@
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat  /etc/sysconfig/network-scripts/ifcfg-ens33 # 默认的网络配置文件</span><br><span class="line">mv  ifcfg-ens33  ifcfg-eth0  # 修改习惯性命名</span><br><span class="line">ip address # 查看 MAC</span><br><span class="line">vi  /etc/sysconfig/network-scripts/ifcfg-eth0 # 修改配置</span><br></pre></td></tr></table></figure>
 
-<img src="http://gudtwingo.gitee.io/image/2020/04/SysDefaultGateway.png" style="zoom:80%;" />
+<img src="http://welab-wingo.gitee.io/image/2020/04/SysDefaultGateway.png" style="zoom:80%;" />
 
 <blockquote>
 <p>注意：默认网关一致；DHCP 动态分配改为 STATIC 静态模式；静态 IP 地址填写与主机相同的网段内；MAC 地址随机分配，不可重复，复制主机的时候记得修改。一下是需要修改的配置：</p>
 </blockquote>
-<p><img src="http://gudtwingo.gitee.io/image/2020/04/CentOS01.png" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/04/CentOS01.png" alt=""></p>
+<blockquote>
+<p>修改主机名：<code>hostnamectl set-hostname geeklp --static</code></p>
+</blockquote>
 <h4 id="Docker-安装"><a href="#Docker-安装" class="headerlink" title="Docker 安装"></a>Docker 安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install docker</span><br></pre></td></tr></table></figure>
 
 <h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><p>Docker 主机 Host：安装了 Docker 程序的机器（Docker 直接安装在操作系统之上）；</p>
@@ -201,7 +204,7 @@
 <p>Docker 仓库 Registry：用来保存各种打包好的软件镜像；</p>
 <p>Docker 镜像 Images：软件打包好的镜像,放在 Docker 仓库中；</p>
 <p>Docker 容器 Container：镜像启动后的实例称为一个容器；容器是独立运行的一个或一组应用。</p>
-<p><img src="http://gudtwingo.gitee.io/image/2020/03/DockerCore.png" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/03/DockerCore.png" alt=""></p>
 <h3 id="Docker-使用"><a href="#Docker-使用" class="headerlink" title="Docker 使用"></a>Docker 使用</h3><blockquote>
 <p>虚拟机记得设置桥接网络并选择对应的网卡接入网线。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 设置好网络以后使用命令重启虚拟机的网络</span></span><br><span class="line">service network restart</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看 Linux 的 IP 地址</span></span><br><span class="line">ip addr</span><br></pre></td></tr></table></figure>
@@ -254,7 +257,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-13T05:41:45.029Z" itemprop="dateUpdated">2020-04-13 13:41:45</time>
+    最后更新时间：<time datetime="2020-04-19T06:34:56.379Z" itemprop="dateUpdated">2020-04-19 14:34:56</time>
 </span><br>
 
 

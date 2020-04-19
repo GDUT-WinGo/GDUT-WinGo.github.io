@@ -29,9 +29,9 @@
 <meta property="og:description" content="Mybatis 的初步整合与测试">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://gudtwingo.gitee.io/Image/2020/02/ChatRoom/SpringMybatiscatalog.PNG">
-<meta property="og:image" content="http://gudtwingo.gitee.io/Image/2020/02/ChatRoom/SpringMybatisTest01.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/Image/2020/02/ChatRoom/SpringMybatisTest01.PNG">
 <meta property="article:published_time" content="2020-02-22T03:26:36.000Z">
-<meta property="article:modified_time" content="2020-03-02T06:52:05.702Z">
+<meta property="article:modified_time" content="2020-04-19T06:24:14.533Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Chatroom">
 <meta property="article:tag" content="Mybatis">
@@ -246,7 +246,7 @@
 <p>测试类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserTest</span> <span class="keyword">extends</span> <span class="title">BaseJunit4Test</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="meta">@Transactional</span>   <span class="comment">//标明此方法需使用事务</span></span><br><span class="line">    <span class="meta">@Rollback</span>(<span class="keyword">false</span>)  <span class="comment">//标明使用完此方法后事务不回滚,true时为回滚</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"测试Spring整合Junit4进行单元测试"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// User user = new User();</span></span><br><span class="line">        <span class="comment">// user.setUserName("test1");</span></span><br><span class="line">        <span class="comment">// user.setPassword("111");</span></span><br><span class="line">        <span class="comment">// userService.saveUser(user);</span></span><br><span class="line"></span><br><span class="line">        User user = userService.queryById(<span class="number">1</span>);</span><br><span class="line">        System.out.println(user.toString());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h4><p><img src="http://gudtwingo.gitee.io/Image/2020/02/ChatRoom/SpringMybatisTest01.PNG" alt=""></p>
+<h4 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h4><p><img src="http://welab-wingo.gitee.io/Image/2020/02/ChatRoom/SpringMybatisTest01.PNG" alt=""></p>
 
         </div>
 
@@ -255,7 +255,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-03-02T06:52:05.702Z" itemprop="dateUpdated">2020-03-02 14:52:05</time>
+    最后更新时间：<time datetime="2020-04-19T06:24:14.533Z" itemprop="dateUpdated">2020-04-19 14:24:14</time>
 </span><br>
 
 

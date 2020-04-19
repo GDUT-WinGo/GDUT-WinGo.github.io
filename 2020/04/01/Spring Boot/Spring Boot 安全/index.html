@@ -29,7 +29,7 @@
 <meta property="og:description" content="Shiro 轻量级安全框架的介绍及使用；Sping 安全框架 Spring Security 的介绍及使用。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-01T02:50:45.000Z">
-<meta property="article:modified_time" content="2020-04-09T04:16:33.655Z">
+<meta property="article:modified_time" content="2020-04-19T06:43:06.632Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Spring Boot">
 <meta property="article:tag" content="Security">
@@ -211,11 +211,7 @@
 
 <h4 id="配置模块"><a href="#配置模块" class="headerlink" title="配置模块"></a>配置模块</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BrowerSecurityConfig</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        http.formLogin() <span class="comment">// 定义当需要用户登录时候，转到的登录页面。</span></span><br><span class="line">            .loginPage(<span class="string">"/login.html"</span>) <span class="comment">// 设置登录页面</span></span><br><span class="line">            .loginProcessingUrl(<span class="string">"/user/login"</span>) <span class="comment">// 自定义的登录接口</span></span><br><span class="line">            .and()</span><br><span class="line">            .authorizeRequests() <span class="comment">// 定义哪些 URL 需要被保护，哪些不需要被保护</span></span><br><span class="line">            .antMatchers(<span class="string">"/login.html"</span>).permitAll() <span class="comment">// 设置所有人都可以访问登录页面</span></span><br><span class="line">            .anyRequest() <span class="comment">// 任何请求，登录后可以访问</span></span><br><span class="line">            .authenticated()</span><br><span class="line">            .and()</span><br><span class="line">            .csrf().disable(); <span class="comment">// 关闭 csrf 防护</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Shiro"><a href="#Shiro" class="headerlink" title="Shiro"></a>Shiro</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<blockquote>
+<h3 id="Shiro"><a href="#Shiro" class="headerlink" title="Shiro"></a>Shiro</h3><blockquote>
 <p>Apache Shiro是一个功能强大且易于使用的 Java安 全框架，它为开发人员提供了一种直观，全面的身份验证，授权，加密和<strong>会话管理</strong>解决方案。</p>
 </blockquote>
 <p>核心 API</p>
@@ -259,7 +255,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-09T04:16:33.655Z" itemprop="dateUpdated">2020-04-09 12:16:33</time>
+    最后更新时间：<time datetime="2020-04-19T06:43:06.632Z" itemprop="dateUpdated">2020-04-19 14:43:06</time>
 </span><br>
 
 

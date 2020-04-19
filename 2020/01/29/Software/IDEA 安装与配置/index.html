@@ -28,17 +28,17 @@
 <meta property="og:site_name" content="Wingo&#39;s Blog">
 <meta property="og:description" content="IDEA 全称 IntelliJ IDEA，是java语言开发的集成环境，IntelliJ在业界被公认为最好的java开发工具之一。让我们来了解一下这款编辑器，并且进行一定的配置。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/01/IDEA/IDEAVMOptions.PNG">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/01/IDEA/IDEA.PNG">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/01/IDEA/ToolBar.PNG">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/01/IDEA/SettingAutoImport.PNG">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/01/IDEA/IDEATemplates.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/IDEA/IDEAVMOptions.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/IDEA/IDEA.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/IDEA/ToolBar.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/IDEA/SettingAutoImport.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/IDEA/IDEATemplates.PNG">
 <meta property="article:published_time" content="2020-01-29T08:25:01.000Z">
-<meta property="article:modified_time" content="2020-02-15T05:27:55.029Z">
+<meta property="article:modified_time" content="2020-04-19T06:41:32.058Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="IDEA">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://gudtwingo.gitee.io/image/2020/01/IDEA/IDEAVMOptions.PNG">
+<meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/01/IDEA/IDEAVMOptions.PNG">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -181,10 +181,10 @@
 <h3 id="IDEA-安装与破解"><a href="#IDEA-安装与破解" class="headerlink" title="IDEA 安装与破解"></a>IDEA 安装与破解</h3><p>下载 IDEA，链接：<a href="https://share.weiyun.com/50wrg7G" target="_blank" rel="noopener">https://share.weiyun.com/50wrg7G</a></p>
 <p>下载破解补丁，链接：<a href="https://share.weiyun.com/5kRW75Z" target="_blank" rel="noopener">https://share.weiyun.com/5kRW75Z</a></p>
 <p>安装软件 （全部默认就行，小编安装在 D 盘的根目录），安装好后将破解补丁复制到 \IntelliJ IDEA 2019.1.4\bin\ 目录下，在 bin 目录下分别找到 idea.exe.vmoptions 和 idea64.exe.vmoptions，在末尾添加<code>-javaagent:安装目录下的\IntelliJ IDEA 2019.1.3\bin\jetbrains-agent.jar</code>后保存。</p>
-<p><img src="http://gudtwingo.gitee.io/image/2020/01/IDEA/IDEAVMOptions.PNG" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/01/IDEA/IDEAVMOptions.PNG" alt=""></p>
 <p>打开 IDEA，选择使用（Evaluate for free），选择 Configure - Edit Custom VM Options，在弹出的窗口确定末尾是刚刚修改的参数 <code>-javaagent:D:\IntelliJ IDEA 2019.1.4\bin\jetbrains-agent.jar</code> （如果提示创建，选择是，在末尾再添加上面的参数）。</p>
 <p>选择 Manage License， License Server 填写<code>http://jetbrains-license-server</code>，点击 Activate。重启你的 IDEA ,查看是否已经破解成功。</p>
-<p><img src="http://gudtwingo.gitee.io/image/2020/01/IDEA/IDEA.PNG" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/01/IDEA/IDEA.PNG" alt=""></p>
 <h3 id="IDEA-模块"><a href="#IDEA-模块" class="headerlink" title="IDEA 模块"></a>IDEA 模块</h3><p>在 Eclipse 中我们有 Workspace（工作空间）和 Project（工程）的概念，在 IDEA 中只有 Project（工程）和 Module（模块）的概念。</p>
 <table>
 <thead>
@@ -205,7 +205,7 @@
 <p>IntelliJ IDEA 是无法在同一个窗口管理 n 个项目。 IntelliJ IDEA 提供的解决方案是打开多个项目实例，即打开多个项目窗口。 即： 一个 Project 打开一个 Window 窗口。</p>
 <p>在 IntelliJ IDEA 中 Project 是最顶级的级别，次级别是 Module。一个 Project 可以有多个 Module。目前主流的大型项目都是分布式部署的， 结构都是类似这种多 Module 结构。</p>
 <h3 id="IDEA-配置"><a href="#IDEA-配置" class="headerlink" title="IDEA 配置"></a>IDEA 配置</h3><p>View：Toolbar [√]</p>
-<p><img src="http://gudtwingo.gitee.io/image/2020/01/IDEA/ToolBar.PNG" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/01/IDEA/ToolBar.PNG" alt=""></p>
 <h4 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h4><p>下载喜欢的 IDEA 的主题，下载地址：<a href="http://www.themesmap.com/" target="_blank" rel="noopener">themesmap</a></p>
 <p>File：Import setting 选中下载的主题导入后提示重启，等待重启完成</p>
 <h4 id="Editor"><a href="#Editor" class="headerlink" title="Editor"></a>Editor</h4><ul>
@@ -214,7 +214,7 @@
 <li>Mouse：Change font size(Zoom) with Ctrl+Mouse Whee</li>
 <li>Other：Show quick documentation on mouse move</li>
 <li>Auto Import<ul>
-<li>Java：<img src="http://gudtwingo.gitee.io/image/2020/01/IDEA/SettingAutoImport.PNG" alt=""></li>
+<li>Java：<img src="http://welab-wingo.gitee.io/image/2020/01/IDEA/SettingAutoImport.PNG" alt=""></li>
 </ul>
 </li>
 <li>appearance：Show method separators</li>
@@ -225,7 +225,7 @@
 <li><p>Font：Size</p>
 </li>
 <li><p>File and Code Templates</p>
-<p><img src="http://gudtwingo.gitee.io/image/2020/01/IDEA/IDEATemplates.PNG" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/01/IDEA/IDEATemplates.PNG" alt=""></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"><span class="doctag">@author</span> Wingo</span></span><br><span class="line"><span class="comment"><span class="doctag">@create</span> $&#123;YEAR&#125;-$&#123;MONTH&#125;-$&#123;DAY&#125; $&#123;TIME&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>File Encoding：</p>
@@ -285,7 +285,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-02-15T05:27:55.029Z" itemprop="dateUpdated">2020-02-15 13:27:55</time>
+    最后更新时间：<time datetime="2020-04-19T06:41:32.058Z" itemprop="dateUpdated">2020-04-19 14:41:32</time>
 </span><br>
 
 

@@ -28,13 +28,13 @@
 <meta property="og:site_name" content="Wingo&#39;s Blog">
 <meta property="og:description" content="Spring Boot 整合 H2 数据库.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/04/H2.png">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/04/H2.png">
 <meta property="article:published_time" content="2020-04-06T09:33:57.000Z">
-<meta property="article:modified_time" content="2020-04-13T05:42:32.726Z">
+<meta property="article:modified_time" content="2020-04-19T06:41:20.626Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="H2">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://gudtwingo.gitee.io/image/2020/04/H2.png">
+<meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/04/H2.png">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -178,7 +178,7 @@
 
 <h3 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h3><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 若使用内存数据库 spring.datasource.url=jdbc:h2:mem:test</span></span><br><span class="line"><span class="comment"># ./ 表示根目录下生成数据库文件 ~/ 表示用户根目录 </span></span><br><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string">jdbc:h2:./db/test</span></span><br><span class="line"><span class="meta">spring.datasource.driverClassName</span>=<span class="string">org.h2.Driver</span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string">sa</span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string"></span></span><br><span class="line"><span class="comment"># 使用 H2 数据平台</span></span><br><span class="line"><span class="meta">spring.datasource.platform</span>=<span class="string">h2</span></span><br><span class="line"><span class="comment"># 内存模式的数据库信息读取</span></span><br><span class="line"><span class="comment"># spring.datasource.schema=classpath:db/schema.sql</span></span><br><span class="line"><span class="comment"># spring.datasource.data=classpath:db/data.sql</span></span><br><span class="line"></span><br><span class="line"><span class="meta">spring.h2.console.settings.web-allow-others</span>=<span class="string">true</span></span><br><span class="line"><span class="comment"># 浏览器访问路径 &#123;path&#125;/h2</span></span><br><span class="line"><span class="meta">spring.h2.console.path</span>=<span class="string">/h2</span></span><br><span class="line"><span class="comment"># 程序启动时启动 H2</span></span><br><span class="line"><span class="meta">spring.h2.console.enabled</span>=<span class="string">true</span></span><br><span class="line"></span><br><span class="line"><span class="meta">spring.jpa.database-platform</span>=<span class="string">org.hibernate.dialect.H2Dialect</span></span><br><span class="line"><span class="meta">spring.jpa.generate-ddl</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">spring.jpa.show-sql</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">spring.jpa.hibernate.ddl-auto</span>=<span class="string">update</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="http://gudtwingo.gitee.io/image/2020/04/H2.png" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/04/H2.png" alt=""></p>
 
         </div>
 
@@ -187,7 +187,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-13T05:42:32.726Z" itemprop="dateUpdated">2020-04-13 13:42:32</time>
+    最后更新时间：<time datetime="2020-04-19T06:41:20.626Z" itemprop="dateUpdated">2020-04-19 14:41:20</time>
 </span><br>
 
 

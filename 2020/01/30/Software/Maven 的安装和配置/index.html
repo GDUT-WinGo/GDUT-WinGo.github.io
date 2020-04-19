@@ -28,13 +28,13 @@
 <meta property="og:site_name" content="Wingo&#39;s Blog">
 <meta property="og:description" content="Maven 是一个项目管理工具，可以对 Java 项目进行构建、依赖管理。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/01/IDEA/IDEAMaven.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/IDEA/IDEAMaven.PNG">
 <meta property="article:published_time" content="2020-01-30T06:36:59.000Z">
-<meta property="article:modified_time" content="2020-02-15T05:28:19.073Z">
+<meta property="article:modified_time" content="2020-04-19T06:41:37.312Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Maven">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://gudtwingo.gitee.io/image/2020/01/IDEA/IDEAMaven.PNG">
+<meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/01/IDEA/IDEAMaven.PNG">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -186,7 +186,7 @@
 
 <h4 id="添加国内镜像源"><a href="#添加国内镜像源" class="headerlink" title="添加国内镜像源"></a>添加国内镜像源</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 阿里云仓库 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/repositories/central/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 中央仓库1 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Human Readable Name for this Mirror.<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://repo1.maven.org/maven2/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 中央仓库2 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Human Readable Name for this Mirror.<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://repo2.maven.org/maven2/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="IDEA-中配置-Maven"><a href="#IDEA-中配置-Maven" class="headerlink" title="IDEA 中配置 Maven"></a>IDEA 中配置 Maven</h3><p><img src="http://gudtwingo.gitee.io/image/2020/01/IDEA/IDEAMaven.PNG" alt=""></p>
+<h3 id="IDEA-中配置-Maven"><a href="#IDEA-中配置-Maven" class="headerlink" title="IDEA 中配置 Maven"></a>IDEA 中配置 Maven</h3><p><img src="http://welab-wingo.gitee.io/image/2020/01/IDEA/IDEAMaven.PNG" alt=""></p>
 
         </div>
 
@@ -195,7 +195,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-02-15T05:28:19.073Z" itemprop="dateUpdated">2020-02-15 13:28:19</time>
+    最后更新时间：<time datetime="2020-04-19T06:41:37.312Z" itemprop="dateUpdated">2020-04-19 14:41:37</time>
 </span><br>
 
 

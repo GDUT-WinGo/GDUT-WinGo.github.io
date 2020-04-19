@@ -28,17 +28,17 @@
 <meta property="og:site_name" content="Wingo&#39;s Blog">
 <meta property="og:description" content="线程模型指定了操作系统、编程语言、框架或者应用程序的上下文中的线程管理的关键方面，如何以及何时创建线程将对应用程序代码的执行产生显著的影响。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/01/Netty/Executor.PNG">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/01/Netty/EventLoopClassLayer.PNG">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/01/Netty/EventLoopTask.PNG">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/01/Netty/EventLoopNIO.PNG">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/01/Netty/EventLoopOIO.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/Netty/Executor.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopClassLayer.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopTask.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopNIO.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopOIO.PNG">
 <meta property="article:published_time" content="2020-01-25T08:09:20.000Z">
-<meta property="article:modified_time" content="2020-02-15T07:13:47.030Z">
+<meta property="article:modified_time" content="2020-04-19T06:32:52.820Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Netty">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://gudtwingo.gitee.io/image/2020/01/Netty/Executor.PNG">
+<meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/01/Netty/Executor.PNG">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -180,13 +180,13 @@
 
 <h3 id="线程模型概述"><a href="#线程模型概述" class="headerlink" title="线程模型概述"></a>线程模型概述</h3><p>多核心或多个 CPU 的计算机现在已经司空见惯，大多数的现代应用程序都利用了 复杂的多线程处理技术以有效地利用系统资源。</p>
 <p>在早期的 Java 语言中，我们使用多线程处理的主要方式无非是按需创建和启动新的 Thread 来执行并发的任务单元，这是一种在高负载下工作得很差的原始方式。Java 5 随后引入了  Executor API，其线程池通过缓存和重用 Thread 极大地提高了性能。</p>
-<p><img src="http://gudtwingo.gitee.io/image/2020/01/Netty/Executor.PNG" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/01/Netty/Executor.PNG" alt=""></p>
 <p>虽然池化和重用线程相对于简单地为每个任务都创建和销毁线程是一种进步，但是它并不能 消除由上下文切换所带来的开销，其将随着线程数量的增加很快变得明显，并且在高负载下愈演愈烈。Netty 框架帮助简化了这一处理。</p>
 <h3 id="EventLoop-接口"><a href="#EventLoop-接口" class="headerlink" title="EventLoop 接口"></a>EventLoop 接口</h3><p>运行任务来处理在连接的生命周期内发生的事件是任何网络框架的基本功能。与之相应的编程上的构造通常被称为事件循环：Netty 使用了 interface io.netty.channel.EventLoop 来适配的术语。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在事件循环中执行任务</span></span><br><span class="line"><span class="keyword">while</span> (!terminated) &#123;</span><br><span class="line">    List&lt;Runnable&gt; readyEvents = blockUntilEventsReady();</span><br><span class="line">    <span class="keyword">for</span> (Runnable ev: readyEvents) &#123;</span><br><span class="line">        ev.run();</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>Netty 的 EventLoop 是协同设计的一部分，它采用了两个基本的 API：并发和网络编程。首先，io.netty.util.concurrent 包构建在 JDK 的 java.util.concurrent 包上，用来提供线程执行器。其次，io.netty.channel 包中的类，为了与 Channel 的事件进行交互，扩展了这些接口/类。</p>
-<p><img src="http://gudtwingo.gitee.io/image/2020/01/Netty/EventLoopClassLayer.PNG" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopClassLayer.PNG" alt=""></p>
 <p>在这个模型中，一个 EventLoop 将由一个永远都不会改变的 Thread 驱动，同时任务 （Runnable 或者 Callable）可以直接提交给 EventLoop 实现，以立即执行或者调度执行。根据配置和可用核心的不同，可能会创建多个 EventLoop 实例用以优化资源的使用，并且单个 EventLoop 可能会被指派用于服务多个 Channel。</p>
 <blockquote>
 <p>事件/任务的执行顺序 ：</p>
@@ -201,14 +201,14 @@
 
 <h3 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h3><p>更加详细地探讨 Netty 的线程模型和任务调度实现的主要内容。</p>
 <h4 id="线程管理"><a href="#线程管理" class="headerlink" title="线程管理"></a>线程管理</h4><p>Netty 线程模型的卓越性能取决于对于当前执行的 Thread 的身份的确定。</p>
-<p><img src="http://gudtwingo.gitee.io/image/2020/01/Netty/EventLoopTask.PNG" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopTask.PNG" alt=""></p>
 <p>永远不要将一个长时间运行的任务放入到执行队列中，因为它将阻塞需要在同一线程上执行的任何其他任务。如果必须要进行阻塞调用或者执行长时间运行的任务，我们建议使用一个专门的 EventExecutor。</p>
 <h4 id="EventLoop-线程的分配"><a href="#EventLoop-线程的分配" class="headerlink" title="EventLoop / 线程的分配"></a>EventLoop / 线程的分配</h4><p>服务于 Channel 的 I/O 和事件的 EventLoop 包含在 EventLoopGroup 中。根据不同的传输实现，EventLoop 的创建和分配方式也不同。</p>
 <h5 id="异步传输"><a href="#异步传输" class="headerlink" title="异步传输"></a>异步传输</h5><p>异步传输实现只使用了少量的 EventLoop（以及和它们相关联的 Thread），而且在当前的线程模型中，它们可能会被多个 Channel 所共享。这使得可以通过尽可能少量的 Thread 来支撑大量的 Channel，而不是每个 Channel 分配一个 Thread。</p>
-<p><img src="http://gudtwingo.gitee.io/image/2020/01/Netty/EventLoopNIO.PNG" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopNIO.PNG" alt=""></p>
 <p>一旦一个 Channel 被分配给一个 EventLoop，它将在它的整个生命周期中都使用这个 EventLoop（以及相关联的 Thread）。</p>
 <h5 id="阻塞传输"><a href="#阻塞传输" class="headerlink" title="阻塞传输"></a>阻塞传输</h5><p>这里每一个 Channel 都将被分配给一个 EventLoop（以及它的 Thread）。</p>
-<p><img src="http://gudtwingo.gitee.io/image/2020/01/Netty/EventLoopOIO.PNG" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopOIO.PNG" alt=""></p>
 <p>每个 Channel 的 I/O 事件都将只会被一个 Thread （用于支撑该 Channel 的 EventLoop 的那个 Thread）处理（Netty 的一致性体现）。</p>
 
         </div>
@@ -218,7 +218,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-02-15T07:13:47.030Z" itemprop="dateUpdated">2020-02-15 15:13:47</time>
+    最后更新时间：<time datetime="2020-04-19T06:32:52.820Z" itemprop="dateUpdated">2020-04-19 14:32:52</time>
 </span><br>
 
 

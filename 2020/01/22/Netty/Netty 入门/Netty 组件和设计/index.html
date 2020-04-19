@@ -28,15 +28,15 @@
 <meta property="og:site_name" content="Wingo&#39;s Blog">
 <meta property="og:description" content="Channel、EventLoop 和 ChannelFutureChannel、EventLoop 和 ChannelFuture 类合在一起可以被认为是 Netty 的网络抽象代表">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/01/Netty/Channel%E3%80%81EventLoop%E3%80%81EventLoopGroup.PNG">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/01/Netty/ChannelPipeline.PNG">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/01/Netty/ServerBootstrapEventLoopGroup.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/Netty/Channel%E3%80%81EventLoop%E3%80%81EventLoopGroup.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/Netty/ChannelPipeline.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/Netty/ServerBootstrapEventLoopGroup.PNG">
 <meta property="article:published_time" content="2020-01-22T06:09:03.000Z">
-<meta property="article:modified_time" content="2020-02-18T05:13:00.834Z">
+<meta property="article:modified_time" content="2020-04-19T06:31:16.834Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Netty">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://gudtwingo.gitee.io/image/2020/01/Netty/Channel%E3%80%81EventLoop%E3%80%81EventLoopGroup.PNG">
+<meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/01/Netty/Channel%E3%80%81EventLoop%E3%80%81EventLoopGroup.PNG">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -189,7 +189,7 @@
 <li>一个 Channel 在它的生命周期内只注册于一个 EventLoop；</li>
 <li>一个 EventLoop 可能会被分配给一个或多个 Channel。</li>
 </ul>
-<p><img src="http://gudtwingo.gitee.io/image/2020/01/Netty/Channel%E3%80%81EventLoop%E3%80%81EventLoopGroup.PNG" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/01/Netty/Channel%E3%80%81EventLoop%E3%80%81EventLoopGroup.PNG" alt=""></p>
 <blockquote>
 <p>在这种设计中，一个给定 Channel 的 I/O 操作都是由相同的 Thread 执行的，实际上消除了对于同步的需要。</p>
 </blockquote>
@@ -207,7 +207,7 @@
 </li>
 </ul>
 <p>ChannelHandler 是专为支持广泛的用途而设计的，可以将它看作是处理往来 ChannelPipeline 事件（包括数据）的任何代码的通用容器。使得事件流经 ChannelPipeline 是 ChannelHandler 的工作，它们是在应用程序的初始化或者引导阶段被安装的。这些对象接收事件、执行它们所实现的处理逻辑，并将数据传递给链中的下一个 ChannelHandler。它们的执行顺序是由它们被添加的顺序所决定的。实际上，被我们称为 ChannelPipeline 的是这些 ChannelHandler 的编排顺序。</p>
-<p><img src="http://gudtwingo.gitee.io/image/2020/01/Netty/ChannelPipeline.PNG" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/01/Netty/ChannelPipeline.PNG" alt=""></p>
 <p>如同上图所示，入站和出站 ChannelHandler 可以被安装到同一个 ChannelPipeline 中。虽然 ChannelInboundHandle 和  ChannelOutboundHandle 都扩展自 ChannelHandler，但是 Netty 能区分 ChannelInboundHandler 实现和  ChannelOutboundHandler 实现，并确保数据只会在具有相同定向类型的两个 ChannelHandler 之间传递。</p>
 <p>当 ChannelHandler 被添加到 ChannelPipeline 时，它将会被分配一个 ChannelHandlerContext，其代表了 ChannelHandler 和 ChannelPipeline 之间的绑定。虽然这个对象可以被用于获取底层的 Channel，但是它主要还是被用于写出站数据。</p>
 <p>在 Netty 中，有两种发送消息的方式。你可以直接写到 Channel 中，也可以写到和 ChannelHandler 相关联的 ChannelHandlerContext 对象中。前一种方式将会导致消息从 ChannelPipeline 的尾端开始流动，而后者将导致消息从 ChannelPipeline 中的下一个 ChannelHandler 开始流动。</p>
@@ -225,7 +225,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="http://gudtwingo.gitee.io/image/2020/01/Netty/ServerBootstrapEventLoopGroup.PNG" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/01/Netty/ServerBootstrapEventLoopGroup.PNG" alt=""></p>
 <p>与 ServerChannel 相关联的 EventLoopGroup 将分配一个负责为传入连接请求创建 Channel 的 EventLoop。一旦连接被接受，第二个 EventLoopGroup 就会给它的 Channel 分配一个 EventLoop。</p>
 
         </div>
@@ -235,7 +235,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-02-18T05:13:00.834Z" itemprop="dateUpdated">2020-02-18 13:13:00</time>
+    最后更新时间：<time datetime="2020-04-19T06:31:16.834Z" itemprop="dateUpdated">2020-04-19 14:31:16</time>
 </span><br>
 
 

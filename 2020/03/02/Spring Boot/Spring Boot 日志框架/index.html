@@ -28,15 +28,15 @@
 <meta property="og:site_name" content="Wingo&#39;s Blog">
 <meta property="og:description" content="Spring Boot 日志框架的使用。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://gudtwingo.gitee.io/Image/2020/03/SpringBoot/SpringBootSLF4J.png">
-<meta property="og:image" content="http://gudtwingo.gitee.io/Image/2020/03/SpringBoot/SpringBootSLF4JAll.png">
+<meta property="og:image" content="http://welab-wingo.gitee.io/Image/2020/03/SpringBoot/SpringBootSLF4J.png">
+<meta property="og:image" content="http://welab-wingo.gitee.io/Image/2020/03/SpringBoot/SpringBootSLF4JAll.png">
 <meta property="article:published_time" content="2020-03-02T02:27:24.000Z">
-<meta property="article:modified_time" content="2020-04-10T03:18:49.839Z">
+<meta property="article:modified_time" content="2020-04-19T06:43:49.668Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Spring Boot">
 <meta property="article:tag" content="Log">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://gudtwingo.gitee.io/Image/2020/03/SpringBoot/SpringBootSLF4J.png">
+<meta name="twitter:image" content="http://welab-wingo.gitee.io/Image/2020/03/SpringBoot/SpringBootSLF4J.png">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -198,14 +198,14 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 给系统里面导入 SLF4J 的 JAR 和 Logback 的实现 JAR</span></span><br><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Logger logger = LoggerFactory.getLogger(HelloWorld<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        logger.info(<span class="string">"Hello World"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>SLF4J 做为不同的日志实现框架的门面的配置结构：</p>
-<p><img src="http://gudtwingo.gitee.io/Image/2020/03/SpringBoot/SpringBootSLF4J.png" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/Image/2020/03/SpringBoot/SpringBootSLF4J.png" alt=""></p>
 <p>统一日志记录：</p>
 <ul>
 <li>将系统中其他日志框架先排除出去；</li>
 <li>用中间包来替换原有的日志框架；</li>
 <li>导入 SLF4J 的其他的实现。</li>
 </ul>
-<p><img src="http://gudtwingo.gitee.io/Image/2020/03/SpringBoot/SpringBootSLF4JAll.png" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/Image/2020/03/SpringBoot/SpringBootSLF4JAll.png" alt=""></p>
 <h4 id="Spring-Boot-日志关系"><a href="#Spring-Boot-日志关系" class="headerlink" title="Spring Boot 日志关系"></a>Spring Boot 日志关系</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>Spring Boot 内配置的排除 Spring 的 Commons-Logging：</p>
@@ -261,7 +261,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-10T03:18:49.839Z" itemprop="dateUpdated">2020-04-10 11:18:49</time>
+    最后更新时间：<time datetime="2020-04-19T06:43:49.668Z" itemprop="dateUpdated">2020-04-19 14:43:49</time>
 </span><br>
 
 

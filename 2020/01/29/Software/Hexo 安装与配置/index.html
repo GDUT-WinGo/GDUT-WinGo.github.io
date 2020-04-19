@@ -28,15 +28,15 @@
 <meta property="og:site_name" content="Wingo&#39;s Blog">
 <meta property="og:description" content="Hexo 介绍Hexo 是一个简单、快速、强大的基于 Github Pages 的博客发布工具，支持Markdown格式，有众多优秀插件和主题。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/02/github/TwoSSh.PNG">
-<meta property="og:image" content="http://gudtwingo.gitee.io/image/2020/02/github/SShAdd.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/02/github/TwoSSh.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/02/github/SShAdd.PNG">
 <meta property="article:published_time" content="2020-01-29T04:59:01.000Z">
-<meta property="article:modified_time" content="2020-02-17T03:24:59.530Z">
+<meta property="article:modified_time" content="2020-04-19T06:41:25.577Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="Github">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://gudtwingo.gitee.io/image/2020/02/github/TwoSSh.PNG">
+<meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/02/github/TwoSSh.PNG">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -192,11 +192,11 @@
 <p>此外，你还需要输入<code>git config --global user.name &quot;[username]&quot;</code>和<code>git config --global user.email &quot;[email]&quot;</code>进行配置。（局部配置时不加 <code>--global</code>）</p>
 <h4 id="多个-SSH-Key"><a href="#多个-SSH-Key" class="headerlink" title="多个 SSH Key"></a>多个 SSH Key</h4><p>为了区别个人 / 公司的代码仓库，公司的代码仓库的邮件生成一个新的 SSH Key，为避免之前的创建的 id_rsa 被覆盖，此次创建需要显示的重命名文件 id_rsa_welab。</p>
 <p>得到公钥并且复制到公司用户后，进行项目克隆时报错，排查后发现此  id_rsa_welab 非默认命名，故需要手动添加到 ssh-agent 中（需手动开启）。</p>
-<p><img src="http://gudtwingo.gitee.io/image/2020/02/github/TwoSSh.PNG" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/02/github/TwoSSh.PNG" alt=""></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 开启 ssh-agent !!! 注意 是 ~ 下面的 ``，不是 <span class="string">''</span></span></span><br><span class="line">eval `ssh-agent`</span><br></pre></td></tr></table></figure>
 
 <p>输入 <code>ssh-add [path]</code>命令。</p>
-<p><img src="http://gudtwingo.gitee.io/image/2020/02/github/SShAdd.PNG" alt=""></p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/02/github/SShAdd.PNG" alt=""></p>
 <p>添加后即可成功克隆项目。</p>
 <h3 id="Hexo-安装"><a href="#Hexo-安装" class="headerlink" title="Hexo 安装"></a>Hexo 安装</h3><p>首先要安装 Node.js，然后利用 npm 安装 Hexo。</p>
 <p>右键选择 git bash here。输入<code>npm install -g Hexo</code>，等待下载完成。</p>
@@ -213,7 +213,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-02-17T03:24:59.530Z" itemprop="dateUpdated">2020-02-17 11:24:59</time>
+    最后更新时间：<time datetime="2020-04-19T06:41:25.577Z" itemprop="dateUpdated">2020-04-19 14:41:25</time>
 </span><br>
 
 
