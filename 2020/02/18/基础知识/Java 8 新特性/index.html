@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Java 8 新特性 | Wingo&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Java">
+    <meta name="description" content="LambdJava SE 8 的一个大亮点是引入了 Lambda 表达式，使用它设计的代码会更加简洁。 当开发者在编写 Lambda 表达式时，也会随之被编译成一个函数式接口，Lambda 允许把函数作为一个方法的参数传递进方法中。Lambda 表达式本质是匿名函数（或者叫匿名方法），也可称之为闭包，像方法一样， Lambda 表达式具有带类型的参数、主体和返回类型。可使用 Lambda 语法来代">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 8 新特性">
+<meta property="og:url" content="http://yoursite.com/2020/02/18/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7/index.html">
+<meta property="og:site_name" content="Wingo&#39;s Blog">
+<meta property="og:description" content="LambdJava SE 8 的一个大亮点是引入了 Lambda 表达式，使用它设计的代码会更加简洁。 当开发者在编写 Lambda 表达式时，也会随之被编译成一个函数式接口，Lambda 允许把函数作为一个方法的参数传递进方法中。Lambda 表达式本质是匿名函数（或者叫匿名方法），也可称之为闭包，像方法一样， Lambda 表达式具有带类型的参数、主体和返回类型。可使用 Lambda 语法来代">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-18T07:14:54.000Z">
+<meta property="article:modified_time" content="2020-07-10T03:12:41.959Z">
+<meta property="article:author" content="Wingo">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wingo</h5>
+          <a href="mailto:1318263468@qq.com" title="1318263468@qq.com" class="mail">1318263468@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Java 8 新特性</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Java 8 新特性</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-02-18T07:14:54.000Z" itemprop="datePublished" class="page-time">
+  2020-02-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Lambd"><span class="post-toc-number">1.</span> <span class="post-toc-text">Lambd</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Lambda-语法格式"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Lambda 语法格式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Lambda-方法引用"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Lambda 方法引用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Stream"><span class="post-toc-number">2.</span> <span class="post-toc-text">Stream</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Stream-示例"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Stream 示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Stream-基础特性"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Stream 基础特性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Stream-串-并行"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">Stream 串 &#x2F; 并行</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-基础知识/Java 8 新特性"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Java 8 新特性</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-02-18 15:14:54" datetime="2020-02-18T07:14:54.000Z"  itemprop="datePublished">2020-02-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="Lambd"><a href="#Lambd" class="headerlink" title="Lambd"></a>Lambd</h3><p>Java SE 8 的一个大亮点是引入了 Lambda 表达式，使用它设计的代码会更加简洁。</p>
+<p>当开发者在编写 Lambda 表达式时，也会随之被编译成一个函数式接口，Lambda 允许把函数作为一个方法的参数传递进方法中。Lambda 表达式本质是匿名函数（或者叫匿名方法），也可称之为闭包，像方法一样， <strong><u>Lambda 表达式具有带类型的参数、主体和返回类型</u></strong>。可使用 Lambda 语法来代替匿名的内部类，代码不仅简洁而且还可读。</p>
+<p>当然，不足之处可能就是可读性稍差及调试稍麻烦一些。</p>
+<h4 id="Lambda-语法格式"><a href="#Lambda-语法格式" class="headerlink" title="Lambda 语法格式"></a>Lambda 语法格式</h4><p>能够用于 Lambda 表达式的只能是 interface，且 interface 中只有一个方法。</p>
+<p>Lambda 表达式的标准结构： <code>(parameters) -&gt; {statements;}</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 标准结构的各种变形</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 当方法体中只有一条语句时，return 和 &#123;&#125; 都可省略</span><br><span class="line">(parameters) -&gt; expression</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 当仅有一个参数时，() 可省略</span><br><span class="line">parameters -&gt; expression</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 当没有参数时，可直接使用 ()</span><br><span class="line">() -&gt; expression</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 绝大多数情况下，编译器可以从上下文环境中推断出 Lambda 表达式的参数类型，所以参数的类型声明也可以省掉</span><br></pre></td></tr></table></figure>
+
+<h4 id="Lambda-方法引用"><a href="#Lambda-方法引用" class="headerlink" title="Lambda 方法引用"></a>Lambda 方法引用</h4><p>Lambda 表达式简洁写法：<code>s -&gt; s.toLowerCase()</code>可省略为 <code>String::toLowerCase</code></p>
+<p>方法引用包含的情况</p>
+<ul>
+<li>静态方法引用<code>Class::static_method</code></li>
+<li>构造方法引用<code>Class::new</code>或<code>Class&lt;T&gt;::new</code></li>
+<li>类成员方法引用<code>Class::method</code></li>
+<li>对象方法引用<code>instance::method</code></li>
+</ul>
+<blockquote>
+<p>Supplier 接口：不接受任何参数，返回一个结果（只有一个<code>get()</code>方法）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SupplierTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String n args)</span></span>&#123;</span><br><span class="line">        Supplier&lt;String&gt; supplier = () -&gt; <span class="string">"hello world"</span>;</span><br><span class="line">        System.out.println(supplier.get()); <span class="comment">// 控制台打印 hello world</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a><code>Stream</code></h3><p>Java 8 中的<code>Stream</code>是对集合（<code>Collection</code>）对象功能的增强，适用于对集合对象进行各种便利、高效的过滤、映射、排序及聚合等操作，可以独立也可以组合成复杂的操作。</p>
+<p> <code>Stream</code>还同时支持串行和并行两种操作模式，并行模式能够充分利用目前主流的多核处理器的优势，使用 Fork / Join 并行方式来拆分和加速任务的处理过程。Stream API 无需编写多线程代码，通过并发模式很容易就支持任务的并行处理。</p>
+<p><code>Stream API</code> 使用一种类似 SQL 语句从数据库查询数据的直观方式来操作 Java 集合数据，可以写出高效率、干净、简洁的代码，极大的提高集合操作的生产力。可以将要处理的集合元素看作一种流，流在管道中传输，并且可以在管道传输的各个节点上进行筛选、排序及聚合等操作。流在管道中经过中间操作（intermediate operation）的处理，最后由最终操作（terminal operation）得到前面处理的结果。</p>
+<h4 id="Stream-示例"><a href="#Stream-示例" class="headerlink" title="Stream 示例"></a><code>Stream</code> 示例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StreamDemo</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        List&lt;String&gt; peekList = Stream.of(<span class="string">"one"</span>, <span class="string">"tow"</span>, <span class="string">"three"</span>, <span class="string">"four"</span>, <span class="string">"five"</span>, <span class="string">"six"</span>, <span class="string">"seven"</span>)</span><br><span class="line">                .filter(e -&gt; e.length() &gt; <span class="number">3</span>) <span class="comment">// 过滤出字符串长度大于 3 的元素</span></span><br><span class="line">                .peek(e -&gt; System.out.println(<span class="string">"Filtered value: "</span> + e))</span><br><span class="line">                .map(String::toUpperCase) <span class="comment">// 将元素转为大写</span></span><br><span class="line">                .peek(e -&gt; System.out.println(<span class="string">"Mapped value: "</span> + e))</span><br><span class="line">                .collect(Collectors.toList()); <span class="comment">// 将输出 Stream 转换为 List</span></span><br><span class="line">        System.out.println(<span class="string">"集合打印："</span>);</span><br><span class="line">        <span class="keyword">for</span> (String string : peekList) &#123;</span><br><span class="line">            System.out.println(string);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果</span></span><br><span class="line">Filtered value: three</span><br><span class="line">Mapped value: THREE</span><br><span class="line">Filtered value: four</span><br><span class="line">Mapped value: FOUR</span><br><span class="line">Filtered value: five</span><br><span class="line">Mapped value: FIVE</span><br><span class="line">Filtered value: seven</span><br><span class="line">Mapped value: SEVEN</span><br><span class="line">集合打印：</span><br><span class="line">THREE</span><br><span class="line">FOUR</span><br><span class="line">FIVE</span><br><span class="line">SEVEN</span><br></pre></td></tr></table></figure>
+
+<h4 id="Stream-基础特性"><a href="#Stream-基础特性" class="headerlink" title="Stream 基础特性"></a><code>Stream</code> 基础特性</h4><blockquote>
+<p>基本流程：数据源（存储） → 元素队列（<code>Stream</code>） → 操作（filter、map、reduce、find、match、sorted 等）</p>
+</blockquote>
+<p>Pipelining：中间操作都会返回流对象本身。这样多个操作可以串联成一个管道， 如同流式风格（fluent style）。 这样做可以对操作进行优化， 比如延迟执行（laziness）和短路（short-circuiting）；</p>
+<p>内部迭代：以前对集合遍历都是通过 <code>Iterator</code> 或者 <code>For-Each</code> 的方式, 显式的在集合外部进行迭代， 这叫做外部迭代。 <code>Java Stream</code> 提供了内部迭代的方式， 通过访问者模式（Visitor）实现。</p>
+<h4 id="Stream-串-并行"><a href="#Stream-串-并行" class="headerlink" title="Stream 串 / 并行"></a><code>Stream</code> 串 / 并行</h4>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-07-10T03:12:41.959Z" itemprop="dateUpdated">2020-07-10 11:12:41</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Wingo">
+            Wingo
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/02/27/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Netty 常用配置</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/02/17/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/WebSocket/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">WebSocket</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+            <span>得失从缘，心无增减</span>
+        </p>
+    </div> 
+    <div class="bottom">
+        <p><span>Wingo &copy; 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

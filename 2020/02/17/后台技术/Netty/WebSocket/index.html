@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>WebSocket | Wingo&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Netty,WebSocket">
+    <meta name="description" content="WebSocket 入门介绍以及 Netty WebSocket 协议开发。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebSocket">
+<meta property="og:url" content="http://yoursite.com/2020/02/17/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/WebSocket/index.html">
+<meta property="og:site_name" content="Wingo&#39;s Blog">
+<meta property="og:description" content="WebSocket 入门介绍以及 Netty WebSocket 协议开发。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/02/Netty/WebSocketRequest.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/02/Netty/WebSocketResponse.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/02/Netty/HTTPVSWebSocket.jpg">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/02/Netty/WebSocketResult01.PNG">
+<meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/02/Netty/WebSocketResult02.PNG">
+<meta property="article:published_time" content="2020-02-17T04:12:30.000Z">
+<meta property="article:modified_time" content="2020-07-10T04:04:07.888Z">
+<meta property="article:author" content="Wingo">
+<meta property="article:tag" content="Netty">
+<meta property="article:tag" content="WebSocket">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/02/Netty/WebSocketRequest.PNG">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wingo</h5>
+          <a href="mailto:1318263468@qq.com" title="1318263468@qq.com" class="mail">1318263468@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">WebSocket</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">WebSocket</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-02-17T04:12:30.000Z" itemprop="datePublished" class="page-time">
+  2020-02-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/">后台技术</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#WebSocket-入门"><span class="post-toc-number">1.</span> <span class="post-toc-text">WebSocket 入门</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#WebSocket-连接"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">WebSocket 连接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#WebSocket-生命周期"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">WebSocket 生命周期</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Netty-WebSocket-协议开发"><span class="post-toc-number">2.</span> <span class="post-toc-text">Netty WebSocket 协议开发</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Netty-服务端实例"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Netty 服务端实例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#功能介绍"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">功能介绍</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#功能开发"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">功能开发</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#测试结果"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">测试结果</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-后台技术/Netty/WebSocket"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">WebSocket</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-02-17 12:12:30" datetime="2020-02-17T04:12:30.000Z"  itemprop="datePublished">2020-02-17</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/">后台技术</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>WebSocket 入门介绍以及 Netty WebSocket 协议开发。</p>
+<a id="more"></a>
+
+<p>HTTP 请求 / 响应模式：客户端加载一个网页，然后直到用户点击下一页之前，什么都不会发生。</p>
+<p>Ajax：网络开始变得更加动态了，但所有的 HTTP 通信仍然由客户端控制，这就需要用户进行互动或定期轮询，以便从服务器加载新数据。</p>
+<blockquote>
+<p>长期以来存在着各种技术让服务器得知有新数据可用时，立即将数据发送到客户端这些技术种类繁多。最常用的一种黑客手段是对服务器发起链接创建假象，被称为长轮询。利用长轮询，客户端可以打开指向服务器的 HTTP 连接，而服务器会一直保持连接打开，直到发送响应。服务器只要实际拥有新数据，就会发送响应。</p>
+</blockquote>
+<p>问题：<strong>由于 HTTP 协议的开销，导致它们不适用于低延迟应用。</strong></p>
+<p>WebSocket：将网络套接字引入到了客户端和服务端来解决这一问题，浏览器和服务器之间可以通过套接字建立持久的连接，双方随时都可以互发数据给对方，而不是之前由客户端控制的一请求一应答模式。</p>
+<h3 id="WebSocket-入门"><a href="#WebSocket-入门" class="headerlink" title="WebSocket 入门"></a>WebSocket 入门</h3><p>在 WebSocket API 中，浏览器和服务器只需要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道，两者就可以直接互相传送数据了。WebSocket 基于 TCP 双向全双工进行消息传递，在同一时刻，既可以发送消息，也可以接收消息，相比于 HTTP 的半双工协议，性能得到很大提升。</p>
+<h4 id="WebSocket-连接"><a href="#WebSocket-连接" class="headerlink" title="WebSocket 连接"></a>WebSocket 连接</h4><p>建立 WebSocket 连接时，需要通过客户端或者浏览器发出握手请求。</p>
+<p>握手请求消息如下：</p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/02/Netty/WebSocketRequest.PNG" alt=""></p>
+<p>为了建立一个 WebSocket 连接，客户端浏览器首先要向服务器发起一个 HTTP 请求，这个请求和通常的 HTTP 请求不同，包含了一些附加头信息，其中附加头信息 <code>Upgrade: WebSocket</code>表明这是一个申请协议升级的 HTTP 请求。服务器端解析这些附加的头信息，然后生成应答信息返回给客户端，客户端和服务器端的 WebSocket 连接就建立起来了，双方可以通过这个连接通道自由地传递信息，并且这个连接会持续存在直到客户端或者服务器端的某一方主动关闭连接。</p>
+<p>握手应答消息如下：</p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/02/Netty/WebSocketResponse.PNG" alt=""></p>
+<p>请求消息中的<code>Sec-WebSocket-Key</code>是随机的,服务器端会用这些数据来构造出一个 SHA-1 的信息摘要。使用 SHA-1 加密,然后进行 BASE-64 编码，将结果做为<code>Sec- WebSocket- Accept</code>头的值，返回给客户端。</p>
+<h4 id="WebSocket-生命周期"><a href="#WebSocket-生命周期" class="headerlink" title="WebSocket 生命周期"></a>WebSocket 生命周期</h4><p>握手成功之后,服务端和客户端就可以通过 <strong>messages</strong> 的方式进行通信了，一个消息由一个或者多个帧组成，WebSocket的消息并不一定对应一个特定网络层的帧，它可以被分割成多个帧或者被合并。</p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/02/Netty/HTTPVSWebSocket.jpg" alt=""></p>
+<p>WebSocket 的握手关闭消息带有一个状态码和一个可选的关闭原因，它必须按照协议要求发送一个 Close 控制帧，当对端接收到关闭控制帧指令时，需要主动关闭 WebSocket连接。</p>
+<h3 id="Netty-WebSocket-协议开发"><a href="#Netty-WebSocket-协议开发" class="headerlink" title="Netty WebSocket 协议开发"></a>Netty WebSocket 协议开发</h3><p>Netty 基于 HTTP 协议栈开发了 WebSocket 协议栈,利用 Netty 的 WebSocket 协议栈可以非常方便地开发出 WebSocket 客户端和服务端。</p>
+<h4 id="Netty-服务端实例"><a href="#Netty-服务端实例" class="headerlink" title="Netty 服务端实例"></a>Netty 服务端实例</h4><h5 id="功能介绍"><a href="#功能介绍" class="headerlink" title="功能介绍"></a>功能介绍</h5><ol>
+<li>支持 WebSocket 的浏览器通过 WebSocket 协议发送请求消息给服务端，服务端对请求消息进行判断；</li>
+<li>如果是合法的 WebSocket 请求,则获取请求消息体（文本）并在后面追加字符串“欢迎使用 Netty WebSocket服务,现在时刻:[系统时间]”；</li>
+<li>客户端 HTML 通过内嵌的 JS 脚本创建 WebSocket 连接，握手成功 / 失败，在文本框中打印“打开 Web Socket服务正常,浏览器支持 Web Socket!” / “抱歉，您的浏览器不支持 Web Socket协议!”。</li>
+</ol>
+<h5 id="功能开发"><a href="#功能开发" class="headerlink" title="功能开发"></a>功能开发</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- pom.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.netty<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>netty-all<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.0.0.Alpha1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// WebSocket 服务端启动类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebSocketServer</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(<span class="keyword">int</span> port)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        EventLoopGroup bossGroup = <span class="keyword">new</span> NioEventLoopGroup ();</span><br><span class="line">        EventLoopGroup workerGroup = <span class="keyword">new</span> NioEventLoopGroup();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ServerBootstrap b= <span class="keyword">new</span> ServerBootstrap();</span><br><span class="line">            b.group(bossGroup, workerGroup)</span><br><span class="line">                .channel(NioServerSocketChannel<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">                .<span class="title">childHandler</span>(<span class="title">new</span> <span class="title">ChannelInitializer</span>&lt;<span class="title">SocketChannel</span>&gt;() </span>&#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">initChannel</span><span class="params">(SocketChannel ch)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                        ChannelPipeline pipeline = ch.pipeline ();</span><br><span class="line">                        <span class="comment">// 将请求和应答消息编码 / 解码为 HTTP 消息</span></span><br><span class="line">                        pipeline.addLast(<span class="string">"http-codec"</span>, <span class="keyword">new</span> HttpServerCodec());</span><br><span class="line">                        <span class="comment">// 将 HTTP 消息的多个部分组合成一条完整的 HTTP 消息</span></span><br><span class="line">                        pipeline.addLast (<span class="string">"aggregator"</span>, <span class="keyword">new</span> HttpObjectAggregator(<span class="number">65536</span>));</span><br><span class="line">                        <span class="comment">// 主要用于支持浏览器和服务端进行 WebSocket 通信</span></span><br><span class="line">                        ch.pipeline().addLast(<span class="string">"http-chunked"</span>, <span class="keyword">new</span> ChunkedWriteHandler());</span><br><span class="line">                        <span class="comment">// 增加 WebSocket 服务端 handler</span></span><br><span class="line">                        pipeline.addLast(<span class="string">"handler"</span>, <span class="keyword">new</span> WebSocketServerHandler());</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            Channel ch = b.bind(port).sync().channel();</span><br><span class="line">            System.out.println(<span class="string">"Web socket server started at port"</span> + port +<span class="string">'.'</span>);</span><br><span class="line">            System.out.println (<span class="string">"Open our browser and navigate to http://localhost:"</span> + port + <span class="string">'/'</span>);</span><br><span class="line">            ch.closeFuture().sync();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            bossGroup. shutdownGracefully();</span><br><span class="line">            workerGroup. shutdownGracefully();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> port = <span class="number">8080</span>;</span><br><span class="line">        <span class="keyword">if</span> (args.length &gt;<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                port = Integer.parseInt(args[<span class="number">0</span>]);</span><br><span class="line">            &#125; <span class="keyword">catch</span>(NumberFormatException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">new</span> WebSocketServer().run(port);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Websocket 服务端处理类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebSocketServerHandler</span> <span class="keyword">extends</span> <span class="title">SimpleChannelInboundHandler</span>&lt;<span class="title">Object</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = Logger.getLogger(WebSocketServerHandler<span class="class">.<span class="keyword">class</span>.<span class="title">getName</span>())</span>;</span><br><span class="line">    <span class="keyword">private</span> WebSocketServerHandshaker handshaker;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">messageReceived</span><span class="params">(ChannelHandlerContext ctx, Object msg)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// 传统的 HTTP 接入</span></span><br><span class="line">        <span class="keyword">if</span> (msg <span class="keyword">instanceof</span> FullHttpRequest)&#123;</span><br><span class="line">            <span class="comment">// 判断请求消息有中是否包含 Upgrade: websocket</span></span><br><span class="line">            handleHttpRequest(ctx,(FullHttpRequest)msg);</span><br><span class="line">        &#125;<span class="comment">// WebSocket 接入</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (msg <span class="keyword">instanceof</span> WebSocketFrame)&#123;</span><br><span class="line">            handleWebSocketFrame(ctx,(WebSocketFrame)msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">handleHttpRequest</span><span class="params">(ChannelHandlerContext ctx, FullHttpRequest req)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        <span class="comment">// 如果 HTTP 解码失败，返回 HTTP 400 响应异常</span></span><br><span class="line">        <span class="keyword">if</span> (!req.getDecoderResult().isSuccess() || (!<span class="string">"websocket"</span>.equals(req.headers().get(<span class="string">"Upgrade"</span>))))&#123;</span><br><span class="line">            sendHttpResponse(ctx, req,<span class="keyword">new</span> DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.BAD_REQUEST));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 构造握手工厂，本机测试</span></span><br><span class="line">        WebSocketServerHandshakerFactory wsFactory = <span class="keyword">new</span> WebSocketServerHandshakerFactory(<span class="string">"ws://localhost:8080/websocket"</span>,<span class="keyword">null</span>,<span class="keyword">false</span>);</span><br><span class="line">        <span class="comment">// 创建握手处理类</span></span><br><span class="line">        handshaker = wsFactory.newHandshaker(req);</span><br><span class="line">        <span class="keyword">if</span> (handshaker == <span class="keyword">null</span>)&#123;</span><br><span class="line">            WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx.channel());</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 构造握手响应消息返回给客户端</span></span><br><span class="line">            <span class="comment">// 将 WebSocket 相关的编码和解码类动态添加到 ChannelPipeline 中用于 WebSocket 消息的编解码</span></span><br><span class="line">            handshaker.handshake(ctx.channel(),req);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 链路建立成功之后分别对控制帧进行判断</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">handleWebSocketFrame</span><span class="params">(ChannelHandlerContext ctx, WebSocketFrame frame)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 判断是否关闭链路指令</span></span><br><span class="line">        <span class="keyword">if</span> (frame <span class="keyword">instanceof</span> CloseWebSocketFrame)&#123;</span><br><span class="line">            handshaker.close(ctx.channel(), (CloseWebSocketFrame) frame.retain());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 判断是否是维持链路的 Ping 消息</span></span><br><span class="line">        <span class="keyword">if</span> (frame <span class="keyword">instanceof</span> PingWebSocketFrame)&#123;</span><br><span class="line">            <span class="comment">// 构造 pong 消息返回</span></span><br><span class="line">            ctx.channel().write(<span class="keyword">new</span> PongWebSocketFrame(frame.content()).retain());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 本例程仅支持文本信息，故对非文本消息抛出异常</span></span><br><span class="line">        <span class="keyword">if</span> (!(frame <span class="keyword">instanceof</span> TextWebSocketFrame))&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException(String.format(<span class="string">"%s frame types not supported"</span>,frame.getClass().getName()));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 返回应答消息</span></span><br><span class="line">        String request = ((TextWebSocketFrame) frame).text();</span><br><span class="line">        <span class="keyword">if</span> (logger.isLoggable(Level.FINE))&#123;</span><br><span class="line">            logger.fine(String.format(<span class="string">"%s received %s"</span>,ctx.channel(),request));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 构造新的 TextWebSocketFrame 消息返回给客户端</span></span><br><span class="line">        <span class="comment">// 由于握手应答时动态增加了 TextWebSocketframe 的编码类,所以可以直接发送 TextWebSocketFrame对象</span></span><br><span class="line">        ctx.channel().write(<span class="keyword">new</span> TextWebSocketFrame(request+<span class="string">"欢迎使用Netty WebSocket服务，现在时刻:"</span> + <span class="keyword">new</span> Date().toString()));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sendHttpResponse</span><span class="params">(ChannelHandlerContext ctx,FullHttpRequest req,FullHttpResponse res)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 返回应答给客户端</span></span><br><span class="line">        <span class="keyword">if</span> (res.getStatus().code() != <span class="number">200</span>)&#123;</span><br><span class="line">            ByteBuf buf = Unpooled.copiedBuffer(res.getStatus().toString(), CharsetUtil.UTF_8);</span><br><span class="line">            res.content().writeBytes(buf);</span><br><span class="line">            <span class="comment">// 明确释放ByteBuf的引用计数</span></span><br><span class="line">            buf.release();</span><br><span class="line">            setContentLength(res,res.content().readableBytes());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果是非 Keep-Alive，关闭连接</span></span><br><span class="line">        ChannelFuture f = ctx.channel().writeAndFlush(res);</span><br><span class="line">        <span class="keyword">if</span> (!isKeepAlive(req) || res.getStatus().code() != <span class="number">200</span>)&#123;</span><br><span class="line">            f.addListener(ChannelFutureListener.CLOSE);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">channelReadComplete</span><span class="params">(ChannelHandlerContext ctx)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        ctx.flush();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exceptionCaught</span><span class="params">(ChannelHandlerContext ctx, Throwable cause)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        cause.printStackTrace();</span><br><span class="line">        ctx.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>WebSoket Demo<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/JavaScript"</span>&gt;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> WebSocket = WebSocket || <span class="built_in">window</span>.WebSocket || <span class="built_in">window</span>.MozWebSocket;</span></span><br><span class="line">            if (!WebSocket) &#123;</span><br><span class="line"><span class="actionscript">                alert(<span class="string">"WebSocket not supported by this browser!"</span>);</span></span><br><span class="line">            &#125;</span><br><span class="line"><span class="actionscript">            <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="actionscript">                <span class="keyword">var</span> ws = <span class="literal">null</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">                <span class="function"><span class="keyword">function</span> <span class="title">Display</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"websocket 测试"</span>);</span></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">                <span class="keyword">var</span> log = <span class="function"><span class="keyword">function</span> <span class="params">(s)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span> (<span class="built_in">document</span>.readyState !== <span class="string">"complete"</span>) &#123;</span></span><br><span class="line">                        log.buffer.push(s);</span><br><span class="line"><span class="actionscript">                    &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">document</span>.getElementById(<span class="string">"contentId"</span>).value += (s + <span class="string">"/n"</span>);</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">                <span class="function"><span class="keyword">function</span> <span class="title">CreateConnect</span> <span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">var</span> msg = <span class="built_in">document</span>.getElementById(<span class="string">"wsUrlId"</span>);</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"CreateConnect(), url: "</span> + msg.value);</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">if</span> (ws == <span class="literal">null</span>) &#123;</span></span><br><span class="line"><span class="actionscript">                        <span class="keyword">var</span> wsUrlValue = msg.value;</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">                        <span class="keyword">try</span> &#123;</span></span><br><span class="line"><span class="actionscript">                            ws = <span class="keyword">new</span> WebSocket(wsUrlValue);</span></span><br><span class="line">   </span><br><span class="line"><span class="actionscript">                            ws.onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                                log(<span class="string">"onmessage(), 接收到服务器消息: "</span> + event.data);</span></span><br><span class="line">                            &#125;;</span><br><span class="line">                            </span><br><span class="line"><span class="actionscript">                            ws.onclose = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                                log(<span class="string">"onclose(), Socket 已关闭!"</span>);</span></span><br><span class="line"><span class="actionscript">                                ws = <span class="literal">null</span>;</span></span><br><span class="line">                            &#125;;</span><br><span class="line">                            </span><br><span class="line"><span class="actionscript">                            ws.onopen = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                                log(<span class="string">"onopen(), Socket 连接成功!"</span>);</span></span><br><span class="line">                            &#125;;</span><br><span class="line">                            </span><br><span class="line"><span class="actionscript">                            ws.onerror = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>&#123;</span></span><br><span class="line">                                </span><br><span class="line">                            &#125;;</span><br><span class="line">                        &#125;</span><br><span class="line"><span class="actionscript">                        <span class="keyword">catch</span> (e) &#123;</span></span><br><span class="line"><span class="actionscript">                            ws = <span class="literal">null</span>;</span></span><br><span class="line"><span class="actionscript">                            log(<span class="string">"连接异常, 重置 websocket"</span>);</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">                <span class="function"><span class="keyword">function</span> <span class="title">SendMsg</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">var</span> msg = <span class="built_in">document</span>.getElementById(<span class="string">"messageId"</span>);</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"SendMsg(), msg: "</span> + msg.value);</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">if</span> (ws != <span class="literal">null</span>) &#123;</span></span><br><span class="line"><span class="actionscript">                        log(<span class="string">"发送 Socket 消息: "</span> + msg.value);</span></span><br><span class="line">                        ws.send(msg.value);</span><br><span class="line">                    &#125;</span><br><span class="line"><span class="actionscript">                    <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="actionscript">                        log(<span class="string">"Socket 还未创建!, msg: "</span> + msg.value);</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">                <span class="function"><span class="keyword">function</span> <span class="title">CloseConnect</span> <span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"CloseConnect()"</span>);</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">if</span> (ws != <span class="literal">null</span>) &#123;</span></span><br><span class="line">                        ws.close();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span> <span class="attr">onload</span>=<span class="string">"Display()"</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"valueLabel"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">rows</span>=<span class="string">"10"</span> <span class="attr">cols</span>=<span class="string">"40"</span> <span class="attr">id</span>=<span class="string">"contentId"</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"wsUrl"</span> <span class="attr">id</span>=<span class="string">"wsUrlId"</span> <span class="attr">value</span>=<span class="string">"ws://localhost:8080/websocket"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"createButton"</span> <span class="attr">onClick</span>=<span class="string">"javascript:CreateConnect()"</span>&gt;</span>Create<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"closeButton"</span> <span class="attr">onClick</span>=<span class="string">"javascript:CloseConnect()"</span>&gt;</span>Close<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"message"</span> <span class="attr">id</span>=<span class="string">"messageId"</span> <span class="attr">value</span>=<span class="string">"Hello, Server!"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"sendButton"</span> <span class="attr">onClick</span>=<span class="string">"javascript:SendMsg()"</span>&gt;</span>Send<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h5><p>控制台打印</p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/02/Netty/WebSocketResult01.PNG" alt=""></p>
+<p>浏览器调试</p>
+<p><img src="http://welab-wingo.gitee.io/image/2020/02/Netty/WebSocketResult02.PNG" alt=""></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-07-10T04:04:07.888Z" itemprop="dateUpdated">2020-07-10 12:04:07</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Wingo">
+            Wingo
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Netty/" rel="tag">Netty</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/02/18/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Java 8 新特性</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/02/16/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">2020 读书笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+            <span>得失从缘，心无增减</span>
+        </p>
+    </div> 
+    <div class="bottom">
+        <p><span>Wingo &copy; 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
