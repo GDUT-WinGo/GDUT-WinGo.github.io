@@ -35,14 +35,14 @@
 <meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/04/Redis/RedisDeskTop02.png">
 <meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/04/Redis/Test03.png">
 <meta property="article:published_time" content="2020-04-09T06:29:14.000Z">
-<meta property="article:modified_time" content="2020-07-10T03:58:30.537Z">
+<meta property="article:modified_time" content="2020-07-10T03:58:30.000Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="点赞">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/04/Redis/RedisDeskTop.png">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -124,6 +124,10 @@
         </div>
         
         
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
 </header>
 <header class="content-header post-header">
@@ -154,7 +158,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#环境搭建"><span class="post-toc-number">1.</span> <span class="post-toc-text">环境搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Redis-配置"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Redis 配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#properties"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">properties</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#单元测试"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">单元测试</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#点赞类型枚举类"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">点赞类型枚举类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#点赞工具类"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">点赞工具类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#单元测试-1"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">单元测试</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简单实现"><span class="post-toc-number">2.</span> <span class="post-toc-text">简单实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自定义接口"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">自定义接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#接口实现"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">接口实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#单元测试-2"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">单元测试</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#复杂实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">复杂实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#方案设计"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">方案设计</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#类型添加"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">类型添加</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自定义接口-1"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">自定义接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#接口实现-1"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">接口实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#单元测试-3"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">单元测试</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#环境搭建"><span class="post-toc-text">环境搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Redis-配置"><span class="post-toc-text">Redis 配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#properties"><span class="post-toc-text">properties</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#单元测试"><span class="post-toc-text">单元测试</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#点赞类型枚举类"><span class="post-toc-text">点赞类型枚举类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#点赞工具类"><span class="post-toc-text">点赞工具类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#单元测试-1"><span class="post-toc-text">单元测试</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简单实现"><span class="post-toc-text">简单实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自定义接口"><span class="post-toc-text">自定义接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#接口实现"><span class="post-toc-text">接口实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#单元测试-2"><span class="post-toc-text">单元测试</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#复杂实现"><span class="post-toc-text">复杂实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#方案设计"><span class="post-toc-text">方案设计</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#类型添加"><span class="post-toc-text">类型添加</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自定义接口-1"><span class="post-toc-text">自定义接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#接口实现-1"><span class="post-toc-text">接口实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#单元测试-3"><span class="post-toc-text">单元测试</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -190,7 +194,14 @@
 <blockquote>
 <p>Redis 客户端存储正常，控制台正常输出，项目环境搭建完成。</p>
 </blockquote>
-<p><img src="http://welab-wingo.gitee.io/image/2020/04/Redis/RedisDeskTop.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/04/Redis/RedisDeskTop.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h4 id="点赞类型枚举类"><a href="#点赞类型枚举类" class="headerlink" title="点赞类型枚举类"></a>点赞类型枚举类</h4><blockquote>
 <p>LIKED ARTICLE 文章点赞；<br>LIKED ⅥDEO 视频点赞；</p>
 </blockquote>
@@ -204,7 +215,14 @@
 <blockquote>
 <p>自定义的 Key 格式：类型 + 类型实体的 id</p>
 </blockquote>
-<p><img src="http://welab-wingo.gitee.io/image/2020/04/Redis/Test01.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/04/Redis/Test01.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h3 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h3><p>该方案 Redis 数据库只存储点赞主体和被点赞主体的ID信息，数据类型采用 Hash 类型。</p>
 <blockquote>
 <p>key ：LIKED_TYPE + subject_id，即使用文章的 id 作为 key 。<br>field ：<br>    post_id 点赞人的id ；<br>    value 固定值 1 ：表示一个点赞主体对被点赞主体点了一次赞。</p>
@@ -218,8 +236,22 @@
 <blockquote>
 <p>初始化 100 篇文章的点赞信息，并且 id = num 的文章其点赞数为 num</p>
 </blockquote>
-<p><img src="http://welab-wingo.gitee.io/image/2020/04/Redis/RedisDeskTop01.png" alt=""></p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/04/Redis/Test02.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/04/Redis/RedisDeskTop01.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/04/Redis/Test02.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h3 id="复杂实现"><a href="#复杂实现" class="headerlink" title="复杂实现"></a>复杂实现</h3><blockquote>
 <p>前面的简单实现只缓存了 ID 的数据，而实际的应用场景中常常还需要更多的信息，比如文章标题、文章内容简介、用户昵称、用户头像、点赞排行等信息。根据需求继续完善项目。</p>
 </blockquote>
@@ -241,9 +273,23 @@
 
 <h4 id="单元测试-3"><a href="#单元测试-3" class="headerlink" title="单元测试"></a>单元测试</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">keyTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">    MyType myType = MyType.LIKED_ARTICLE;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">100</span>; j++) &#123;</span><br><span class="line">        Article article= <span class="keyword">new</span> Article();</span><br><span class="line">        article.setArticleId(j);</span><br><span class="line">        article.setTitle(<span class="string">"文章标题"</span>+j);</span><br><span class="line">        article.setImg(<span class="string">"文章图片"</span>+j);</span><br><span class="line">        article.setSummary(<span class="string">"文章摘要"</span>+j);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= j; i++) &#123;</span><br><span class="line">            User user = <span class="keyword">new</span> User();</span><br><span class="line">            user.setUserId (i);</span><br><span class="line">            user.setUsername(<span class="string">"user"</span>+ i);</span><br><span class="line">            user.setAvatar(<span class="string">"avatar"</span>+ i);</span><br><span class="line">            likedService.liked(myType, j+<span class="string">""</span>, i+<span class="string">""</span>, article, user);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">countTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">    MyType myType = MyType.LIKED_ARTICLE;</span><br><span class="line">    log.info(likedService.getSubjectTopN(myType, (<span class="keyword">long</span>) <span class="number">10</span>).toString());</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://welab-wingo.gitee.io/image/2020/04/Redis/RedisDeskTop02.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/04/Redis/RedisDeskTop02.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>用户信息被写入缓存。</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/04/Redis/Test03.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/04/Redis/Test03.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>取得排名前十的文章信息。</p>
 
         </div>
@@ -253,7 +299,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-07-10T03:58:30.537Z" itemprop="dateUpdated">2020-07-10 11:58:30</time>
+    最后更新时间：<time datetime="2020-07-10T03:58:30.000Z" itemprop="dateUpdated">2020-07-10 11:58:30</time>
 </span><br>
 
 
@@ -277,6 +323,51 @@
 
 
             
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/09/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/Redis%20%E7%82%B9%E8%B5%9E/&title=《Redis 点赞》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/09/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/Redis%20%E7%82%B9%E8%B5%9E/&title=《Redis 点赞》 — Wingo's Blog&source=Redis 实现点赞功能。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/09/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/Redis%20%E7%82%B9%E8%B5%9E/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Redis 点赞》 — Wingo's Blog&url=http://yoursite.com/2020/04/09/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/Redis%20%E7%82%B9%E8%B5%9E/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/09/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/Redis%20%E7%82%B9%E8%B5%9E/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
 
 
         </div>
@@ -317,6 +408,30 @@
 
 
 
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "QoOGpxpe5BGO7EmBfCSjvsdy-gzGzoHsz",
+            appKey: "rD7bmgy1t0G7BO6g9US2nMGg",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
 
 
 
@@ -342,7 +457,7 @@
         </p>
     </div> 
     <div class="bottom">
-        <p><span>Wingo &copy; 2020</span>
+        <p><span>Wingo &copy; 2020 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -356,14 +471,60 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/09/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/Redis%20%E7%82%B9%E8%B5%9E/&title=《Redis 点赞》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/09/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/Redis%20%E7%82%B9%E8%B5%9E/&title=《Redis 点赞》 — Wingo's Blog&source=Redis 实现点赞功能。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/09/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/Redis%20%E7%82%B9%E8%B5%9E/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Redis 点赞》 — Wingo's Blog&url=http://yoursite.com/2020/04/09/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/Redis%20%E7%82%B9%E8%B5%9E/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/09/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/Redis%20%E7%82%B9%E8%B5%9E/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/04/09/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/Redis%20%E7%82%B9%E8%B5%9E/" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: ture, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -383,7 +544,7 @@ var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 

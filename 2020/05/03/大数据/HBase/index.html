@@ -38,14 +38,14 @@
 <meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/05/HBase/HBase08.jpg">
 <meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/05/HBase/HBase09.jpg">
 <meta property="article:published_time" content="2020-05-03T00:41:00.000Z">
-<meta property="article:modified_time" content="2020-07-10T03:39:13.940Z">
+<meta property="article:modified_time" content="2020-07-10T03:39:13.000Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="HBase">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/05/HBase/HBase01.jpg">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -127,6 +127,10 @@
         </div>
         
         
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
 </header>
 <header class="content-header post-header">
@@ -157,7 +161,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据模型"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">数据模型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基本架构"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">基本架构</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装部署"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">安装部署</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Shell"><span class="post-toc-number">2.</span> <span class="post-toc-text">Shell</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基本操作"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">基本操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#表操作"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">表操作</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进阶"><span class="post-toc-number">3.</span> <span class="post-toc-text">进阶</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#结构原理"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">结构原理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#写流程"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">写流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MemStore-Flush"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">MemStore Flush</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#读流程"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">读流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#StoreFile-Compaction"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">StoreFile Compaction</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Region-Split"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">Region Split</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#API"><span class="post-toc-number">4.</span> <span class="post-toc-text">API</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#表操作-1"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">表操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MapReduce"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">MapReduce</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#官方案例"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">官方案例</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#自定义"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">自定义</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#集成-Hive"><span class="post-toc-number">5.</span> <span class="post-toc-text">集成 Hive</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优化"><span class="post-toc-number">6.</span> <span class="post-toc-text">优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#高可用"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">高可用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#预分区"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">预分区</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RowKey"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">RowKey</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内存优化"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">内存优化</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目实战"><span class="post-toc-number">7.</span> <span class="post-toc-text">项目实战</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#表的创建"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">表的创建</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#功能实现"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">功能实现</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简介"><span class="post-toc-text">简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据模型"><span class="post-toc-text">数据模型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基本架构"><span class="post-toc-text">基本架构</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装部署"><span class="post-toc-text">安装部署</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Shell"><span class="post-toc-text">Shell</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基本操作"><span class="post-toc-text">基本操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#表操作"><span class="post-toc-text">表操作</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进阶"><span class="post-toc-text">进阶</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#结构原理"><span class="post-toc-text">结构原理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#写流程"><span class="post-toc-text">写流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MemStore-Flush"><span class="post-toc-text">MemStore Flush</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#读流程"><span class="post-toc-text">读流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#StoreFile-Compaction"><span class="post-toc-text">StoreFile Compaction</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Region-Split"><span class="post-toc-text">Region Split</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#API"><span class="post-toc-text">API</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#表操作-1"><span class="post-toc-text">表操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MapReduce"><span class="post-toc-text">MapReduce</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#官方案例"><span class="post-toc-text">官方案例</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#自定义"><span class="post-toc-text">自定义</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#集成-Hive"><span class="post-toc-text">集成 Hive</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优化"><span class="post-toc-text">优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#高可用"><span class="post-toc-text">高可用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#预分区"><span class="post-toc-text">预分区</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RowKey"><span class="post-toc-text">RowKey</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内存优化"><span class="post-toc-text">内存优化</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目实战"><span class="post-toc-text">项目实战</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#表的创建"><span class="post-toc-text">表的创建</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#功能实现"><span class="post-toc-text">功能实现</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -198,7 +202,14 @@
 <p>用于标识数据的不同版本（version），每条数据写入时，如果不指定时间戳，系统会自动为其加上该字段，其值为写入 HBase 的时间。</p>
 <p><strong>Cell</strong> </p>
 <p>由 {RowKey, Column Family：Column Qualifier, Time Stamp} 唯一确定的单元。cell 中的数据是没有类型的，全部是字节码形式存贮。</p>
-<h4 id="基本架构"><a href="#基本架构" class="headerlink" title="基本架构"></a>基本架构</h4><p><img src="http://welab-wingo.gitee.io/image/2020/05/HBase/HBase02.jpg" alt=""></p>
+<h4 id="基本架构"><a href="#基本架构" class="headerlink" title="基本架构"></a>基本架构</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/05/HBase/HBase02.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p><strong>Region Server</strong> </p>
 <p>Region Server 为 Region 的管理者，其实现类为 HRegionServer，主要作用如下：对于数据的操作：get, put, delete； 对于 Region 的操作：splitRegion、compactRegion。</p>
 <p><strong>Master</strong> </p>
@@ -220,14 +231,28 @@
 
 <h4 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建表，只需要初始化一个列族信息即可</span></span><br><span class="line">hbase(main):002:0&gt; create 'student','info'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 插入数据到表 </span></span><br><span class="line">hbase(main):003:0&gt; put 'student','1001','info:sex','male'</span><br><span class="line">hbase(main):004:0&gt; put 'student','1001','info:age','18'</span><br><span class="line">hbase(main):005:0&gt; put 'student','1002','info:name','Janna'</span><br><span class="line">hbase(main):006:0&gt; put 'student','1002','info:sex','female'</span><br><span class="line">hbase(main):007:0&gt; put 'student','1002','info:age','20'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 扫描查看表数据</span></span><br><span class="line">hbase(main):008:0&gt; scan 'student'</span><br><span class="line">hbase(main):009:0&gt; scan 'student',&#123;STARTROW=&gt;'1001', STOPROW=&gt;'1001'&#125;</span><br><span class="line">hbase(main):010:0&gt; scan 'student',&#123;STARTROW=&gt;'1001'&#125;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看表结构</span></span><br><span class="line">hbase(main):011:0&gt; describe ‘student’</span><br><span class="line"><span class="meta">#</span><span class="bash"> 更新指定字段的数据</span></span><br><span class="line">hbase(main):012:0&gt; put 'student','1001','info:name','Nick'</span><br><span class="line">hbase(main):013:0&gt; put 'student','1001','info:age','100'</span><br><span class="line">hbase(main):014:0&gt; get 'student','1001'</span><br><span class="line">hbase(main):015:0&gt; get 'student','1001','info:name'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 统计表数据行数</span></span><br><span class="line">hbase(main):021:0&gt; count 'student'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除数据</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除某 rowkey 的全部数据</span></span><br><span class="line">hbase(main):016:0&gt; deleteall 'student','1001'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除某 rowkey 的某一列数据</span></span><br><span class="line">hbase(main):017:0&gt; delete 'student','1002','info:sex'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 清空表数据</span></span><br><span class="line">hbase(main):018:0&gt; truncate 'student'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除表 需要先让该表为 <span class="built_in">disable</span> 状态</span></span><br><span class="line">hbase(main):019:0&gt; disable 'student'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 然后才能 drop 这个表</span></span><br><span class="line">hbase(main):020:0&gt; drop 'student'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 变更表信息 将 info 列族中的数据存放 3 个版本</span></span><br><span class="line">hbase(main):022:0&gt; alter 'student',&#123;NAME=&gt;'info',VERSIONS=&gt;3&#125;</span><br><span class="line">hbase(main):022:0&gt; get 'student','1001',&#123;COLUMN=&gt;'info:name',VERSIONS=&gt;3&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><h4 id="结构原理"><a href="#结构原理" class="headerlink" title="结构原理"></a>结构原理</h4><p><img src="http://welab-wingo.gitee.io/image/2020/05/HBase/HBase03.jpg" alt=""></p>
+<h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><h4 id="结构原理"><a href="#结构原理" class="headerlink" title="结构原理"></a>结构原理</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/05/HBase/HBase03.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p><strong>StoreFile</strong> </p>
 <p>保存实际数据的物理文件，StoreFile 以 HFile 的形式存储在 HDFS 上。每个 Store 会有 一个或多个 StoreFile（HFile），数据在每个 StoreFile 中都是有序的。</p>
 <p><strong>MemStore</strong> </p>
 <p>写缓存，由于 HFile 中的数据要求是有序的，所以数据是先存储在 MemStore 中，排好序后，等到达刷写时机才会刷写到 HFile，每次刷写都会形成一个新的 HFile。</p>
 <p> <strong>WAL</strong> Write-Ahead Logging</p>
 <p>由于数据要经 MemStore 排序后才能刷写到 HFile，但把数据保存在内存中会有很高的概率导致数据丢失，为了解决这个问题，数据会先写在一个叫做 Write-Ahead logfile 的文件 中，然后再写入 MemStore 中。所以在系统出现故障的时候，数据可以通过这个日志文件重建。</p>
-<h4 id="写流程"><a href="#写流程" class="headerlink" title="写流程"></a>写流程</h4><p><img src="http://welab-wingo.gitee.io/image/2020/05/HBase/HBase04.jpg" alt=""></p>
+<h4 id="写流程"><a href="#写流程" class="headerlink" title="写流程"></a>写流程</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/05/HBase/HBase04.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <ol>
 <li>Client 先访问 zookeeper，获取 hbase:meta 表位于哪个 Region Server；</li>
 <li>访问对应的 Region Server，获取 hbase:meta 表，根据写请求的 namespace:table/rowkey， 查询出目标数据位于哪个 Region Server 中的哪个 Region 中。并将该 table 的 region 信息以 及 meta 表的位置信息缓存在客户端的 meta cache，方便下次访问；</li>
@@ -246,7 +271,14 @@
 <li>到达自动刷写的时间，也会触发 memstore flush。自动刷新的时间间隔由该属性进行配置，官方建议关闭此配置，hbase.regionserver.optionalcacheflushinterval（默认 1 小时）。</li>
 <li>当 WAL 文件的数量超过 hbase.regionserver.max.logs，region 会按照时间顺序依次进行刷写，直到 WAL 文件数量减小到 hbase.regionserver.max.log 以下（该属性名已经废弃， 现无需手动设置，最大值为 32）。</li>
 </ol>
-<h4 id="读流程"><a href="#读流程" class="headerlink" title="读流程"></a>读流程</h4><p><img src="http://welab-wingo.gitee.io/image/2020/05/HBase/HBase06.jpg" alt=""></p>
+<h4 id="读流程"><a href="#读流程" class="headerlink" title="读流程"></a>读流程</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/05/HBase/HBase06.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <ol>
 <li>Client 先访问 zookeeper，获取 hbase:meta 表位于哪个 Region Server；</li>
 <li>访问对应的 Region Server，获取 hbase:meta 表，根据读请求的 namespace:table/rowkey， 查询出目标数据位于哪个 Region Server 中的哪个 Region 中。并将该 table 的 region 信息以 及 meta 表的位置信息缓存在客户端的 meta cache，方便下次访问；</li>
@@ -258,7 +290,14 @@
 <h4 id="StoreFile-Compaction"><a href="#StoreFile-Compaction" class="headerlink" title="StoreFile Compaction"></a>StoreFile Compaction</h4><p>由于 memstore 每次刷写都会生成一个新的 HFile，且同一个字段的不同版本（timestamp） 和不同类型（Put / Delete）有可能会分布在不同的 HFile 中，因此查询时需要遍历所有的 HFile。为了减少 HFile 的个数，以及清理掉过期和删除的数据，会进行 StoreFile Compaction。 </p>
 <p>Compaction 分为两种，分别是 Minor Compaction 和 Major Compaction。</p>
 <p>Minor Compaction 会将临近的若干个较小的 HFile 合并成一个较大的 HFile，但不会清理过期和删除的数据。<br>Major Compaction 会将一个 Store 下的所有的 HFile 合并成一个大 HFile，并且会清理掉过期 和删除的数据。</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/05/HBase/HBase07.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/05/HBase/HBase07.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h4 id="Region-Split"><a href="#Region-Split" class="headerlink" title="Region Split"></a>Region Split</h4><p>默认情况下，每个 Table 起初只有一个 Region，随着数据的不断写入，Region 会自动进行拆分。刚拆分时，两个子 Region 都位于当前的 Region Server，但处于负载均衡的考虑， HMaster 有可能会将某个 Region 转移给其他的 Region Server。</p>
 <p>Region Split 时机：</p>
 <ol>
@@ -343,7 +382,14 @@
 <h3 id="项目实战"><a href="#项目实战" class="headerlink" title="项目实战"></a>项目实战</h3><blockquote>
 <p>微博内容的浏览，数据库表设计；<br>用户社交体现：关注用户，取关用户；<br>拉取关注的人的微博内容。</p>
 </blockquote>
-<h4 id="表的创建"><a href="#表的创建" class="headerlink" title="表的创建"></a>表的创建</h4><p><img src="http://welab-wingo.gitee.io/image/2020/05/HBase/HBase09.jpg" alt=""></p>
+<h4 id="表的创建"><a href="#表的创建" class="headerlink" title="表的创建"></a>表的创建</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/05/HBase/HBase09.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建命名空间以及表名的定义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取配置 conf</span></span><br><span class="line"><span class="keyword">private</span> Configuration conf = HbaseConfiguration.create();</span><br><span class="line"><span class="comment">// 微博内容表的表名</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">byte</span>[] TABLE_CONTENT = Bytes.toBytes(<span class="string">"weibo:content"</span>);</span><br><span class="line"><span class="comment">// 用户关系表的表名</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">byte</span>[] TABLE_RELATIONS = Bytes.toBytes(<span class="string">"weibo:relations"</span>);</span><br><span class="line"><span class="comment">// 微博收件箱表的表名</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">byte</span>[] TABLE_RECEIVE_CONTENT_EMAIL = </span><br><span class="line">    Bytes.toBytes(<span class="string">"weibo:receive_content_email"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initNamespace</span><span class="params">()</span></span>&#123;</span><br><span class="line">    HbaseAdmin admin = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        admin = <span class="keyword">new</span> HbaseAdmin(conf);</span><br><span class="line">        <span class="comment">// 命名空间类似于关系型数据库中的 schema，可以想象成文件夹</span></span><br><span class="line">        NamespaceDescriptor weibo = NamespaceDescriptor</span><br><span class="line">            .create(<span class="string">"weibo"</span>)</span><br><span class="line">            .addConfiguration(<span class="string">"creator"</span>, <span class="string">"wingo"</span>)</span><br><span class="line">            .addConfiguration(<span class="string">"create_time"</span>, System.currentTimeMillis() + <span class="string">""</span>)</span><br><span class="line">            .build();</span><br><span class="line">        admin.createNamespace(weibo);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (MasterNotRunningException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ZooKeeperConnectionException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> != admin)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                admin.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>创建微博内容表</p>
@@ -374,7 +420,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-07-10T03:39:13.940Z" itemprop="dateUpdated">2020-07-10 11:39:13</time>
+    最后更新时间：<time datetime="2020-07-10T03:39:13.000Z" itemprop="dateUpdated">2020-07-10 11:39:13</time>
 </span><br>
 
 
@@ -398,6 +444,51 @@
 
 
             
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/05/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/&title=《Hbase》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/05/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/&title=《Hbase》 — Wingo's Blog&source=HBase 的简本介绍及简使用。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/05/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hbase》 — Wingo's Blog&url=http://yoursite.com/2020/05/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/05/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
 
 
         </div>
@@ -438,6 +529,30 @@
 
 
 
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "QoOGpxpe5BGO7EmBfCSjvsdy-gzGzoHsz",
+            appKey: "rD7bmgy1t0G7BO6g9US2nMGg",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
 
 
 
@@ -463,7 +578,7 @@
         </p>
     </div> 
     <div class="bottom">
-        <p><span>Wingo &copy; 2020</span>
+        <p><span>Wingo &copy; 2020 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -477,14 +592,60 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/05/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/&title=《Hbase》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/05/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/&title=《Hbase》 — Wingo's Blog&source=HBase 的简本介绍及简使用。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/05/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hbase》 — Wingo's Blog&url=http://yoursite.com/2020/05/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/05/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/05/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: ture, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -504,7 +665,7 @@ var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 

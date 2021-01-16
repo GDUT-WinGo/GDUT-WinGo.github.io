@@ -34,14 +34,14 @@
 <meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopNIO.PNG">
 <meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopOIO.PNG">
 <meta property="article:published_time" content="2020-01-25T08:09:20.000Z">
-<meta property="article:modified_time" content="2020-07-10T04:04:11.749Z">
+<meta property="article:modified_time" content="2020-07-10T04:04:11.000Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Netty">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/01/Netty/Executor.PNG">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -123,6 +123,10 @@
         </div>
         
         
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
 </header>
 <header class="content-header post-header">
@@ -153,7 +157,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程模型概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">线程模型概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EventLoop-接口"><span class="post-toc-number">2.</span> <span class="post-toc-text">EventLoop 接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#任务调度"><span class="post-toc-number">3.</span> <span class="post-toc-text">任务调度</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JDK-的任务调度-API"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">JDK 的任务调度 API</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用-EventLoop-调度任务"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">使用 EventLoop 调度任务</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现细节"><span class="post-toc-number">4.</span> <span class="post-toc-text">实现细节</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#线程管理"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">线程管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#EventLoop-线程的分配"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">EventLoop &#x2F; 线程的分配</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#异步传输"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">异步传输</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#阻塞传输"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">阻塞传输</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程模型概述"><span class="post-toc-text">线程模型概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EventLoop-接口"><span class="post-toc-text">EventLoop 接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#任务调度"><span class="post-toc-text">任务调度</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JDK-的任务调度-API"><span class="post-toc-text">JDK 的任务调度 API</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用-EventLoop-调度任务"><span class="post-toc-text">使用 EventLoop 调度任务</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现细节"><span class="post-toc-text">实现细节</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#线程管理"><span class="post-toc-text">线程管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#EventLoop-线程的分配"><span class="post-toc-text">EventLoop &#x2F; 线程的分配</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#异步传输"><span class="post-toc-text">异步传输</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#阻塞传输"><span class="post-toc-text">阻塞传输</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -180,13 +184,27 @@
 
 <h3 id="线程模型概述"><a href="#线程模型概述" class="headerlink" title="线程模型概述"></a>线程模型概述</h3><p>多核心或多个 CPU 的计算机现在已经司空见惯，大多数的现代应用程序都利用了 复杂的多线程处理技术以有效地利用系统资源。</p>
 <p>在早期的 Java 语言中，我们使用多线程处理的主要方式无非是按需创建和启动新的 Thread 来执行并发的任务单元，这是一种在高负载下工作得很差的原始方式。Java 5 随后引入了  Executor API，其线程池通过缓存和重用 Thread 极大地提高了性能。</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/01/Netty/Executor.PNG" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/01/Netty/Executor.PNG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>虽然池化和重用线程相对于简单地为每个任务都创建和销毁线程是一种进步，但是它并不能 消除由上下文切换所带来的开销，其将随着线程数量的增加很快变得明显，并且在高负载下愈演愈烈。Netty 框架帮助简化了这一处理。</p>
 <h3 id="EventLoop-接口"><a href="#EventLoop-接口" class="headerlink" title="EventLoop 接口"></a>EventLoop 接口</h3><p>运行任务来处理在连接的生命周期内发生的事件是任何网络框架的基本功能。与之相应的编程上的构造通常被称为事件循环：Netty 使用了 interface io.netty.channel.EventLoop 来适配的术语。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在事件循环中执行任务</span></span><br><span class="line"><span class="keyword">while</span> (!terminated) &#123;</span><br><span class="line">    List&lt;Runnable&gt; readyEvents = blockUntilEventsReady();</span><br><span class="line">    <span class="keyword">for</span> (Runnable ev: readyEvents) &#123;</span><br><span class="line">        ev.run();</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>Netty 的 EventLoop 是协同设计的一部分，它采用了两个基本的 API：并发和网络编程。首先，io.netty.util.concurrent 包构建在 JDK 的 java.util.concurrent 包上，用来提供线程执行器。其次，io.netty.channel 包中的类，为了与 Channel 的事件进行交互，扩展了这些接口/类。</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopClassLayer.PNG" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopClassLayer.PNG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>在这个模型中，一个 EventLoop 将由一个永远都不会改变的 Thread 驱动，同时任务 （Runnable 或者 Callable）可以直接提交给 EventLoop 实现，以立即执行或者调度执行。根据配置和可用核心的不同，可能会创建多个 EventLoop 实例用以优化资源的使用，并且单个 EventLoop 可能会被指派用于服务多个 Channel。</p>
 <blockquote>
 <p>事件/任务的执行顺序 ：</p>
@@ -201,14 +219,35 @@
 
 <h3 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h3><p>更加详细地探讨 Netty 的线程模型和任务调度实现的主要内容。</p>
 <h4 id="线程管理"><a href="#线程管理" class="headerlink" title="线程管理"></a>线程管理</h4><p>Netty 线程模型的卓越性能取决于对于当前执行的 Thread 的身份的确定。</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopTask.PNG" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopTask.PNG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>永远不要将一个长时间运行的任务放入到执行队列中，因为它将阻塞需要在同一线程上执行的任何其他任务。如果必须要进行阻塞调用或者执行长时间运行的任务，我们建议使用一个专门的 EventExecutor。</p>
 <h4 id="EventLoop-线程的分配"><a href="#EventLoop-线程的分配" class="headerlink" title="EventLoop / 线程的分配"></a>EventLoop / 线程的分配</h4><p>服务于 Channel 的 I/O 和事件的 EventLoop 包含在 EventLoopGroup 中。根据不同的传输实现，EventLoop 的创建和分配方式也不同。</p>
 <h5 id="异步传输"><a href="#异步传输" class="headerlink" title="异步传输"></a>异步传输</h5><p>异步传输实现只使用了少量的 EventLoop（以及和它们相关联的 Thread），而且在当前的线程模型中，它们可能会被多个 Channel 所共享。这使得可以通过尽可能少量的 Thread 来支撑大量的 Channel，而不是每个 Channel 分配一个 Thread。</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopNIO.PNG" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopNIO.PNG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>一旦一个 Channel 被分配给一个 EventLoop，它将在它的整个生命周期中都使用这个 EventLoop（以及相关联的 Thread）。</p>
 <h5 id="阻塞传输"><a href="#阻塞传输" class="headerlink" title="阻塞传输"></a>阻塞传输</h5><p>这里每一个 Channel 都将被分配给一个 EventLoop（以及它的 Thread）。</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopOIO.PNG" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/01/Netty/EventLoopOIO.PNG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>每个 Channel 的 I/O 事件都将只会被一个 Thread （用于支撑该 Channel 的 EventLoop 的那个 Thread）处理（Netty 的一致性体现）。</p>
 
         </div>
@@ -218,7 +257,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-07-10T04:04:11.749Z" itemprop="dateUpdated">2020-07-10 12:04:11</time>
+    最后更新时间：<time datetime="2020-07-10T04:04:11.000Z" itemprop="dateUpdated">2020-07-10 12:04:11</time>
 </span><br>
 
 
@@ -242,6 +281,51 @@
 
 
             
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/01/25/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20EventLoop%20%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/&title=《Netty EventLoop 和线程模型》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/01/25/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20EventLoop%20%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/&title=《Netty EventLoop 和线程模型》 — Wingo's Blog&source=线程模型指定了操作系统、编程语言、框架或者应用程序的上下文中的线程管理的关键方面，如何以及何时创建线程将对应用程序代码的执行产生显著的影响。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/01/25/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20EventLoop%20%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Netty EventLoop 和线程模型》 — Wingo's Blog&url=http://yoursite.com/2020/01/25/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20EventLoop%20%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/01/25/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20EventLoop%20%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
 
 
         </div>
@@ -282,6 +366,30 @@
 
 
 
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "QoOGpxpe5BGO7EmBfCSjvsdy-gzGzoHsz",
+            appKey: "rD7bmgy1t0G7BO6g9US2nMGg",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
 
 
 
@@ -307,7 +415,7 @@
         </p>
     </div> 
     <div class="bottom">
-        <p><span>Wingo &copy; 2020</span>
+        <p><span>Wingo &copy; 2020 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -321,14 +429,60 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/01/25/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20EventLoop%20%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/&title=《Netty EventLoop 和线程模型》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/01/25/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20EventLoop%20%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/&title=《Netty EventLoop 和线程模型》 — Wingo's Blog&source=线程模型指定了操作系统、编程语言、框架或者应用程序的上下文中的线程管理的关键方面，如何以及何时创建线程将对应用程序代码的执行产生显著的影响。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/01/25/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20EventLoop%20%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Netty EventLoop 和线程模型》 — Wingo's Blog&url=http://yoursite.com/2020/01/25/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20EventLoop%20%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/01/25/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20EventLoop%20%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/01/25/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20EventLoop%20%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: ture, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -348,7 +502,7 @@ var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 

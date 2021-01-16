@@ -37,14 +37,14 @@
 <meta property="og:image" content="http://welab-wingo.gitee.io/Image/2020/03/Thread/Test04_.png">
 <meta property="og:image" content="http://welab-wingo.gitee.io/Image/2020/03/Thread/Test05.png">
 <meta property="article:published_time" content="2020-03-28T06:25:21.000Z">
-<meta property="article:modified_time" content="2020-07-10T02:47:57.922Z">
+<meta property="article:modified_time" content="2020-07-10T02:47:57.000Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="高并发编程">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/03/Thread/Runnable01.png">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -126,6 +126,10 @@
         </div>
         
         
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
 </header>
 <header class="content-header post-header">
@@ -156,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#线程与进程"><span class="post-toc-number">1.</span> <span class="post-toc-text">线程与进程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程的创建"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">线程的创建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#继承-Thread-类"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">继承 Thread 类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现-Runnable-接口"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">实现 Runnable 接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Thread-VS-Runnable"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">Thread VS. Runnable</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程讲解"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">线程讲解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#线程的状态"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">线程的状态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常用方法"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">常用方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#线程属性"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">线程属性</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进程的创建"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">进程的创建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ProcessBuilder"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">ProcessBuilder</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Runtime-exec"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">Runtime.exec()</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#synchronized-amp-Lock"><span class="post-toc-number">2.</span> <span class="post-toc-text">synchronized &amp; Lock</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#synchronized"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">synchronized</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#synchronized-方法"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">synchronized 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#synchronized-代码块"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">synchronized 代码块</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Lock-接口"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Lock 接口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ReentrantLock"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">ReentrantLock</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ReadWriteLock-接口"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">ReadWriteLock 接口</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#锁的种类"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">锁的种类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#可重入锁"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">可重入锁</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#可中断锁"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">可中断锁</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#公平锁"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">公平锁</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#读写锁"><span class="post-toc-number">2.3.4.</span> <span class="post-toc-text">读写锁</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#线程与进程"><span class="post-toc-text">线程与进程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程的创建"><span class="post-toc-text">线程的创建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#继承-Thread-类"><span class="post-toc-text">继承 Thread 类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现-Runnable-接口"><span class="post-toc-text">实现 Runnable 接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Thread-VS-Runnable"><span class="post-toc-text">Thread VS. Runnable</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程讲解"><span class="post-toc-text">线程讲解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#线程的状态"><span class="post-toc-text">线程的状态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常用方法"><span class="post-toc-text">常用方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#线程属性"><span class="post-toc-text">线程属性</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进程的创建"><span class="post-toc-text">进程的创建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ProcessBuilder"><span class="post-toc-text">ProcessBuilder</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Runtime-exec"><span class="post-toc-text">Runtime.exec()</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#synchronized-amp-Lock"><span class="post-toc-text">synchronized &amp; Lock</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#synchronized"><span class="post-toc-text">synchronized</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#synchronized-方法"><span class="post-toc-text">synchronized 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#synchronized-代码块"><span class="post-toc-text">synchronized 代码块</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Lock-接口"><span class="post-toc-text">Lock 接口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ReentrantLock"><span class="post-toc-text">ReentrantLock</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ReadWriteLock-接口"><span class="post-toc-text">ReadWriteLock 接口</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#锁的种类"><span class="post-toc-text">锁的种类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#可重入锁"><span class="post-toc-text">可重入锁</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#可中断锁"><span class="post-toc-text">可中断锁</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#公平锁"><span class="post-toc-text">公平锁</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#读写锁"><span class="post-toc-text">读写锁</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -227,7 +231,14 @@
 <p>双保险：即使条件永远得不到满足，线程也会在规定时间后自我唤醒。<br>调用 sleep 方法进入 TIMED_WAITING 状态，此状态不释放锁（与锁无关），只能等其自我唤醒。<br>sleep(0)：几乎不等待。</p>
 </blockquote>
 <p>TERMINATED (终止) ：一个已经退出的线程处于这一状态。</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/03/Thread/ThreadState.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/03/Thread/ThreadState.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><p><strong>start 方法</strong></p>
 <p>start() 用来启动一个线程，当调用 start 方法后，系统才会开启一个新的线程来执行用户定义的子任务，在这个过程中，会为相应的线程分配需要的资源。</p>
 <p><strong>run 方法</strong></p>
@@ -236,7 +247,14 @@
 <p>sleep 方法相当于让线程睡眠，交出 CPU，让 CPU 去执行其他的任务。注意 sleep 方法与锁无关。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">private</span> Object object = <span class="keyword">new</span> Object();</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException  </span>&#123;</span><br><span class="line">        Test test = <span class="keyword">new</span> Test();</span><br><span class="line">        MyThread thread1 = test.<span class="keyword">new</span> MyThread();</span><br><span class="line">        MyThread thread2 = test.<span class="keyword">new</span> MyThread();</span><br><span class="line">        thread1.start();</span><br><span class="line">        thread2.start(); <span class="comment">// 等待上一个线程运行完同步代码块才可运行</span></span><br><span class="line">    &#125; </span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (object) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                System.out.println(<span class="string">"i:"</span>+i);</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">"线程"</span>+Thread.currentThread().getName()+<span class="string">"进入睡眠状态"</span>);</span><br><span class="line">                    Thread.currentThread().sleep(<span class="number">10000</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    <span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(<span class="string">"线程"</span>+Thread.currentThread().getName()+<span class="string">"睡眠结束"</span>);</span><br><span class="line">                i++;</span><br><span class="line">                System.out.println(<span class="string">"i:"</span>+i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://welab-wingo.gitee.io/image/2020/03/Thread/Test01.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/03/Thread/Test01.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p><strong>yield 方法</strong></p>
 <p>调用 yield 方法会让当前线程交出 CPU 权限，让 CPU 去执行其他的线程。它跟 sleep 方法类似，同样不会释放锁。但是 yield 不能控制具体的交出 CPU 的时间，另外，yield 方法只能让拥有相同优先级的线程有获取 CPU 执行时间的机会。</p>
 <p>注意，调用 yield 方法并不会让线程进入阻塞状态，而是让线程重回就绪状态，它只需要等待重新获取 CPU 执行时间，这一点是和 sleep 方法不一样的。</p>
@@ -244,12 +262,26 @@
 <p>假如在 main 线程中，调用 thread.join 方法，则 main 方法会等待 thread 线程执行完毕或者等待一定的时间。如果调用的是无参 join 方法，则等待 thread 执行完毕，如果调用的是指定了时间参数的 join 方法，则等待一定的时间。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException  </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"进入线程"</span>+Thread.currentThread().getName());</span><br><span class="line">        Test test = <span class="keyword">new</span> Test();</span><br><span class="line">        MyThread thread1 = test.<span class="keyword">new</span> MyThread();</span><br><span class="line">        thread1.start();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"线程"</span>+Thread.currentThread().getName()+<span class="string">"等待"</span>);</span><br><span class="line">            thread1.join();</span><br><span class="line">            System.out.println(<span class="string">"线程"</span>+Thread.currentThread().getName()+<span class="string">"继续执行"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">     </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"进入线程"</span>+Thread.currentThread().getName());</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.currentThread().sleep(<span class="number">5000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                <span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"线程"</span>+Thread.currentThread().getName()+<span class="string">"执行完毕"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://welab-wingo.gitee.io/image/2020/03/Thread/Test02.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/03/Thread/Test02.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p><strong>interrupt 方法</strong></p>
 <p>单独调用 interrupt 方法可以使得处于阻塞状态的线程抛出一个异常，也就说，它可以用来中断一个正处于阻塞状态的线程；另外，通过可以通过 interrupt 方法和 isInterrupted 方法来停止正在运行的线程。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException  </span>&#123;</span><br><span class="line">        Test test = <span class="keyword">new</span> Test();</span><br><span class="line">        MyThread thread = test.<span class="keyword">new</span> MyThread();</span><br><span class="line">        thread.start();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.currentThread().sleep(<span class="number">2000</span>); <span class="comment">// 此线程睡眠 2s</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">             </span><br><span class="line">        &#125;</span><br><span class="line">        thread.interrupt(); <span class="comment">// 阻塞状态中被打断，抛出异常 InterruptedException</span></span><br><span class="line">    &#125; </span><br><span class="line">     </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">"进入睡眠状态"</span>);</span><br><span class="line">                Thread.currentThread().sleep(<span class="number">10000</span>);</span><br><span class="line">                System.out.println(<span class="string">"睡眠完毕"</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                System.out.println(<span class="string">"得到中断异常"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"run方法执行完毕"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://welab-wingo.gitee.io/image/2020/03/Thread/Test03.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/03/Thread/Test03.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>上面的例子表明了 interrupt 方法可以中断处于阻塞状态的线程，那么能不能中断处于非阻塞状态的线程呢？答案是不能。但是如果配合 isInterrupted 方法能够中断正在运行的线程，因为调用 interrupt 方法相当于将中断标志位置为 true，那么可以通过调用 isInterrupted 方法判断中断标志是否被置位来中断线程的执行。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException  </span>&#123;</span><br><span class="line">        Test test = <span class="keyword">new</span> Test();</span><br><span class="line">        MyThread thread = test.<span class="keyword">new</span> MyThread();</span><br><span class="line">        thread.start();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.currentThread().sleep(<span class="number">2000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">        	</span><br><span class="line">        &#125;</span><br><span class="line">        thread.interrupt();</span><br><span class="line">    &#125; </span><br><span class="line">     </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">            <span class="comment">// 不推荐这么用，可自定义一个标识符用于退出循环</span></span><br><span class="line">            <span class="keyword">while</span>(!isInterrupted() &amp;&amp; i&lt;Integer.MAX_VALUE)&#123;</span><br><span class="line">                System.out.println(i+<span class="string">" while循环"</span>);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -282,11 +314,25 @@
 <h4 id="synchronized-方法"><a href="#synchronized-方法" class="headerlink" title="synchronized 方法"></a>synchronized 方法</h4><p>两个线程分别调用 insertData() 对象插入数据。（非同步）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span>  </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> InsertData insertData = <span class="keyword">new</span> InsertData();</span><br><span class="line">        <span class="comment">// 匿名内部类</span></span><br><span class="line">        <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                insertData.insert(Thread.currentThread());</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                insertData.insert(Thread.currentThread());</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;.start();</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InsertData</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;Integer&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Thread thread)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">            System.out.println(thread.getName()+<span class="string">"在插入数据"</span>+i);</span><br><span class="line">            arrayList.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://welab-wingo.gitee.io/Image/2020/03/Thread/Test04.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/Image/2020/03/Thread/Test04.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>输出结果表明两个线程在同时执行insert方法。而如果在insert方法前面加上关键字 synchronized。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InsertData</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;Integer&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">    <span class="comment">// 同步方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Thread thread)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">            System.out.println(thread.getName()+<span class="string">"在插入数据"</span>+i);</span><br><span class="line">            arrayList.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://welab-wingo.gitee.io/Image/2020/03/Thread/Test04_.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/Image/2020/03/Thread/Test04_.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>输出结果表明两线程顺序执行。</p>
 <h4 id="synchronized-代码块"><a href="#synchronized-代码块" class="headerlink" title="synchronized 代码块"></a>synchronized 代码块</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InsertData</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;Integer&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">    <span class="comment">// private Object object = new Object();</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Thread thread)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 同步代码块</span></span><br><span class="line">        <span class="comment">// this 代表获取当前对象的锁，也可以是类中的一个属性，代表获取该属性的锁。</span></span><br><span class="line">        <span class="comment">// synchronized (object) &#123;</span></span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)&#123;</span><br><span class="line">                System.out.println(thread.getName()+<span class="string">"在插入数据"</span>+i);</span><br><span class="line">                arrayList.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -315,7 +361,14 @@
 <p>lockInterruptibly() 响应中断的使用方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 全局变量</span></span><br><span class="line">    <span class="keyword">private</span> Lock lock = <span class="keyword">new</span> ReentrantLock();   </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span>  </span>&#123;</span><br><span class="line">        Test test = <span class="keyword">new</span> Test();</span><br><span class="line">        MyThread thread1 = <span class="keyword">new</span> MyThread(test);</span><br><span class="line">        MyThread thread2 = <span class="keyword">new</span> MyThread(test);</span><br><span class="line">        thread1.start();</span><br><span class="line">        thread2.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        thread2.interrupt();</span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Thread thread)</span> <span class="keyword">throws</span> InterruptedException</span>&#123;</span><br><span class="line">        lock.lockInterruptibly();   <span class="comment">// 线程 1 获得锁 线程 2 处于等待，并且将被打断等待</span></span><br><span class="line">        <span class="keyword">try</span> &#123;  </span><br><span class="line">            System.out.println(thread.getName()+<span class="string">"得到了锁"</span>);</span><br><span class="line">            <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">            <span class="keyword">for</span>(    ;     ;) &#123;</span><br><span class="line">                <span class="keyword">if</span>(System.currentTimeMillis() - startTime &gt;= <span class="number">10000</span>)</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="comment">// 插入数据</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+<span class="string">"执行finally"</span>);</span><br><span class="line">            lock.unlock();</span><br><span class="line">            System.out.println(thread.getName()+<span class="string">"释放了锁"</span>);</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Test test = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyThread</span><span class="params">(Test test)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.test = test;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            test.insert(Thread.currentThread());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+<span class="string">"被中断"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://welab-wingo.gitee.io/Image/2020/03/Thread/Test05.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/Image/2020/03/Thread/Test05.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h4 id="ReadWriteLock-接口"><a href="#ReadWriteLock-接口" class="headerlink" title="ReadWriteLock 接口"></a>ReadWriteLock 接口</h4><p>将文件的读写操作分开，分成 2 个锁来分配给线程，从而使得多个线程可以同时进行读操作。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ReadWriteLock</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 读锁</span></span><br><span class="line">    <span class="function">Lock <span class="title">readLock</span><span class="params">()</span></span>; </span><br><span class="line">    <span class="comment">// 写锁</span></span><br><span class="line">    <span class="function">Lock <span class="title">writeLock</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -339,7 +392,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-07-10T02:47:57.922Z" itemprop="dateUpdated">2020-07-10 10:47:57</time>
+    最后更新时间：<time datetime="2020-07-10T02:47:57.000Z" itemprop="dateUpdated">2020-07-10 10:47:57</time>
 </span><br>
 
 
@@ -363,6 +416,52 @@
 
 
             
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/03/28/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/&title=《线程与进程》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/03/28/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/&title=《线程与进程》 — Wingo's Blog&source=进程、线程、锁、同步等。
+。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/03/28/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《线程与进程》 — Wingo's Blog&url=http://yoursite.com/2020/03/28/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/03/28/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
 
 
         </div>
@@ -403,6 +502,30 @@
 
 
 
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "QoOGpxpe5BGO7EmBfCSjvsdy-gzGzoHsz",
+            appKey: "rD7bmgy1t0G7BO6g9US2nMGg",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
 
 
 
@@ -428,7 +551,7 @@
         </p>
     </div> 
     <div class="bottom">
-        <p><span>Wingo &copy; 2020</span>
+        <p><span>Wingo &copy; 2020 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -442,14 +565,61 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/03/28/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/&title=《线程与进程》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/03/28/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/&title=《线程与进程》 — Wingo's Blog&source=进程、线程、锁、同步等。
+。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/03/28/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《线程与进程》 — Wingo's Blog&url=http://yoursite.com/2020/03/28/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/03/28/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/03/28/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: ture, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -469,7 +639,7 @@ var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 

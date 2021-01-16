@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://welab-wingo.gitee.io/Image/2020/03/SpringBoot/SpringDataJPA.png">
 <meta property="article:published_time" content="2020-03-05T07:42:42.000Z">
-<meta property="article:modified_time" content="2020-07-10T04:13:37.067Z">
+<meta property="article:modified_time" content="2020-07-10T04:13:37.000Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="MyBatis">
 <meta property="article:tag" content="Spring Boot">
@@ -41,7 +41,7 @@
 <meta name="twitter:image" content="http://welab-wingo.gitee.io/Image/2020/03/SpringBoot/SpringDataJPA.png">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -123,6 +123,10 @@
         </div>
         
         
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
 </header>
 <header class="content-header post-header">
@@ -153,7 +157,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JDBC"><span class="post-toc-number">1.</span> <span class="post-toc-text">JDBC</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JdbcTempale"><span class="post-toc-number">2.</span> <span class="post-toc-text">JdbcTempale</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#整合-Druid-数据源"><span class="post-toc-number">3.</span> <span class="post-toc-text">整合 Druid 数据源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#整合-MyBatis"><span class="post-toc-number">4.</span> <span class="post-toc-text">整合 MyBatis</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#整合-SpringData-JPA"><span class="post-toc-number">5.</span> <span class="post-toc-text">整合 SpringData JPA</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JDBC"><span class="post-toc-text">JDBC</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JdbcTempale"><span class="post-toc-text">JdbcTempale</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#整合-Druid-数据源"><span class="post-toc-text">整合 Druid 数据源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#整合-MyBatis"><span class="post-toc-text">整合 MyBatis</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#整合-SpringData-JPA"><span class="post-toc-text">整合 SpringData JPA</span></a></li></ol>
         </nav>
     </aside>
 
@@ -224,7 +228,14 @@
 
 <h3 id="整合-SpringData-JPA"><a href="#整合-SpringData-JPA" class="headerlink" title="整合 SpringData JPA"></a>整合 SpringData JPA</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- JPA --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- mysql驱动 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 启动器中默认的版本较高 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.47<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="http://welab-wingo.gitee.io/Image/2020/03/SpringBoot/SpringDataJPA.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/Image/2020/03/SpringBoot/SpringDataJPA.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>编写一个实体类 Bean 和数据表进行映射，并且配置好映射关系：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 JPA 注解配置映射关系</span></span><br><span class="line"><span class="meta">@Entity</span> <span class="comment">// 告诉 JPA 这是一个实体类（和数据表映射的类）</span></span><br><span class="line"><span class="meta">@Table</span>(name = <span class="string">"tbl_user"</span>) <span class="comment">// @Table 来指定和哪个数据表对应，如果省略默认表名就是 user</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span> <span class="comment">// 这是一个主键</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY) <span class="comment">// 自增主键</span></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"last_name"</span>,length = <span class="number">50</span>) <span class="comment">// 这是和数据表对应的一个列</span></span><br><span class="line">    <span class="keyword">private</span> String lastName;</span><br><span class="line">    <span class="meta">@Column</span> <span class="comment">// 省略默认列名就是属性名</span></span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -242,7 +253,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-07-10T04:13:37.067Z" itemprop="dateUpdated">2020-07-10 12:13:37</time>
+    最后更新时间：<time datetime="2020-07-10T04:13:37.000Z" itemprop="dateUpdated">2020-07-10 12:13:37</time>
 </span><br>
 
 
@@ -266,6 +277,51 @@
 
 
             
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/03/05/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/&title=《Spring Boot 数据访问》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/03/05/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/&title=《Spring Boot 数据访问》 — Wingo's Blog&source=Spring Boot 数据访问的相关知识。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/03/05/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring Boot 数据访问》 — Wingo's Blog&url=http://yoursite.com/2020/03/05/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/03/05/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
 
 
         </div>
@@ -306,6 +362,30 @@
 
 
 
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "QoOGpxpe5BGO7EmBfCSjvsdy-gzGzoHsz",
+            appKey: "rD7bmgy1t0G7BO6g9US2nMGg",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
 
 
 
@@ -331,7 +411,7 @@
         </p>
     </div> 
     <div class="bottom">
-        <p><span>Wingo &copy; 2020</span>
+        <p><span>Wingo &copy; 2020 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -345,14 +425,60 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/03/05/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/&title=《Spring Boot 数据访问》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/03/05/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/&title=《Spring Boot 数据访问》 — Wingo's Blog&source=Spring Boot 数据访问的相关知识。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/03/05/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring Boot 数据访问》 — Wingo's Blog&url=http://yoursite.com/2020/03/05/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/03/05/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/03/05/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: ture, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -372,7 +498,7 @@ var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 

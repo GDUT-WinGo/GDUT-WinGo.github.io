@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/04/Redis/SoundCode01.png">
 <meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/04/Redis/SoundCode02.png">
 <meta property="article:published_time" content="2020-03-31T01:59:45.000Z">
-<meta property="article:modified_time" content="2020-07-10T04:13:20.856Z">
+<meta property="article:modified_time" content="2020-07-10T04:13:20.000Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Springboot">
 <meta property="article:tag" content="Cache">
@@ -40,7 +40,7 @@
 <meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/03/SpringBoot/JSR107.png">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -122,6 +122,10 @@
         </div>
         
         
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
 </header>
 <header class="content-header post-header">
@@ -152,7 +156,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JRS107"><span class="post-toc-number">1.</span> <span class="post-toc-text">JRS107</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-缓存抽象"><span class="post-toc-number">2.</span> <span class="post-toc-text">Spring 缓存抽象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注解"><span class="post-toc-number">3.</span> <span class="post-toc-text">注解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基本流程"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">基本流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注解详解"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">注解详解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Template"><span class="post-toc-number">4.</span> <span class="post-toc-text">Template</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据操作"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">数据操作</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redis-实现缓存"><span class="post-toc-number">5.</span> <span class="post-toc-text">Redis 实现缓存</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#入门基础"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">入门基础</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码示例"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">代码示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Lettuce"><span class="post-toc-number">6.</span> <span class="post-toc-text">Lettuce</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缓存原理"><span class="post-toc-number">7.</span> <span class="post-toc-text">缓存原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redis-配置"><span class="post-toc-number">8.</span> <span class="post-toc-text">Redis 配置</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JRS107"><span class="post-toc-text">JRS107</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-缓存抽象"><span class="post-toc-text">Spring 缓存抽象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注解"><span class="post-toc-text">注解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基本流程"><span class="post-toc-text">基本流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注解详解"><span class="post-toc-text">注解详解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Template"><span class="post-toc-text">Template</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据操作"><span class="post-toc-text">数据操作</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redis-实现缓存"><span class="post-toc-text">Redis 实现缓存</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#入门基础"><span class="post-toc-text">入门基础</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码示例"><span class="post-toc-text">代码示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Lettuce"><span class="post-toc-text">Lettuce</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缓存原理"><span class="post-toc-text">缓存原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redis-配置"><span class="post-toc-text">Redis 配置</span></a></li></ol>
         </nav>
     </aside>
 
@@ -271,12 +275,26 @@
 <p>ctrl + alt + b 可查看这个接口的实现</p>
 </blockquote>
 <p>在 RedisCacheManager 中查看 Redis 缓存的默认配置类：RedisCacheConfiguration：</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/04/Redis/SoundCode01.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/04/Redis/SoundCode01.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <blockquote>
 <p>从源码了解到 Sping Boot 的 Reids 缓存对 Key 和 Value 默认的序列化器分别是 String 类型和 JDK 序列器。</p>
 </blockquote>
 <p>在 RedisCacheManager 中可以看到如何实例化这个类：</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/04/Redis/SoundCode02.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/04/Redis/SoundCode02.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <blockquote>
 <p>实例化这个类必须传入一个 connectionFactory，用 redis 缓存所以传入一个 redisConnectionFactory。</p>
 </blockquote>
@@ -292,7 +310,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-07-10T04:13:20.856Z" itemprop="dateUpdated">2020-07-10 12:13:20</time>
+    最后更新时间：<time datetime="2020-07-10T04:13:20.000Z" itemprop="dateUpdated">2020-07-10 12:13:20</time>
 </span><br>
 
 
@@ -316,6 +334,51 @@
 
 
             
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/03/31/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E7%BC%93%E5%AD%98/&title=《Spring Boot 缓存》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/03/31/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E7%BC%93%E5%AD%98/&title=《Spring Boot 缓存》 — Wingo's Blog&source=JSR107、Spring 缓存抽象。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/03/31/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E7%BC%93%E5%AD%98/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring Boot 缓存》 — Wingo's Blog&url=http://yoursite.com/2020/03/31/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E7%BC%93%E5%AD%98/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/03/31/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E7%BC%93%E5%AD%98/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
 
 
         </div>
@@ -356,6 +419,30 @@
 
 
 
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "QoOGpxpe5BGO7EmBfCSjvsdy-gzGzoHsz",
+            appKey: "rD7bmgy1t0G7BO6g9US2nMGg",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
 
 
 
@@ -381,7 +468,7 @@
         </p>
     </div> 
     <div class="bottom">
-        <p><span>Wingo &copy; 2020</span>
+        <p><span>Wingo &copy; 2020 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -395,14 +482,60 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/03/31/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E7%BC%93%E5%AD%98/&title=《Spring Boot 缓存》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/03/31/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E7%BC%93%E5%AD%98/&title=《Spring Boot 缓存》 — Wingo's Blog&source=JSR107、Spring 缓存抽象。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/03/31/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E7%BC%93%E5%AD%98/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring Boot 缓存》 — Wingo's Blog&url=http://yoursite.com/2020/03/31/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E7%BC%93%E5%AD%98/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/03/31/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E7%BC%93%E5%AD%98/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/03/31/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E7%BC%93%E5%AD%98/" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: ture, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -422,7 +555,7 @@ var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 

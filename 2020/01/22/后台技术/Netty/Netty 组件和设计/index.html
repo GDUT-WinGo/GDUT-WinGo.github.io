@@ -32,14 +32,14 @@
 <meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/Netty/ChannelPipeline.PNG">
 <meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/01/Netty/ServerBootstrapEventLoopGroup.PNG">
 <meta property="article:published_time" content="2020-01-22T06:09:03.000Z">
-<meta property="article:modified_time" content="2020-07-10T04:04:23.276Z">
+<meta property="article:modified_time" content="2020-07-10T04:04:23.000Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Netty">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/01/Netty/Channel%E3%80%81EventLoop%E3%80%81EventLoopGroup.PNG">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -121,6 +121,10 @@
         </div>
         
         
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
 </header>
 <header class="content-header post-header">
@@ -151,7 +155,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Channel、EventLoop-和-ChannelFuture"><span class="post-toc-number">1.</span> <span class="post-toc-text">Channel、EventLoop 和 ChannelFuture</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Channel-接口"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Channel 接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#EvenLoop-接口"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">EvenLoop 接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#channelFuture-接口"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">channelFuture 接口</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ChannelHandler-和-ChannelPipeline"><span class="post-toc-number">2.</span> <span class="post-toc-text">ChannelHandler 和 ChannelPipeline</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ChannelHandler-接口"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">ChannelHandler 接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ChannelPipeline-接口"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">ChannelPipeline 接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编码器和解码器"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">编码器和解码器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#抽象类-SimpleChannelInboundHandler"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">抽象类 SimpleChannelInboundHandler</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引导"><span class="post-toc-number">3.</span> <span class="post-toc-text">引导</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Channel、EventLoop-和-ChannelFuture"><span class="post-toc-text">Channel、EventLoop 和 ChannelFuture</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Channel-接口"><span class="post-toc-text">Channel 接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#EvenLoop-接口"><span class="post-toc-text">EvenLoop 接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#channelFuture-接口"><span class="post-toc-text">channelFuture 接口</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ChannelHandler-和-ChannelPipeline"><span class="post-toc-text">ChannelHandler 和 ChannelPipeline</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ChannelHandler-接口"><span class="post-toc-text">ChannelHandler 接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ChannelPipeline-接口"><span class="post-toc-text">ChannelPipeline 接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编码器和解码器"><span class="post-toc-text">编码器和解码器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#抽象类-SimpleChannelInboundHandler"><span class="post-toc-text">抽象类 SimpleChannelInboundHandler</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引导"><span class="post-toc-text">引导</span></a></li></ol>
         </nav>
     </aside>
 
@@ -189,7 +193,14 @@
 <li>一个 Channel 在它的生命周期内只注册于一个 EventLoop；</li>
 <li>一个 EventLoop 可能会被分配给一个或多个 Channel。</li>
 </ul>
-<p><img src="http://welab-wingo.gitee.io/image/2020/01/Netty/Channel%E3%80%81EventLoop%E3%80%81EventLoopGroup.PNG" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/01/Netty/Channel%E3%80%81EventLoop%E3%80%81EventLoopGroup.PNG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <blockquote>
 <p>在这种设计中，一个给定 Channel 的 I/O 操作都是由相同的 Thread 执行的，实际上消除了对于同步的需要。</p>
 </blockquote>
@@ -207,7 +218,14 @@
 </li>
 </ul>
 <p>ChannelHandler 是专为支持广泛的用途而设计的，可以将它看作是处理往来 ChannelPipeline 事件（包括数据）的任何代码的通用容器。使得事件流经 ChannelPipeline 是 ChannelHandler 的工作，它们是在应用程序的初始化或者引导阶段被安装的。这些对象接收事件、执行它们所实现的处理逻辑，并将数据传递给链中的下一个 ChannelHandler。它们的执行顺序是由它们被添加的顺序所决定的。实际上，被我们称为 ChannelPipeline 的是这些 ChannelHandler 的编排顺序。</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/01/Netty/ChannelPipeline.PNG" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/01/Netty/ChannelPipeline.PNG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>如同上图所示，入站和出站 ChannelHandler 可以被安装到同一个 ChannelPipeline 中。虽然 ChannelInboundHandle 和  ChannelOutboundHandle 都扩展自 ChannelHandler，但是 Netty 能区分 ChannelInboundHandler 实现和  ChannelOutboundHandler 实现，并确保数据只会在具有相同定向类型的两个 ChannelHandler 之间传递。</p>
 <p>当 ChannelHandler 被添加到 ChannelPipeline 时，它将会被分配一个 ChannelHandlerContext，其代表了 ChannelHandler 和 ChannelPipeline 之间的绑定。虽然这个对象可以被用于获取底层的 Channel，但是它主要还是被用于写出站数据。</p>
 <p>在 Netty 中，有两种发送消息的方式。你可以直接写到 Channel 中，也可以写到和 ChannelHandler 相关联的 ChannelHandlerContext 对象中。前一种方式将会导致消息从 ChannelPipeline 的尾端开始流动，而后者将导致消息从 ChannelPipeline 中的下一个 ChannelHandler 开始流动。</p>
@@ -225,7 +243,14 @@
 </ul>
 </li>
 </ul>
-<p><img src="http://welab-wingo.gitee.io/image/2020/01/Netty/ServerBootstrapEventLoopGroup.PNG" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/01/Netty/ServerBootstrapEventLoopGroup.PNG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>与 ServerChannel 相关联的 EventLoopGroup 将分配一个负责为传入连接请求创建 Channel 的 EventLoop。一旦连接被接受，第二个 EventLoopGroup 就会给它的 Channel 分配一个 EventLoop。</p>
 
         </div>
@@ -235,7 +260,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-07-10T04:04:23.276Z" itemprop="dateUpdated">2020-07-10 12:04:23</time>
+    最后更新时间：<time datetime="2020-07-10T04:04:23.000Z" itemprop="dateUpdated">2020-07-10 12:04:23</time>
 </span><br>
 
 
@@ -259,6 +284,51 @@
 
 
             
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/01/22/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20%E7%BB%84%E4%BB%B6%E5%92%8C%E8%AE%BE%E8%AE%A1/&title=《Netty 组件和设计》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/01/22/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20%E7%BB%84%E4%BB%B6%E5%92%8C%E8%AE%BE%E8%AE%A1/&title=《Netty 组件和设计》 — Wingo's Blog&source=Channel、EventLoop 和 ChannelFutureChannel、EventLoop 和 ChannelFuture 类合在一起可以被认为..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/01/22/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20%E7%BB%84%E4%BB%B6%E5%92%8C%E8%AE%BE%E8%AE%A1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Netty 组件和设计》 — Wingo's Blog&url=http://yoursite.com/2020/01/22/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20%E7%BB%84%E4%BB%B6%E5%92%8C%E8%AE%BE%E8%AE%A1/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/01/22/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20%E7%BB%84%E4%BB%B6%E5%92%8C%E8%AE%BE%E8%AE%A1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
 
 
         </div>
@@ -299,6 +369,30 @@
 
 
 
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "QoOGpxpe5BGO7EmBfCSjvsdy-gzGzoHsz",
+            appKey: "rD7bmgy1t0G7BO6g9US2nMGg",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
 
 
 
@@ -324,7 +418,7 @@
         </p>
     </div> 
     <div class="bottom">
-        <p><span>Wingo &copy; 2020</span>
+        <p><span>Wingo &copy; 2020 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -338,14 +432,60 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/01/22/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20%E7%BB%84%E4%BB%B6%E5%92%8C%E8%AE%BE%E8%AE%A1/&title=《Netty 组件和设计》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/01/22/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20%E7%BB%84%E4%BB%B6%E5%92%8C%E8%AE%BE%E8%AE%A1/&title=《Netty 组件和设计》 — Wingo's Blog&source=Channel、EventLoop 和 ChannelFutureChannel、EventLoop 和 ChannelFuture 类合在一起可以被认为..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/01/22/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20%E7%BB%84%E4%BB%B6%E5%92%8C%E8%AE%BE%E8%AE%A1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Netty 组件和设计》 — Wingo's Blog&url=http://yoursite.com/2020/01/22/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20%E7%BB%84%E4%BB%B6%E5%92%8C%E8%AE%BE%E8%AE%A1/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/01/22/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20%E7%BB%84%E4%BB%B6%E5%92%8C%E8%AE%BE%E8%AE%A1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/01/22/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Netty/Netty%20%E7%BB%84%E4%BB%B6%E5%92%8C%E8%AE%BE%E8%AE%A1/" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: ture, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -365,7 +505,7 @@ var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 

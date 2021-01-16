@@ -37,14 +37,14 @@
 <meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume07.png">
 <meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume08.png">
 <meta property="article:published_time" content="2020-05-08T06:27:33.000Z">
-<meta property="article:modified_time" content="2020-07-10T03:37:23.451Z">
+<meta property="article:modified_time" content="2020-07-10T03:37:23.000Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Flume">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume01.png">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -126,6 +126,10 @@
         </div>
         
         
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
 </header>
 <header class="content-header post-header">
@@ -156,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">基本概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#快速入门"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">快速入门</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实际案例"><span class="post-toc-number">2.</span> <span class="post-toc-text">实际案例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Exec"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Exec</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Spooldir"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Spooldir</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Taildir"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">Taildir</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进阶特性"><span class="post-toc-number">3.</span> <span class="post-toc-text">进阶特性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#事务"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">事务</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内部原理"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">内部原理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#拓扑结构"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">拓扑结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#企业开发"><span class="post-toc-number">4.</span> <span class="post-toc-text">企业开发</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#复制和复用"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">复制和复用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#均衡和转移"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">均衡和转移</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#聚合"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">聚合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Interceptor"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">Interceptor</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Source"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">Source</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Sink"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">Sink</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Ganglia-监控"><span class="post-toc-number">5.</span> <span class="post-toc-text">Ganglia 监控</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本概念"><span class="post-toc-text">基本概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#快速入门"><span class="post-toc-text">快速入门</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实际案例"><span class="post-toc-text">实际案例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Exec"><span class="post-toc-text">Exec</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Spooldir"><span class="post-toc-text">Spooldir</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Taildir"><span class="post-toc-text">Taildir</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进阶特性"><span class="post-toc-text">进阶特性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#事务"><span class="post-toc-text">事务</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内部原理"><span class="post-toc-text">内部原理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#拓扑结构"><span class="post-toc-text">拓扑结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#企业开发"><span class="post-toc-text">企业开发</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#复制和复用"><span class="post-toc-text">复制和复用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#均衡和转移"><span class="post-toc-text">均衡和转移</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#聚合"><span class="post-toc-text">聚合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Interceptor"><span class="post-toc-text">Interceptor</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Source"><span class="post-toc-text">Source</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Sink"><span class="post-toc-text">Sink</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Ganglia-监控"><span class="post-toc-text">Ganglia 监控</span></a></li></ol>
         </nav>
     </aside>
 
@@ -182,11 +186,25 @@
 <a id="more"></a>
 
 <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>Flume 是 Cloudera 提供的一个高可用的，高可靠的，分布式的海量日志采集、聚合和传输的系统。Flume 基于流式架构，灵活简单。</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume01.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume01.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>Flume 最主要的作用就是，实时读取服务器本地磁盘的数据，将数据写入到 HDFS。</p>
 <p><strong>基础框架</strong></p>
 <p>Flume 支持将事件流向一个或者多个目的地，这种模式可以将相同数据复制到多个 channel 中，或者将不同数据分发到不同的 channel 中，sink 可以选择传送到不同的目的地。</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume02.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume02.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p> <strong>Agent</strong></p>
 <p>Agent 是一个 JVM 进程，它以事件的形式将数据从源头送至目的。 Agent 主要有 3 个部分组成：Source、Channel、Sink。</p>
 <p> <strong>Source</strong></p>
@@ -227,8 +245,22 @@
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">vim flume-taildir-hdfs.conf</span><br><span class="line">    a3.sources = r3</span><br><span class="line">    a3.sinks = k3</span><br><span class="line">    a3.channels = c3</span><br><span class="line">    # Describe/configure the source</span><br><span class="line">    a3.sources.r3.type = TAILDIR</span><br><span class="line">    # 维护了一个 json 格式的 position File</span><br><span class="line">    # 其会定期的往 position File 中更新每个文件读取到的最新的位置，因此能够实现断点续传</span><br><span class="line">    a3.sources.r3.positionFile = /opt/module/flume/tail_dir.json</span><br><span class="line">    a3.sources.r3.filegroups = f1</span><br><span class="line">    a3.sources.r3.filegroups.f1 = /opt/module/flume/files/file.*</span><br><span class="line">    # Describe the sink</span><br><span class="line">    a3.sinks.k3.type = hdfs</span><br><span class="line">    a3.sinks.k3.hdfs.path =</span><br><span class="line">    hdfs://hadoop102:9000/flume/upload/%Y%m%d/%H</span><br><span class="line">    # 上传文件的前缀</span><br><span class="line">    a3.sinks.k3.hdfs.filePrefix = upload-</span><br><span class="line">    # 是否按照时间滚动文件夹</span><br><span class="line">    a3.sinks.k3.hdfs.round = true</span><br><span class="line">    # 多少时间单位创建一个新的文件夹</span><br><span class="line">    a3.sinks.k3.hdfs.roundValue = 1</span><br><span class="line">    # 重新定义时间单位</span><br><span class="line">    a3.sinks.k3.hdfs.roundUnit = hour</span><br><span class="line">    # 是否使用本地时间戳</span><br><span class="line">    a3.sinks.k3.hdfs.useLocalTimeStamp = true</span><br><span class="line">    # 积攒多少个 Event 才 flush 到 HDFS 一次</span><br><span class="line">    a3.sinks.k3.hdfs.batchSize = 100</span><br><span class="line">    # 设置文件类型，可支持压缩</span><br><span class="line">    a3.sinks.k3.hdfs.fileType = DataStream</span><br><span class="line">    # 多久生成一个新的文件</span><br><span class="line">    a3.sinks.k3.hdfs.rollInterval = 60</span><br><span class="line">    # 设置每个文件的滚动大小大概是 128M</span><br><span class="line">    a3.sinks.k3.hdfs.rollSize = 134217700</span><br><span class="line">    # 文件的滚动与 Event 数量无关</span><br><span class="line">    a3.sinks.k3.hdfs.rollCount = 0</span><br><span class="line">    # Use a channel which buffers events in memory</span><br><span class="line">    a3.channels.c3.type = memory</span><br><span class="line">    a3.channels.c3.capacity = 1000</span><br><span class="line">    a3.channels.c3.transactionCapacity = 100</span><br><span class="line">    # Bind the source and sink to the channel</span><br><span class="line">    a3.sources.r3.channels = c3</span><br><span class="line">    a3.sinks.k3.channel = c3</span><br><span class="line">bin/flume-ng agent --conf conf/ --name a3 --conf-file job/flume-taildir-hdfs.conf</span><br></pre></td></tr></table></figure>
 
-<h3 id="进阶特性"><a href="#进阶特性" class="headerlink" title="进阶特性"></a>进阶特性</h3><h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><p><img src="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume03.png" alt=""></p>
-<h4 id="内部原理"><a href="#内部原理" class="headerlink" title="内部原理"></a>内部原理</h4><p><img src="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume04.png" alt=""></p>
+<h3 id="进阶特性"><a href="#进阶特性" class="headerlink" title="进阶特性"></a>进阶特性</h3><h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume03.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h4 id="内部原理"><a href="#内部原理" class="headerlink" title="内部原理"></a>内部原理</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume04.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p><strong>ChannelSelector</strong></p>
 <p>ChannelSelector 的作用就是选出 Event 将要被发往哪个 Channel。其共有两种类型，分别是 Replicating（复制）和 Multiplexing（多路复用）。</p>
 <p>ReplicatingSelector 会将同一个 Event 发往所有的 Channel，Multiplexing 会根据相应的原则，将不同的 Event 发往不同的 Channel。</p>
@@ -236,16 +268,44 @@
 <p>SinkProcessor 共有三种类型，分别是 DefaultSinkProcessor、LoadBalancingSinkProcessor 和 FailoverSinkProcessor。</p>
 <p>DefaultSinkProcessor 对应的是单个的 Sink ， LoadBalancingSinkProcessor 和 FailoverSinkProcessor 对应的是 Sink Group，LoadBalancingSinkProcessor 可以实现负载均衡的功能，FailoverSinkProcessor 可以实现故障转移的功能。</p>
 <h4 id="拓扑结构"><a href="#拓扑结构" class="headerlink" title="拓扑结构"></a>拓扑结构</h4><p><strong>简单串联</strong></p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume05.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume05.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>将多个 flume 顺序连接起来了，从最初的 source 开始到最终 sink 传送的目的存储系统。此模式不建议桥接过多的 flume 数量，flume 数量过多不仅会影响传输速率， 而且一旦传输过程中某个节点 flume 宕机，会影响整个传输系统。</p>
 <p><strong>复制和多路复用</strong></p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume06.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume06.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>Flume 支持将事件流向一个或者多个目的地。这种模式可以将相同数据复制到多个 channel 中，或者将不同数据分发到不同的 channel 中，sink 可以选择传送到不同的目的地。</p>
 <p><strong>负载均衡和故障转移</strong></p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume07.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume07.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>Flume支持使用将多个 sink 逻辑上分到一个 sink 组，sink 组配合不同的 SinkProcessor 可以实现负载均衡和错误恢复的功能。</p>
 <p><strong>聚合</strong></p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume08.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/05/Flume/Flume08.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>这种模式是我们最常见的，也非常实用，日常 web 应用通常分布在上百个服务器，大者甚至上千个、上万个服务器。产生的日志，处理起来也非常麻烦。用 flume 的这种组合方式能很好的解决这一问题，每台服务器部署一个 flume 采集日志，传送到一个集中收集日志的 flume，再由此 flume 上传到 hdfs、hive、hbase 等，进行日志分析。</p>
 <h3 id="企业开发"><a href="#企业开发" class="headerlink" title="企业开发"></a>企业开发</h3><h4 id="复制和复用"><a href="#复制和复用" class="headerlink" title="复制和复用"></a>复制和复用</h4><blockquote>
 <p>使用 Flume-1 监控文件变动，Flume-1 将变动内容传递给 Flume-2，Flume-2 负责存储到 HDFS。同时 Flume-1 将变动内容传递给 Flume-3，Flume-3 负责输出到 Local FileSystem。</p>
@@ -303,7 +363,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-07-10T03:37:23.451Z" itemprop="dateUpdated">2020-07-10 11:37:23</time>
+    最后更新时间：<time datetime="2020-07-10T03:37:23.000Z" itemprop="dateUpdated">2020-07-10 11:37:23</time>
 </span><br>
 
 
@@ -327,6 +387,51 @@
 
 
             
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/05/08/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flume/&title=《Flume》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/05/08/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flume/&title=《Flume》 — Wingo's Blog&source=Flume 基本介绍及简单使用。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/05/08/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flume/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flume》 — Wingo's Blog&url=http://yoursite.com/2020/05/08/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flume/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/05/08/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flume/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
 
 
         </div>
@@ -367,6 +472,30 @@
 
 
 
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "QoOGpxpe5BGO7EmBfCSjvsdy-gzGzoHsz",
+            appKey: "rD7bmgy1t0G7BO6g9US2nMGg",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
 
 
 
@@ -392,7 +521,7 @@
         </p>
     </div> 
     <div class="bottom">
-        <p><span>Wingo &copy; 2020</span>
+        <p><span>Wingo &copy; 2020 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -406,14 +535,60 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/05/08/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flume/&title=《Flume》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/05/08/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flume/&title=《Flume》 — Wingo's Blog&source=Flume 基本介绍及简单使用。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/05/08/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flume/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flume》 — Wingo's Blog&url=http://yoursite.com/2020/05/08/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flume/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/05/08/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flume/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/05/08/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flume/" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: ture, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -433,7 +608,7 @@ var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 

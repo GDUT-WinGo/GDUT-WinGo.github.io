@@ -49,14 +49,14 @@
 <meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/08/ML/image-20200830124602354.png">
 <meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/08/ML/image-20200830131252233.png">
 <meta property="article:published_time" content="2020-08-18T12:27:37.000Z">
-<meta property="article:modified_time" content="2020-08-30T13:53:33.202Z">
+<meta property="article:modified_time" content="2020-08-30T13:53:33.000Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/08/ML/image-20200818214503512.png">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -138,6 +138,10 @@
         </div>
         
         
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
 </header>
 <header class="content-header post-header">
@@ -168,7 +172,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引言"><span class="post-toc-number">1.</span> <span class="post-toc-text">引言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#环境搭建"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">环境搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#NumPy"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">NumPy</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#SciPy"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">SciPy</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#matplotlib"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">matplotlib</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pandas"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">pandas</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#鸢尾花分类"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">鸢尾花分类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#取得数据"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">取得数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#划分数据"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">划分数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#观察数据"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">观察数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#模型构建"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">模型构建</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#监督学习"><span class="post-toc-number">2.</span> <span class="post-toc-text">监督学习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本概念"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">基本概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#算法"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#KNN"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">KNN</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#回归线性模型"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">回归线性模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#线性回归"><span class="post-toc-number">2.2.2.1.</span> <span class="post-toc-text">线性回归</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#岭回归"><span class="post-toc-number">2.2.2.2.</span> <span class="post-toc-text">岭回归</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Lasso"><span class="post-toc-number">2.2.2.3.</span> <span class="post-toc-text">Lasso</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分类线性模型"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">分类线性模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#LR-amp-SVC"><span class="post-toc-number">2.2.3.1.</span> <span class="post-toc-text">LR &amp; SVC</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#多分类"><span class="post-toc-number">2.2.3.2.</span> <span class="post-toc-text">多分类</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#线性模型总结"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">线性模型总结</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#朴素贝叶斯分类器"><span class="post-toc-number">2.2.5.</span> <span class="post-toc-text">朴素贝叶斯分类器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#决策树"><span class="post-toc-number">2.2.6.</span> <span class="post-toc-text">决策树</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#决策树集成"><span class="post-toc-number">2.2.7.</span> <span class="post-toc-text">决策树集成</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#随机森林"><span class="post-toc-number">2.2.7.1.</span> <span class="post-toc-text">随机森林</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#梯度提升回归树"><span class="post-toc-number">2.2.7.2.</span> <span class="post-toc-text">梯度提升回归树</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#核支持向量机"><span class="post-toc-number">2.2.8.</span> <span class="post-toc-text">核支持向量机</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#神经网络"><span class="post-toc-number">2.2.9.</span> <span class="post-toc-text">神经网络</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分类器的不确定度估计"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">分类器的不确定度估计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结与展望"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">小结与展望</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#无监督学习与预处理"><span class="post-toc-number">3.</span> <span class="post-toc-text">无监督学习与预处理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#无监督学习类型"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">无监督学习类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#无监督学习的挑战"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">无监督学习的挑战</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预处理与缩放"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">预处理与缩放</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#降维、特征提取与流形学习"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">降维、特征提取与流形学习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#主成分分析"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">主成分分析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#非负矩阵分解"><span class="post-toc-number">3.4.2.</span> <span class="post-toc-text">非负矩阵分解</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#用-t-SNE-进行流形学习"><span class="post-toc-number">3.4.3.</span> <span class="post-toc-text">用 t-SNE 进行流形学习</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#聚类"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">聚类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#k-均值聚类"><span class="post-toc-number">3.5.1.</span> <span class="post-toc-text">k 均值聚类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#凝聚聚类"><span class="post-toc-number">3.5.2.</span> <span class="post-toc-text">凝聚聚类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#DBSCAN-聚类"><span class="post-toc-number">3.5.3.</span> <span class="post-toc-text">DBSCAN 聚类</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结-1"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据表示与特征工程"><span class="post-toc-number">4.</span> <span class="post-toc-text">数据表示与特征工程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#one-hot-编码（虚拟变量）"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">one-hot 编码（虚拟变量）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分箱、离散化、线性模型与树"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">分箱、离散化、线性模型与树</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#交互特征与多项式特征"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">交互特征与多项式特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单变量非线性变换"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">单变量非线性变换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自动化特征选择"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">自动化特征选择</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#单变量统计"><span class="post-toc-number">4.5.1.</span> <span class="post-toc-text">单变量统计</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基于模型的特征选择"><span class="post-toc-number">4.5.2.</span> <span class="post-toc-text">基于模型的特征选择</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#迭代特征选择"><span class="post-toc-number">4.5.3.</span> <span class="post-toc-text">迭代特征选择</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模型评估与改进"><span class="post-toc-number">5.</span> <span class="post-toc-text">模型评估与改进</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#交叉验证"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">交叉验证</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#K-折交叉"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">K 折交叉</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分层-K-折交叉"><span class="post-toc-number">5.1.2.</span> <span class="post-toc-text">分层 K 折交叉</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#留一法交叉验证"><span class="post-toc-number">5.1.3.</span> <span class="post-toc-text">留一法交叉验证</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#打乱划分交叉验证"><span class="post-toc-number">5.1.4.</span> <span class="post-toc-text">打乱划分交叉验证</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分组交叉验证"><span class="post-toc-number">5.1.5.</span> <span class="post-toc-text">分组交叉验证</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网格搜索"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">网格搜索</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#带交叉验证的网格搜索"><span class="post-toc-number">5.2.1.</span> <span class="post-toc-text">带交叉验证的网格搜索</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#交叉验证与网格搜索的嵌套"><span class="post-toc-number">5.2.2.</span> <span class="post-toc-text">交叉验证与网格搜索的嵌套</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#评估指标与评分"><span class="post-toc-number">5.2.3.</span> <span class="post-toc-text">评估指标与评分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#二分类指标"><span class="post-toc-number">5.2.3.1.</span> <span class="post-toc-text">二分类指标</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#准确率-召回率曲线"><span class="post-toc-number">5.2.3.1.1.</span> <span class="post-toc-text">准确率-召回率曲线</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#ROC-与-AUC"><span class="post-toc-number">5.2.3.1.2.</span> <span class="post-toc-text">ROC 与 AUC</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#多分类指标"><span class="post-toc-number">5.2.3.2.</span> <span class="post-toc-text">多分类指标</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#回归指标"><span class="post-toc-number">5.2.3.3.</span> <span class="post-toc-text">回归指标</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#模型指标选择"><span class="post-toc-number">5.2.3.4.</span> <span class="post-toc-text">模型指标选择</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法链和管道"><span class="post-toc-number">6.</span> <span class="post-toc-text">算法链和管道</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#构建管道"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">构建管道</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网格搜索中使用管道"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">网格搜索中使用管道</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通用管道接口"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">通用管道接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网格搜索-amp-预处理"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">网格搜索&amp;预处理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网格搜索-amp-模型选择"><span class="post-toc-number">6.5.</span> <span class="post-toc-text">网格搜索&amp;模型选择</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#处理文本数据"><span class="post-toc-number">7.</span> <span class="post-toc-text">处理文本数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#词袋"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">词袋</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tf-idf-缩放数据"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">tf-idf 缩放数据</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引言"><span class="post-toc-text">引言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#环境搭建"><span class="post-toc-text">环境搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#NumPy"><span class="post-toc-text">NumPy</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#SciPy"><span class="post-toc-text">SciPy</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#matplotlib"><span class="post-toc-text">matplotlib</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pandas"><span class="post-toc-text">pandas</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#鸢尾花分类"><span class="post-toc-text">鸢尾花分类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#取得数据"><span class="post-toc-text">取得数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#划分数据"><span class="post-toc-text">划分数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#观察数据"><span class="post-toc-text">观察数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#模型构建"><span class="post-toc-text">模型构建</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结"><span class="post-toc-text">小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#监督学习"><span class="post-toc-text">监督学习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本概念"><span class="post-toc-text">基本概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#算法"><span class="post-toc-text">算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#KNN"><span class="post-toc-text">KNN</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#回归线性模型"><span class="post-toc-text">回归线性模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#线性回归"><span class="post-toc-text">线性回归</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#岭回归"><span class="post-toc-text">岭回归</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Lasso"><span class="post-toc-text">Lasso</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分类线性模型"><span class="post-toc-text">分类线性模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#LR-amp-SVC"><span class="post-toc-text">LR &amp; SVC</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#多分类"><span class="post-toc-text">多分类</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#线性模型总结"><span class="post-toc-text">线性模型总结</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#朴素贝叶斯分类器"><span class="post-toc-text">朴素贝叶斯分类器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#决策树"><span class="post-toc-text">决策树</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#决策树集成"><span class="post-toc-text">决策树集成</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#随机森林"><span class="post-toc-text">随机森林</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#梯度提升回归树"><span class="post-toc-text">梯度提升回归树</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#核支持向量机"><span class="post-toc-text">核支持向量机</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#神经网络"><span class="post-toc-text">神经网络</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分类器的不确定度估计"><span class="post-toc-text">分类器的不确定度估计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结与展望"><span class="post-toc-text">小结与展望</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#无监督学习与预处理"><span class="post-toc-text">无监督学习与预处理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#无监督学习类型"><span class="post-toc-text">无监督学习类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#无监督学习的挑战"><span class="post-toc-text">无监督学习的挑战</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预处理与缩放"><span class="post-toc-text">预处理与缩放</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#降维、特征提取与流形学习"><span class="post-toc-text">降维、特征提取与流形学习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#主成分分析"><span class="post-toc-text">主成分分析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#非负矩阵分解"><span class="post-toc-text">非负矩阵分解</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#用-t-SNE-进行流形学习"><span class="post-toc-text">用 t-SNE 进行流形学习</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#聚类"><span class="post-toc-text">聚类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#k-均值聚类"><span class="post-toc-text">k 均值聚类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#凝聚聚类"><span class="post-toc-text">凝聚聚类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#DBSCAN-聚类"><span class="post-toc-text">DBSCAN 聚类</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结-1"><span class="post-toc-text">小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据表示与特征工程"><span class="post-toc-text">数据表示与特征工程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#one-hot-编码（虚拟变量）"><span class="post-toc-text">one-hot 编码（虚拟变量）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分箱、离散化、线性模型与树"><span class="post-toc-text">分箱、离散化、线性模型与树</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#交互特征与多项式特征"><span class="post-toc-text">交互特征与多项式特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单变量非线性变换"><span class="post-toc-text">单变量非线性变换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自动化特征选择"><span class="post-toc-text">自动化特征选择</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#单变量统计"><span class="post-toc-text">单变量统计</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基于模型的特征选择"><span class="post-toc-text">基于模型的特征选择</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#迭代特征选择"><span class="post-toc-text">迭代特征选择</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模型评估与改进"><span class="post-toc-text">模型评估与改进</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#交叉验证"><span class="post-toc-text">交叉验证</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#K-折交叉"><span class="post-toc-text">K 折交叉</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分层-K-折交叉"><span class="post-toc-text">分层 K 折交叉</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#留一法交叉验证"><span class="post-toc-text">留一法交叉验证</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#打乱划分交叉验证"><span class="post-toc-text">打乱划分交叉验证</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分组交叉验证"><span class="post-toc-text">分组交叉验证</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网格搜索"><span class="post-toc-text">网格搜索</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#带交叉验证的网格搜索"><span class="post-toc-text">带交叉验证的网格搜索</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#交叉验证与网格搜索的嵌套"><span class="post-toc-text">交叉验证与网格搜索的嵌套</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#评估指标与评分"><span class="post-toc-text">评估指标与评分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#二分类指标"><span class="post-toc-text">二分类指标</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#准确率-召回率曲线"><span class="post-toc-text">准确率-召回率曲线</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#ROC-与-AUC"><span class="post-toc-text">ROC 与 AUC</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#多分类指标"><span class="post-toc-text">多分类指标</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#回归指标"><span class="post-toc-text">回归指标</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#模型指标选择"><span class="post-toc-text">模型指标选择</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法链和管道"><span class="post-toc-text">算法链和管道</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#构建管道"><span class="post-toc-text">构建管道</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网格搜索中使用管道"><span class="post-toc-text">网格搜索中使用管道</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通用管道接口"><span class="post-toc-text">通用管道接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网格搜索-amp-预处理"><span class="post-toc-text">网格搜索&amp;预处理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网格搜索-amp-模型选择"><span class="post-toc-text">网格搜索&amp;模型选择</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#处理文本数据"><span class="post-toc-text">处理文本数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#词袋"><span class="post-toc-text">词袋</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tf-idf-缩放数据"><span class="post-toc-text">tf-idf 缩放数据</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -385,7 +389,14 @@
 </ul>
 <p>GaussianNB 适合高维数据，后两者适合文本领域的稀疏数据。后两个模型支持 <code>alpha</code> 参数，调大该值可以略微提高精度。</p>
 <h4 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h4><p>让我们来看一个简单的 <code>deep=2</code> 的树的决策边界与相应的树的图示。</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/08/ML/image-20200822152548464.png" alt="image-20200822152548464"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/08/ML/image-20200822152548464.png" alt="image-20200822152548464" title="">
+                </div>
+                <div class="image-caption">image-20200822152548464</div>
+            </figure>
+
 <p>随着树的深度的增加，模型肯定会越来越复杂。那我们该如何控制决策树的复杂度呢？</p>
 <p>防止过拟合有两种常见的策略：一种是及早停止树的生长，也叫预剪枝（pre-pruning）；另一种是先构造树，但随后删除或折叠信息量很少的结点，也叫后剪枝（post-pruning）或剪枝（pruning）。预剪枝的限制条件可能包括限制树的最大深度、限制叶结点的最大数目，或者规定一个结点中数据点的最小数目来防止继续划分。</p>
 <blockquote>
@@ -463,7 +474,14 @@
 
 <p>MLP 的可以利用 L2 惩罚使权重趋向于零，从而降低拟合与模型的复杂度。MLPClassifier 中调节 L2 惩罚的参数是 alpha（与线性回归模型中的相同），它的默认值很小（弱正则化）。</p>
 <p>我们还是用图示的方式来理解这两个参数对 MLP 模型训练的影响。</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/08/ML/image-20200823113137757.png" alt="image-20200823113137757"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/08/ML/image-20200823113137757.png" alt="image-20200823113137757" title="">
+                </div>
+                <div class="image-caption">image-20200823113137757</div>
+            </figure>
+
 <p>从图中我们可以看出，参数 <code>n_hidden</code> 和 <code>alpha</code> 越大，模型越简单，曲线越平滑。</p>
 <p>注意，神经网络对特征的范围也很敏感，也要求所有输入特征的变化范围相似，最理想的情况是均值为 0、方差为 1。</p>
 <p>接下里我们用 cancer 这个比较大的数据集来对模型进行训练。首先用默认参数进行训练。</p>
@@ -500,7 +518,14 @@
 <h3 id="无监督学习的挑战"><a href="#无监督学习的挑战" class="headerlink" title="无监督学习的挑战"></a>无监督学习的挑战</h3><p>无监督学习的一个主要挑战就是评估算法是否学到了有用的东西。通常来说，评估无监督算法结果的唯一方法就是人工检查。</p>
 <p>因此，如果数据科学家想要更好地理解数据，那么无监督算法通常可用于探索性的目的，而不是作为大型自动化系统的一部分。无监督算法的另一个常见应用是作为监督算法的预处理步骤。学习数据的一种新表示，有时可以提高监督算法的精度，或者可以减少内存占用和时间开销。</p>
 <h3 id="预处理与缩放"><a href="#预处理与缩放" class="headerlink" title="预处理与缩放"></a>预处理与缩放</h3><p>让我们先来看看对数据集缩放核预处理的各种方法的处理结果。</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/08/ML/image-20200823151447998.png" alt="image-20200823151447998"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/08/ML/image-20200823151447998.png" alt="image-20200823151447998" title="">
+                </div>
+                <div class="image-caption">image-20200823151447998</div>
+            </figure>
+
 <p>StandardScaler 确保每个特征的平均值为 0，方差为 1，使所有特征位于同一量级。</p>
 <p>RobustScaler 使用的是中位数和四分位数 ，而不是平均值和方差。这样 RobustScaler 会忽略与其他点有很大不同的数据点（异常值，outlier）（比如测量误差）。</p>
 <p>MinMaxScaler 移动数据，使所有特征都刚好位于 0 到 1 之间。对于二维数据集来说，所有的数据都包含在 x 轴 0 到 1 与 y 轴 0 到 1 组成的矩形中。</p>
@@ -699,7 +724,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-08-30T13:53:33.202Z" itemprop="dateUpdated">2020-08-30 21:53:33</time>
+    最后更新时间：<time datetime="2020-08-30T13:53:33.000Z" itemprop="dateUpdated">2020-08-30 21:53:33</time>
 </span><br>
 
 
@@ -723,6 +748,51 @@
 
 
             
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&title=《机器学习基础教程》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&title=《机器学习基础教程》 — Wingo's Blog&source=深度学习是一种实现机器学习的技术，机器学习是实现人工智能的方法。本文记录为《Python 机器学习基础教程》的阅读笔记。目标是整理出大纲，在后面的实际应用..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/08/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习基础教程》 — Wingo's Blog&url=http://yoursite.com/2020/08/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/08/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
 
 
         </div>
@@ -763,6 +833,30 @@
 
 
 
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "QoOGpxpe5BGO7EmBfCSjvsdy-gzGzoHsz",
+            appKey: "rD7bmgy1t0G7BO6g9US2nMGg",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
 
 
 
@@ -788,7 +882,7 @@
         </p>
     </div> 
     <div class="bottom">
-        <p><span>Wingo &copy; 2020</span>
+        <p><span>Wingo &copy; 2020 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -802,14 +896,60 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&title=《机器学习基础教程》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&title=《机器学习基础教程》 — Wingo's Blog&source=深度学习是一种实现机器学习的技术，机器学习是实现人工智能的方法。本文记录为《Python 机器学习基础教程》的阅读笔记。目标是整理出大纲，在后面的实际应用..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/08/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习基础教程》 — Wingo's Blog&url=http://yoursite.com/2020/08/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/08/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/08/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: ture, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -829,7 +969,7 @@ var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 

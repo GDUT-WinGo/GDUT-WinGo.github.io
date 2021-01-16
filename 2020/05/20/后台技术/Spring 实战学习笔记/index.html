@@ -43,14 +43,14 @@
 <meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/06/Spring/JDBC02.png">
 <meta property="og:image" content="http://welab-wingo.gitee.io/image/2020/06/Spring/JPA01.png">
 <meta property="article:published_time" content="2020-05-20T07:12:26.000Z">
-<meta property="article:modified_time" content="2020-07-10T04:07:13.921Z">
+<meta property="article:modified_time" content="2020-07-10T04:07:13.000Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Spring">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://welab-wingo.gitee.io/image/2020/06/Spring/ShoppingCart.png">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -132,6 +132,10 @@
         </div>
         
         
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
 </header>
 <header class="content-header post-header">
@@ -162,7 +166,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#bean-的装配"><span class="post-toc-number">1.</span> <span class="post-toc-text">bean 的装配</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自动化装配-bean"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">自动化装配 bean</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XML-装配-bean"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">XML 装配  bean</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置的引用"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">配置的引用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#处理歧义性"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">处理歧义性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bean-的作用域"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">bean 的作用域</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行时值注入"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">运行时值注入</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境与-Profile"><span class="post-toc-number">2.</span> <span class="post-toc-text">环境与 Profile</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#激活"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">激活</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#条件化"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">条件化</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#面向切面"><span class="post-toc-number">3.</span> <span class="post-toc-text">面向切面</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义切面"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">定义切面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通知"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">通知</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#环绕通知"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">环绕通知</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引入"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">引入</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Web-中的-Spring"><span class="post-toc-number">4.</span> <span class="post-toc-text">Web 中的 Spring</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#构建-Spring-Web"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">构建 Spring Web</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#DispatcherServlet"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">DispatcherServlet</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加其它组件"><span class="post-toc-number">4.1.2.</span> <span class="post-toc-text">添加其它组件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编写基本控制器"><span class="post-toc-number">4.1.3.</span> <span class="post-toc-text">编写基本控制器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#传参"><span class="post-toc-number">4.1.3.1.</span> <span class="post-toc-text">传参</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#校验"><span class="post-toc-number">4.1.3.2.</span> <span class="post-toc-text">校验</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#渲染-Web-视图"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">渲染 Web 视图</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ThymeLeaf"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">ThymeLeaf</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件上传"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">文件上传</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#异常处理"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">异常处理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#重定向"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">重定向</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安全"><span class="post-toc-number">5.</span> <span class="post-toc-text">安全</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简单的安全性配置"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">简单的安全性配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基于数据库表认证"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">基于数据库表认证</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基于-LDAP认证"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">基于 LDAP认证</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拦截请求"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">拦截请求</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#强制通道的安全性"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">强制通道的安全性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#防止跨站请求伪造"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">防止跨站请求伪造</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#认证用户页面"><span class="post-toc-number">5.7.</span> <span class="post-toc-text">认证用户页面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#保护视图"><span class="post-toc-number">5.8.</span> <span class="post-toc-text">保护视图</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#后端中的-Spring"><span class="post-toc-number">6.</span> <span class="post-toc-text">后端中的 Spring</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-与-JDBC"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">Spring 与 JDBC</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置数据源"><span class="post-toc-number">6.1.1.</span> <span class="post-toc-text">配置数据源</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JDBC-模板"><span class="post-toc-number">6.1.2.</span> <span class="post-toc-text">JDBC 模板</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ORM-持久化数据"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">ORM 持久化数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#HIbernate"><span class="post-toc-number">6.2.1.</span> <span class="post-toc-text">HIbernate</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JPA"><span class="post-toc-number">6.2.2.</span> <span class="post-toc-text">JPA</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NoSQL"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">NoSQL</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MongoDB"><span class="post-toc-number">6.3.1.</span> <span class="post-toc-text">MongoDB</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#杂项"><span class="post-toc-number">7.</span> <span class="post-toc-text">杂项</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#bean-的装配"><span class="post-toc-text">bean 的装配</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自动化装配-bean"><span class="post-toc-text">自动化装配 bean</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XML-装配-bean"><span class="post-toc-text">XML 装配  bean</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置的引用"><span class="post-toc-text">配置的引用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#处理歧义性"><span class="post-toc-text">处理歧义性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bean-的作用域"><span class="post-toc-text">bean 的作用域</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行时值注入"><span class="post-toc-text">运行时值注入</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境与-Profile"><span class="post-toc-text">环境与 Profile</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置"><span class="post-toc-text">配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#激活"><span class="post-toc-text">激活</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#条件化"><span class="post-toc-text">条件化</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#面向切面"><span class="post-toc-text">面向切面</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义切面"><span class="post-toc-text">定义切面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通知"><span class="post-toc-text">通知</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#环绕通知"><span class="post-toc-text">环绕通知</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引入"><span class="post-toc-text">引入</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Web-中的-Spring"><span class="post-toc-text">Web 中的 Spring</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#构建-Spring-Web"><span class="post-toc-text">构建 Spring Web</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#DispatcherServlet"><span class="post-toc-text">DispatcherServlet</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加其它组件"><span class="post-toc-text">添加其它组件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编写基本控制器"><span class="post-toc-text">编写基本控制器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#传参"><span class="post-toc-text">传参</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#校验"><span class="post-toc-text">校验</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#渲染-Web-视图"><span class="post-toc-text">渲染 Web 视图</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ThymeLeaf"><span class="post-toc-text">ThymeLeaf</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件上传"><span class="post-toc-text">文件上传</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#异常处理"><span class="post-toc-text">异常处理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#重定向"><span class="post-toc-text">重定向</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安全"><span class="post-toc-text">安全</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简单的安全性配置"><span class="post-toc-text">简单的安全性配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基于数据库表认证"><span class="post-toc-text">基于数据库表认证</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基于-LDAP认证"><span class="post-toc-text">基于 LDAP认证</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拦截请求"><span class="post-toc-text">拦截请求</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#强制通道的安全性"><span class="post-toc-text">强制通道的安全性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#防止跨站请求伪造"><span class="post-toc-text">防止跨站请求伪造</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#认证用户页面"><span class="post-toc-text">认证用户页面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#保护视图"><span class="post-toc-text">保护视图</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#后端中的-Spring"><span class="post-toc-text">后端中的 Spring</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-与-JDBC"><span class="post-toc-text">Spring 与 JDBC</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置数据源"><span class="post-toc-text">配置数据源</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JDBC-模板"><span class="post-toc-text">JDBC 模板</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ORM-持久化数据"><span class="post-toc-text">ORM 持久化数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#HIbernate"><span class="post-toc-text">HIbernate</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JPA"><span class="post-toc-text">JPA</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NoSQL"><span class="post-toc-text">NoSQL</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MongoDB"><span class="post-toc-text">MongoDB</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#杂项"><span class="post-toc-text">杂项</span></a></li></ol>
         </nav>
     </aside>
 
@@ -284,7 +288,14 @@
 <p>Spring 只支持方法级别的连接点，如果需要方法拦截之外的连接点拦截功能那么我们可以利用 Aspect 来补充 Spring AOP 的功能。</p>
 </blockquote>
 <p>描述切面的常用术语有通知 advice、切点 pointcut 和连接点 join point。</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/06/Spring/AOP01.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/06/Spring/AOP01.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>引入 Introdution<br>允许向现有的类添加新方法或属性。</p>
 <p>织入 Weaving<br>织入是把切面应用到目标对象并创建新的代理对象的过程。</p>
 <blockquote>
@@ -448,7 +459,14 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">aop:config</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">ref</span>=<span class="string">"audience"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">id</span>=<span class="string">"performance"</span> <span class="attr">expression</span>=<span class="string">"execution(* concert.Performance.perform(..))"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:around</span> <span class="attr">pointcut-ref</span>=<span class="string">"performance"</span> <span class="attr">method</span>=<span class="string">"watchPerformance"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>参数化通知，使用参数化的通知来记录磁道播放的次数。</p>
-<p><img src="http://welab-wingo.gitee.io/image/2020/06/Spring/AOP04.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/image/2020/06/Spring/AOP04.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>如果切面能够为现有的方法增加额外的功能，为什么不能为一个对象增加新的方法呢？实际上利用被称为引入的 AOP 概念切面可以为 Spring bean 添加新方法。</p>
 <img src="http://welab-wingo.gitee.io/image/2020/06/Spring/AOP05.png" style="zoom: 67%;" />
 
@@ -1321,7 +1339,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-07-10T04:07:13.921Z" itemprop="dateUpdated">2020-07-10 12:07:13</time>
+    最后更新时间：<time datetime="2020-07-10T04:07:13.000Z" itemprop="dateUpdated">2020-07-10 12:07:13</time>
 </span><br>
 
 
@@ -1345,6 +1363,51 @@
 
 
             
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/05/20/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20%E5%AE%9E%E6%88%98%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=《Spring 实战学习笔记》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/05/20/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20%E5%AE%9E%E6%88%98%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=《Spring 实战学习笔记》 — Wingo's Blog&source=《Spring 实战》阅读笔记。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/05/20/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20%E5%AE%9E%E6%88%98%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring 实战学习笔记》 — Wingo's Blog&url=http://yoursite.com/2020/05/20/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20%E5%AE%9E%E6%88%98%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/05/20/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20%E5%AE%9E%E6%88%98%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
 
 
         </div>
@@ -1385,6 +1448,30 @@
 
 
 
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "QoOGpxpe5BGO7EmBfCSjvsdy-gzGzoHsz",
+            appKey: "rD7bmgy1t0G7BO6g9US2nMGg",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
 
 
 
@@ -1410,7 +1497,7 @@
         </p>
     </div> 
     <div class="bottom">
-        <p><span>Wingo &copy; 2020</span>
+        <p><span>Wingo &copy; 2020 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -1424,14 +1511,60 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/05/20/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20%E5%AE%9E%E6%88%98%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=《Spring 实战学习笔记》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/05/20/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20%E5%AE%9E%E6%88%98%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=《Spring 实战学习笔记》 — Wingo's Blog&source=《Spring 实战》阅读笔记。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/05/20/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20%E5%AE%9E%E6%88%98%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring 实战学习笔记》 — Wingo's Blog&url=http://yoursite.com/2020/05/20/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20%E5%AE%9E%E6%88%98%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/05/20/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20%E5%AE%9E%E6%88%98%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/05/20/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20%E5%AE%9E%E6%88%98%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: ture, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -1451,7 +1584,7 @@ var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 

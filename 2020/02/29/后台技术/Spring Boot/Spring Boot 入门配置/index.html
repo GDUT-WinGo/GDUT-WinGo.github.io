@@ -38,14 +38,14 @@
 <meta property="og:image" content="http://welab-wingo.gitee.io/Image/2020/03/SpringBoot/SpringBootAutoConfiguration.PNG">
 <meta property="og:image" content="http://welab-wingo.gitee.io/Image/2020/03/SpringBoot/SpringBootIDEAVMOption.PNG">
 <meta property="article:published_time" content="2020-02-29T02:48:07.000Z">
-<meta property="article:modified_time" content="2020-07-10T04:13:31.158Z">
+<meta property="article:modified_time" content="2020-07-10T04:13:31.000Z">
 <meta property="article:author" content="Wingo">
 <meta property="article:tag" content="Spring Boot">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://welab-wingo.gitee.io/Image/2020/02/welab/SpringBoot/SpringBootInit.PNG">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -127,6 +127,10 @@
         </div>
         
         
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
 </header>
 <header class="content-header post-header">
@@ -157,7 +161,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-Boot-简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">Spring Boot 简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-Boot-HelloWorld"><span class="post-toc-number">2.</span> <span class="post-toc-text">Spring Boot HelloWorld</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#项目生成"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">项目生成</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码编写"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">代码编写</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#运行测试"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">运行测试</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简化部署"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">简化部署</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Hello-World-探究"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">Hello World 探究</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#项目依赖"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">项目依赖</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#主程序类（入口类）"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">主程序类（入口类）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-Boot-配置文件"><span class="post-toc-number">3.</span> <span class="post-toc-text">Spring Boot 配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#YAML"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">YAML</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件值的注入"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">配置文件值的注入</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件的加载"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">配置文件的加载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件占位符"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">配置文件占位符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Profile"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">Profile</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件加载位置"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">配置文件加载位置</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动原理解析"><span class="post-toc-number">4.</span> <span class="post-toc-text">启动原理解析</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-Boot-简介"><span class="post-toc-text">Spring Boot 简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-Boot-HelloWorld"><span class="post-toc-text">Spring Boot HelloWorld</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#项目生成"><span class="post-toc-text">项目生成</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码编写"><span class="post-toc-text">代码编写</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#运行测试"><span class="post-toc-text">运行测试</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简化部署"><span class="post-toc-text">简化部署</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Hello-World-探究"><span class="post-toc-text">Hello World 探究</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#项目依赖"><span class="post-toc-text">项目依赖</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#主程序类（入口类）"><span class="post-toc-text">主程序类（入口类）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring-Boot-配置文件"><span class="post-toc-text">Spring Boot 配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#YAML"><span class="post-toc-text">YAML</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件值的注入"><span class="post-toc-text">配置文件值的注入</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件的加载"><span class="post-toc-text">配置文件的加载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件占位符"><span class="post-toc-text">配置文件占位符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Profile"><span class="post-toc-text">Profile</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件加载位置"><span class="post-toc-text">配置文件加载位置</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动原理解析"><span class="post-toc-text">启动原理解析</span></a></li></ol>
         </nav>
     </aside>
 
@@ -197,15 +201,50 @@
 </blockquote>
 <h4 id="项目生成"><a href="#项目生成" class="headerlink" title="项目生成"></a>项目生成</h4><p>项目生成地址：<a href="https://start.spring.io/" target="_blank" rel="noopener">Spring Initiizr</a></p>
 <p>填写项目的基本信息后点击 Generate 下载生成的项目。</p>
-<p><img src="http://welab-wingo.gitee.io/Image/2020/02/welab/SpringBoot/SpringBootInit.PNG" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/Image/2020/02/welab/SpringBoot/SpringBootInit.PNG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>将项目解压到相应目录，打开 IDEA 导入项目。（File 👉 New 👉  Project from Existing Sources）</p>
 <p>选择以 Maven 项目的方式导入。</p>
-<p><img src="http://welab-wingo.gitee.io/Image/2020/02/welab/SpringBoot/IDEASpringBoot01.PNG" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/Image/2020/02/welab/SpringBoot/IDEASpringBoot01.PNG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>设置 JDK ，点击 Environment settings 配置 Maven。</p>
-<p><img src="http://welab-wingo.gitee.io/Image/2020/02/welab/SpringBoot/IDEASpringBoot02.PNG" alt=""></p>
-<p><img src="http://welab-wingo.gitee.io/Image/2020/02/welab/SpringBoot/IDEASpringBoot03.PNG" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/Image/2020/02/welab/SpringBoot/IDEASpringBoot02.PNG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/Image/2020/02/welab/SpringBoot/IDEASpringBoot03.PNG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>项目导入成功后的项目目录。</p>
-<p><img src="http://welab-wingo.gitee.io/Image/2020/02/welab/SpringBoot/IDEASpringBoot04.PNG" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/Image/2020/02/welab/SpringBoot/IDEASpringBoot04.PNG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <ul>
 <li>resources文件夹中目录结构<ul>
 <li>static：保存所有的静态资源； js css images 等；</li>
@@ -226,7 +265,14 @@
 <h4 id="运行测试"><a href="#运行测试" class="headerlink" title="运行测试"></a>运行测试</h4><p>控制台打印中可看到 Tomcat 在其默认端口 8080 被开启。 </p>
 <p><img src="http://welab-wingo.gitee.io/Image/2020/02/welab/SpringBoot/HelloWorldIDEAPrint.PNG" alt=""></p>
 <p>访问：localhost:8080/hello</p>
-<p><img src="http://welab-wingo.gitee.io/Image/2020/02/welab/SpringBoot/HelloWorldResult.PNG" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/Image/2020/02/welab/SpringBoot/HelloWorldResult.PNG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>访问成功，此 Spring Boot 项目可正常运行。</p>
 <h4 id="简化部署"><a href="#简化部署" class="headerlink" title="简化部署"></a>简化部署</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这个插件可以将应用打包成一个可执行的jar包，在 cmd 直接用 java -jar 命令执行 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -239,7 +285,14 @@
 <h5 id="主程序类（入口类）"><a href="#主程序类（入口类）" class="headerlink" title="主程序类（入口类）"></a>主程序类（入口类）</h5><p>Spring Boot 用<code>@SpringBootApplication</code>来标注一个主程序类，说明这是一个 Spring Boot 应用。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootConfiguration</span> <span class="comment">// 这是一个 Spring Boot 配置类</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span> <span class="comment">// 开启自动配置功能</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(excludeFilters = &#123;</span><br><span class="line">    <span class="meta">@Filter</span>(type = FilterType.CUSTOM, classes = TypeExcludeFilter<span class="class">.<span class="keyword">class</span>),</span></span><br><span class="line"><span class="class">    @<span class="title">Filter</span>(<span class="title">type</span> </span>= FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter<span class="class">.<span class="keyword">class</span>) &#125;)</span></span><br><span class="line"><span class="class"><span class="title">public</span> @<span class="title">interface</span> <span class="title">SpringBootApplication</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://welab-wingo.gitee.io/Image/2020/03/SpringBoot/SpringBootAutoConfiguration.PNG" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/Image/2020/03/SpringBoot/SpringBootAutoConfiguration.PNG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <p>Spring Boot 在启动的时候从类路径下的 META-INF/spring.factories 中获取 EnableAutoConfiguration 指定的值，将这些值作为自动配置类导入到容器中，自动配置类就生效，帮我们进行自动配置工作。</p>
 <p>按住 Ctrl 点击一个自动装配类：</p>
 <p>发现有大量的<code>@Conditional</code>派生类，必须是在<code>@Conditional</code>指定的条件成立的情况下，才给容器中添加组件，配置里面的所有内容才生效。</p>
@@ -361,7 +414,14 @@
 <li>命令行运行<code>java -jar [项目 JAR 包] --spring.profiles.active=dev;</code></li>
 <li>虚拟机参数<code>-Dspring.profiles.active=dev</code></li>
 </ul>
-<p><img src="http://welab-wingo.gitee.io/Image/2020/03/SpringBoot/SpringBootIDEAVMOption.PNG" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://welab-wingo.gitee.io/Image/2020/03/SpringBoot/SpringBootIDEAVMOption.PNG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
 <h4 id="配置文件加载位置"><a href="#配置文件加载位置" class="headerlink" title="配置文件加载位置"></a>配置文件加载位置</h4><p>springboot 启动会扫描以下位置的 application.properties 或者 application.yml 文件作为 Spring boot 的默认配置文件</p>
 <ul>
 <li>file:./config/</li>
@@ -385,7 +445,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-07-10T04:13:31.158Z" itemprop="dateUpdated">2020-07-10 12:13:31</time>
+    最后更新时间：<time datetime="2020-07-10T04:13:31.000Z" itemprop="dateUpdated">2020-07-10 12:13:31</time>
 </span><br>
 
 
@@ -409,6 +469,51 @@
 
 
             
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/29/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E5%85%A5%E9%97%A8%E9%85%8D%E7%BD%AE/&title=《Spring Boot 入门配置》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/29/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E5%85%A5%E9%97%A8%E9%85%8D%E7%BD%AE/&title=《Spring Boot 入门配置》 — Wingo's Blog&source= Spring Boot 2.x 的 Hello World 以及配置详解。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/02/29/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E5%85%A5%E9%97%A8%E9%85%8D%E7%BD%AE/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring Boot 入门配置》 — Wingo's Blog&url=http://yoursite.com/2020/02/29/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E5%85%A5%E9%97%A8%E9%85%8D%E7%BD%AE/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/02/29/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E5%85%A5%E9%97%A8%E9%85%8D%E7%BD%AE/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
 
 
         </div>
@@ -449,6 +554,30 @@
 
 
 
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "QoOGpxpe5BGO7EmBfCSjvsdy-gzGzoHsz",
+            appKey: "rD7bmgy1t0G7BO6g9US2nMGg",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
 
 
 
@@ -474,7 +603,7 @@
         </p>
     </div> 
     <div class="bottom">
-        <p><span>Wingo &copy; 2020</span>
+        <p><span>Wingo &copy; 2020 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -488,14 +617,60 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/29/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E5%85%A5%E9%97%A8%E9%85%8D%E7%BD%AE/&title=《Spring Boot 入门配置》 — Wingo's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/29/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E5%85%A5%E9%97%A8%E9%85%8D%E7%BD%AE/&title=《Spring Boot 入门配置》 — Wingo's Blog&source= Spring Boot 2.x 的 Hello World 以及配置详解。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/02/29/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E5%85%A5%E9%97%A8%E9%85%8D%E7%BD%AE/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring Boot 入门配置》 — Wingo's Blog&url=http://yoursite.com/2020/02/29/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E5%85%A5%E9%97%A8%E9%85%8D%E7%BD%AE/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/02/29/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E5%85%A5%E9%97%A8%E9%85%8D%E7%BD%AE/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/02/29/%E5%90%8E%E5%8F%B0%E6%8A%80%E6%9C%AF/Spring%20Boot/Spring%20Boot%20%E5%85%A5%E9%97%A8%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: ture, REWARD: false };
 
 
 </script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -515,7 +690,7 @@ var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 
